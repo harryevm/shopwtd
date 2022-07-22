@@ -227,7 +227,7 @@
             {% for size_option in size_option %} 
              <span class="{{ size_option }}">{{size_option}}</span>
             {% endfor %}
-             {% for size_option in product.options_with_values %} 
+             {% comment %} {% for size_option in product.options_with_values %} 
               {% for size_option in product.options_with_values %}
               {% assign size_val = size_option.name | downcase %}
               {% if size_val == 'size'%}
@@ -236,7 +236,7 @@
               <span class="{{ value }}"> {{ value }} </span>
               {% endfor %}
               {% endif %}
-              {% endfor %}
+              {% endfor %} {% endcomment %}
             </th>
             <th>Pack</th>
             <th style=" padding: 0 35px; ">Qty</th>
