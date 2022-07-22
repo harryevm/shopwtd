@@ -276,7 +276,8 @@
           
            {% assign option_title = variant_title | split:  "||" %}
           {% assign option_id = variant_id | split:  "||" %}            
-          {% assign clr_name = variant_option2 | split:  "||" %}            
+          {% assign clr_name = variant_option2 | split:  "||" %} 
+          {% assign pricesw = pricesw | split:  "||" %}            
           {% for currency in shop.enabled_currencies %}
           {% assign currency_symbol = currency.symbol %}
           {% endfor %}          
