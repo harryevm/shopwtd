@@ -287,22 +287,18 @@
             <td class="row_size_td">
               {% assign sizeqty = product.metafields.custom.product_size_quantities | split: "-" %}
                 {% for size_option_inner in sizeqty %}
-                  {% assign size_val_inner = size_option_inner.name | downcase %}
-                  {% if size_val_inner == 'size'%}                           
-                      {% for value_inner in size_option_inner.values %}  
+
                           {% for variant in product.variants %}
                               {% if variant.title contains clr_name_show and variant.title contains value_inner %}
                                   {% if variant.metafields.my_fields.pack_quantity != blank %}
                                     <span style="display:none;" class="row_size_span_money money buckscc-converted buckscc-money" {{ variant.price}}>{{ variant.price | divided_by: 100.00 }}</span>
-                                    <span class="row_size_span" const-qty="{{variant.metafields.my_fields.pack_quantity}}" data-wtd-price="{{ variant.price }}" data-wtd-max-qty="{{ variant.inventory_quantity | divided_by: variant.metafields.my_fields.pack_quantity }}" data-wtd-name="{{variant.title}}" data-wtd-id="{{variant.id}}" data-wtd-quantity="{{ variant.inventory_quantity }}" >{{variant.metafields.my_fields.pack_quantity}}</span>
+                                    <span class="row_size_span" const-qty="{{variant.metafields.my_fields.pack_quantity}}" data-wtd-price="{{ variant.price }}" data-wtd-max-qty="{{ variant.inventory_quantity | divided_by: variant.metafields.my_fields.pack_quantity }}" data-wtd-name="{{variant.title}}" data-wtd-id="{{variant.id}}" data-wtd-quantity="{{ variant.inventory_quantity }}" >{{size_option_inner}}</span>
                                     {% else %}
                                     <span style="display:none;" class="row_size_span_money money buckscc-converted buckscc-money" {{ variant.price}}>{{ variant.price | divided_by: 100.00 }}</span>
                                     <span class="row_size_span" const-qty="0" data-wtd-price="{{ variant.price }}" data-wtd-max-qty="{{ variant.inventory_quantity }}" data-wtd-name="{{variant.title}}" data-wtd-id="{{variant.id}}" data-wtd-quantity="{{ variant.inventory_quantity }}" >0</span>
                                     {% endif %}
                               {% endif %}
                           {% endfor %}               		
-                      {% endfor %}
-                  {% endif %}
                 {% endfor %}
             </td> 
             <td class="row_qty_td">
