@@ -223,7 +223,8 @@
               {% endfor %}
             </th>
             <th class="sizename">  
-            {% assign size_option = product.metafields.custom.product_sizes%}    
+            {% assign size_option = product.metafields.custom.product_sizes%}   
+            {{size_option}} 
             {% for size_option in size_option %} 
              <span class="{{ size_option }}">{{size_option}}</span>
             {% endfor %}
