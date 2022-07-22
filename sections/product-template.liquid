@@ -285,9 +285,10 @@
             
           
           {% for clr_name_show in clr_name %}
+            {% for prices in pricesw %}
           {% assign cnt_class_num = cnt_class_num | plus:1 %}
           <tr class="row_{{ cnt_class_num }}">
-            <td class="{{ clr_name_show }} {{pricesw}}">{{ clr_name_show }}</td>
+            <td class="{{ clr_name_show }} {{prices}}">{{ clr_name_show }}</td>
             <td class="row_size_td">
               {% assign sizeqty = product.metafields.custom.product_size_quantities | split: "-" %}
               
@@ -305,7 +306,7 @@
             </td>
             <td class="row_units_td"><span class="row_units">0</span> Units</td>
             <td class="row_price_td"><span class="currency_symbol_wtd">$</span> <span class="row_total">0.00</span></td>
-          </tr>
+          </tr>{% endfor %}
           {% endfor %}
           <tr>
 
