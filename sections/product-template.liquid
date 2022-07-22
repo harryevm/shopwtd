@@ -223,12 +223,13 @@
               {% endfor %}
             </th>
             <th class="sizename">       
-            {{product.metafields.custom.product_sizes}}
-            {% assign beatles = product.metafields.custom.product_sizes | split: "-" %}
+    
+            {% assign sizes = product.metafields.custom.product_sizes | split: "-" %}
 
-                {% for member in beatles %}
-                  {{ member }}
+                {% for size in sizes %}
+                  <span>{{ size }}</span>
                 {% endfor %}
+              {% comment %}
               {% for size_option in product.options_with_values %}
               {% assign size_val = size_option.name | downcase %}
               {% if size_val == 'size'%}
@@ -237,7 +238,7 @@
               <span class="{{ value }}"> {{ value }} </span>
               {% endfor %}
               {% endif %}
-              {% endfor %}
+              {% endfor %}{% endcomment %}
             </th>
             <th>Pack</th>
             <th style=" padding: 0 35px; ">Qty</th>
