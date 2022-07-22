@@ -269,6 +269,7 @@
             {% unless variant_title contains temptitle %}
             {% assign variant_title = variant_title | append:temptitle %}
             {% endunless %}
+            {% assign prices = variant.price %}
           {% endfor %}
           
            {% assign option_title = variant_title | split:  "||" %}
@@ -283,7 +284,7 @@
           {% for clr_name_show in clr_name %}
           {% assign cnt_class_num = cnt_class_num | plus:1 %}
           <tr class="row_{{ cnt_class_num }}">
-            <td class="{{ clr_name_show }}">{{ clr_name_show }}</td>
+            <td class="{{ clr_name_show }} {{prices}}">{{ clr_name_show }}</td>
             <td class="row_size_td">
               {% assign sizeqty = product.metafields.custom.product_size_quantities | split: "-" %}
               
