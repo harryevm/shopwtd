@@ -287,7 +287,7 @@
           {% for clr_name_show in clr_name %}
             {% for prices in pricesw %}
           {% assign cnt_class_num = cnt_class_num | plus:1 %}
-          <tr class="row_{{ cnt_class_num }}">
+          <tr class="row_{{ cnt_class_num }} name{{clr_name_show}}">
             <td class="{{ clr_name_show }} {{prices}}">{{ clr_name_show }}</td>
             <td class="row_size_td">
               {% assign sizeqty = product.metafields.custom.product_size_quantities | split: "-" %}
@@ -652,6 +652,18 @@ $('.product-single__thumbnail-image').click(function(){
           
         }else{
            productIds[newvalue] = true;
+        }
+    }) 
+    var productI={};
+    $(".row_size_span").each(function($i_val, $val_html) {
+     
+    	var newvalues = $(this).attr('data-wtd-name');
+        if(productI[newvalues]){
+          $(this).prev().remove();
+           $(this).remove();
+          
+        }else{
+          productI[newvalues] = true;
         }
     }) 
     $(".wtd_submit_atc").attr("disabled","disabled");
