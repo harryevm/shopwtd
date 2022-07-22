@@ -287,8 +287,8 @@
             <td class="row_size_td">
               {% assign sizeqty = product.metafields.custom.product_size_quantities | split: "-" %}
                 {% for size_option_inner in sizeqty %}
-                  <span class="row_size_span"  >{{size_option_inner | plus: 0}}</span>
                   <span style="display:none;" class="row_size_span_money money buckscc-converted buckscc-money" {{ variant.price}}>{{ variant.price | divided_by: 100.00 }}</span>
+                  <span class="row_size_span" const-qty="{{size_option_inner}}" data-wtd-price="{{ variant.price }}" data-wtd-max-qty="{{ variant.inventory_quantity | divided_by: size_option_inner }}" data-wtd-name="{{variant.title}}" data-wtd-id="{{variant.id}}" data-wtd-quantity="{{ variant.inventory_quantity }}" >{{size_option_inner | plus: 0}}</span>
                  
                           {% for variant in product.variants %}
                             
