@@ -655,11 +655,11 @@ $('.product-single__thumbnail-image').click(function(){
         }
     }) 
     var productI={};
-    $(".row_size_span").each(function($i_val, $val_html) {
+    $(".name").each(function($i_val, $val_html) {
      
-    	var newvalues = $(this).attr('data-wtd-name');
+    	var newvalues = $(this).attr('data-attrs');
         if(productI[newvalues]){
-          $(this).prev().remove();
+          {% comment %} $(this).prev().remove(); {% endcomment %}
            $(this).remove();
           
         }else{
