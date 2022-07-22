@@ -222,7 +222,12 @@
               {% endif %}
               {% endfor %}
             </th>
-            <th class="sizename">        
+            <th class="sizename">  
+            {% assign size_option = product.metafields.custom.product_sizes%}    
+            {% for size_option in size_option %} 
+             <span class="{{ size_option }}">{{size_option}}</span>
+            {% endfor %}
+             {% for size_option in product.options_with_values %} 
               {% for size_option in product.options_with_values %}
               {% assign size_val = size_option.name | downcase %}
               {% if size_val == 'size'%}
