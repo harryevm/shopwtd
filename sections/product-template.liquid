@@ -290,23 +290,24 @@
                 
 
                 {% if forloop.index == 1%}
-                  {{prices}}
+                  {% assign test = prices %}
                 {% elsif forloop.index == 2 %}
-                {{prices}}
+                {% assign test = prices %}
                 {% elsif forloop.index == 3 %}
-                {{prices}}
+                {% assign test = prices %}
                 {% elsif forloop.index == 4 %}
-                {{prices}}
+                {% assign test = prices %}
                 {% elsif forloop.index == 5 %}
-                {{prices}}
+                {% assign test = prices %}
                 {% elsif forloop.index == 6 %}
-                {{prices}}
+                {% assign test = prices %}
                 {% elsif forloop.index == 7 %}
-                {{prices}}
+                {% assign test = prices %}
                 {% endif %}
 
 
             {% endfor %}
+            {{test}}
           {% assign cnt_class_num = cnt_class_num | plus:1 %}
           <tr class="row_{{ cnt_class_num }} name " data-attrs={{clr_name_show}}>
             <td class="{{ clr_name_show }} {{prices}}">{{ clr_name_show }}</td>
