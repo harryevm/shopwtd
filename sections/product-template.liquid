@@ -642,7 +642,7 @@ $('.product-single__thumbnail-image').click(function(){
   }
   
   $(document).ready(function() {
-    var productIds={};
+    {% comment %} var productIds={};
     $(".row_size_span").each(function($i_val, $val_html) {
      
     	var newvalue = $(this).attr('data-wtd-name');
@@ -653,7 +653,7 @@ $('.product-single__thumbnail-image').click(function(){
         }else{
            productIds[newvalue] = true;
         }
-    }) 
+    })  {% endcomment %}
     var productI={};
     $(".name").each(function($i_val, $val_html) {
      
