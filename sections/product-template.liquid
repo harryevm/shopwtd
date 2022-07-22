@@ -277,7 +277,7 @@
            {% assign option_title = variant_title | split:  "||" %}
           {% assign option_id = variant_id | split:  "||" %}            
           {% assign clr_name = variant_option2 | split:  "||" %} 
-          {% assign pricesw = pricesw | split:  "||" %}            
+          
           {% for currency in shop.enabled_currencies %}
           {% assign currency_symbol = currency.symbol %}
           {% endfor %}          
@@ -285,7 +285,12 @@
             
           
           {% for clr_name_show in clr_name %}
-            {% for prices in pricesw %}
+            {% assign controllers = '' | split: '' %}
+              {% for prices in pricesw %}
+                  {% assign controllerName = prices | split: '||' | first | split: '' %}
+                  {% assign controllers = controllers | concat: controllerName %}
+              {% endfor %}
+  {{controllers}}
           {% assign cnt_class_num = cnt_class_num | plus:1 %}
           <tr class="row_{{ cnt_class_num }} name " data-attrs={{clr_name_show}}>
             <td class="{{ clr_name_show }} {{prices}}">{{ clr_name_show }}</td>
@@ -306,7 +311,7 @@
             </td>
             <td class="row_units_td"><span class="row_units">0</span> Units</td>
             <td class="row_price_td"><span class="currency_symbol_wtd">$</span> <span class="row_total">0.00</span></td>
-          </tr>{% endfor %}
+          </tr>
           {% endfor %}
           <tr>
 
