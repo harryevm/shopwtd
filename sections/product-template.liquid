@@ -285,6 +285,7 @@
           <tr class="row_{{ cnt_class_num }}">
             <td class="{{ clr_name_show }}">{{ clr_name_show }}</td>
             <td class="row_size_td">
+              {% assign sizes = product.metafields.custom.product_sizes | split: "-" %}
               {% for size_option_inner in product.options_with_values %}
               {% assign size_val_inner = size_option_inner.name | downcase %}
               {% if size_val_inner == 'size'%}                           
