@@ -287,7 +287,7 @@
             <td class="row_size_td">
               {% assign sizeqty = product.metafields.custom.product_size_quantities | split: "-" %}
                 {% for size_option_inner in sizeqty %}
-                  <span class="row_size_span"  >{{size_option_inner}}</span>
+                  <span class="row_size_span"  >{{size_option_inner | plus: 0}}</span>
                   <span style="display:none;" class="row_size_span_money money buckscc-converted buckscc-money" {{ variant.price}}>{{ variant.price | divided_by: 100.00 }}</span>
                  
                           {% for variant in product.variants %}
