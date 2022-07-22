@@ -1,0 +1,37 @@
+{% if section.settings.about-img != blank %}
+    <img src="{{ section.settings.about-img | img_url: '' }}" alt="about-img" class="about-img">
+{% endif %}
+
+
+{% if section.settings.about-text != blank %}
+    <div class="about-text"> {{ section.settings.about-text }} </div>
+{% endif %}
+
+
+
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+ {
+      "type": "image_picker",
+      "id": "about-img",
+      "label": "Add Image"
+},
+
+{
+   "type": "richtext",
+   "id": "about-text",
+   "label": "Add Text",
+   "default": "<p>Default <em>richtext</em> <a href=\"https://example.com/\">content</a></p>"
+}
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

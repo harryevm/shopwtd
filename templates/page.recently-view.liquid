@@ -1,0 +1,25 @@
+{% if customer %}
+<div class="header-page-width">
+{% render 'breadcrumbs' %}
+
+<div class="recently-view-template">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="section-header text-center hide">
+        <h1>{{ page.title }}</h1>
+      </div>
+
+      {% include 'wiser_recentview' %}
+      
+      <div class="rte">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% else %}
+<script type="text/javascript">
+  window.location = "/account/login";
+</script>
+{% endif %}

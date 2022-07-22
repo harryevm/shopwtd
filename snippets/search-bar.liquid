@@ -1,0 +1,8 @@
+<form action="/search" method="get" class="search-bar" role="search">
+  <input type="hidden" name="type" value="product">
+  <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search" aria-label="{{ 'layout.search_bar.placeholder' | t }}" class="search-inner">
+  <button type="submit" class="btn--link search-icon site-header__icon search-bar--submit icon-fallback-text">
+            {% include 'icon-search' %}
+            <span class="icon__fallback-text">{{ 'layout.navigation.search' | t }}</span>
+  </button>
+</form>

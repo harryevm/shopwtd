@@ -1,0 +1,237 @@
+{% if customer %}
+<script type="text/javascript">
+  window.location = "/account";
+</script>
+{% endif %}
+
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item medium-up--one-half medium-up--push-one-quarter">
+
+      <div class="form-vertical">
+
+        <h1 class="text-center">{{ 'customer.register.title' | t }}</h1>
+
+        {%- assign formId = 'RegisterForm' -%}
+        {% form 'create_customer', id: formId, novalidate: 'novalidate' %}
+        {% comment %}
+          {% include 'form-status', form: form, form_id: formId %}
+        {% endcomment %}
+
+        <h4 class="regis-inner-heading"> Personal Information </h4>
+
+        <label for="{{ formId }}-FirstName">{{ 'customer.register.first_name' | t }} *</label>
+        <input type="text" name="personal_info[first_name]" id="{{ formId }}-FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocomplete="given-name">
+
+        <label for="{{ formId }}-LastName">{{ 'customer.register.last_name' | t }} *</label>
+        <input type="text" name="personal_info[last_name]" id="{{ formId }}-LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocomplete="family-name">
+
+        <label for="{{ formId }}-email">{{ 'customer.register.email' | t }} *</label>
+        <input
+               type="email"
+               name="personal_info[email]"
+               id="{{ formId }}-email"
+               class=""
+               autocorrect="off"
+               autocapitalize="off"
+               autocomplete="email"
+               aria-required="true"
+
+               >
+
+        <label for="{{ formId }}-TaxNumber">Tax/VAT Number *</label>
+        <input type="text" name="personal_info[tax-number]" id="{{ formId }}-TaxNumber" maxlength="10">
+
+        <label for="{{ formId }}-LicenseFile">Business License File to Upload *(Maximum upload file size: 2MB)</label>
+        <input type="file" name="license-file" id="{{ formId }}-LicenseFile" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps">
+
+
+        <h4 class="regis-inner-heading"> Company Information </h4>          
+
+        <label for="{{ formId }}-CompanyName"> Company Name </label>
+        <input type="text" name="company_info[company_name]" id="{{ formId }}-CompanyName">
+
+        <label for="{{ formId }}-Telephone">Telephone *</label>
+        <input type="number" name="company_info[telephone]" id="{{ formId }}-Telephone">
+
+        <label for="{{ formId }}-Address">Street Address *</label>
+        <input type="text" name="company_info[address]" id="{{ formId }}-Address">
+        <input type="text" name="company_info[address_2]" id="{{ formId }}-Address_2">
+
+        <label for="{{ formId }}-Country">Country *</label>
+        <select id="{{ formId }}-Country" name="company_info[country]">
+          <option>Select country</option>
+        </select>
+
+        <label for="{{ formId }}-State">State/Province *</label>
+        <select id="{{ formId }}-State" name="company_info[state]">
+          <option></option>
+        </select>
+
+        <label for="{{ formId }}-City"> City *</label>
+        <select id="{{ formId }}-city" name="company_info[city]">
+          <option></option>
+        </select>
+
+        <label for="{{ formId }}-ZipCode"> Zip Code *</label>
+        <input type="text" name="company_info[zip_code]" id="{{ formId }}-ZipCode" pattern="[0-9]*">
+
+        <h4 class="regis-inner-heading"> Login Information </h4>       
+        <label for="{{ formId }}-Password">{{ 'customer.register.password' | t }} *</label>
+        <input
+               type="password"
+               name="personal_info[password]"
+               id="{{ formId }}-Password"
+               class=""
+               aria-required="true"
+               >
+
+        <label for="{{ formId }}-Conf-password">Confirm Password *</label>
+        <input
+               type="password"
+               name="personal_info[confirm-password]"
+               id="{{ formId }}-Conf-password"
+               class=""
+               aria-required="true"
+               >
+        <p class="text-center">
+          <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn create_user">
+        </p>
+
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  jQuery(document).ready(function($) {
+    var formId = "RegisterForm-";
+    $('#RegisterForm-LicenseFile').bind('change', function() {
+      $(".input-error-message").remove();
+      var chkFileSize = (this.files[0].size);
+      if(chkFileSize > 2000000) {
+        $('#RegisterForm-LicenseFile').val("");
+        return errorMsg("Please select image size less than 2 MB", "#"+formId+"LicenseFile");
+      };
+    });
+    
+    var base_url = "https://top2bottom-wholesale.herokuapp.com/";
+    $("#RegisterForm").removeAttr("action");
+    $("#RegisterForm").attr("enctype", "multipart/form-data");
+    
+    $("#RegisterForm").on("submit", function(event) {
+      event.preventDefault();
+      
+      $(".input-error-message").remove();
+      if ($("#"+formId+"FirstName").val() == "") {
+        return errorMsg("First name can't be blank", "#"+formId+"FirstName");
+      } else if ($("#"+formId+"LastName").val() == "") {
+        return errorMsg("Last name can't be blank", "#"+formId+"LastName");
+      } else if ($("#"+formId+"email").val() == "") {
+        return errorMsg("email can't be blank", "#"+formId+"email");
+      } else if ($("#"+formId+"TaxNumber").val() == "") {
+        return errorMsg("Tax number can't be blank", "#"+formId+"TaxNumber");
+      } else if ($("#"+formId+"LicenseFile").val() == "") {
+        return errorMsg("Please upload a scanned copy of business license", "#"+formId+"LicenseFile");
+      } else if ($("#"+formId+"Telephone").val() == "") {
+        return errorMsg("Telephone can't be blank", "#"+formId+"Telephone");
+      } else if ($("#"+formId+"Address").val() == "") {
+        return errorMsg("Address can't be blank", "#"+formId+"Address");
+      } else if ($("#"+formId+"Country").val() == "") {
+        return errorMsg("Country can't be blank", "#"+formId+"Country");
+      } else if ($("#"+formId+"State").val() == "") {
+        return errorMsg("State can't be blank ( Select Country First)", "#"+formId+"State");
+      } else if ($("#"+formId+"City").val() == "") {
+        return errorMsg("City can't be blank (Select State First)", "#"+formId+"City");
+      } else if ($("#"+formId+"ZipCode").val() == "") {
+        return errorMsg("Zip code can't be blank", "#"+formId+"ZipCode");
+      } else if ($("#"+formId+"Password").val() == "") {
+        return errorMsg("Password can't be blank", "#"+formId+"Password");
+      } else if ($("#"+formId+"Conf-password").val() == "") {
+        return errorMsg("Confirm password can't be blank", "#"+formId+"Conf-password");
+      }
+     
+      if($("#"+formId+"Password").val() != $("#"+formId+"Conf-password").val())
+         return errorMsg("Password and Confirm password does not match", "#"+formId+"Conf-password");
+        
+      var form_data = new FormData(this);
+      form_data.append("shopName", Shopify.shop);
+      $(".create_user").attr("disabled", true);
+      $.ajax({
+        url   : base_url+'admin_common_con/evmCustomerRegister',
+        type  : 'POST',
+        data  : form_data,
+        cache : false,
+        processData : false,
+        contentType : false,
+        success: function (res) {
+          $(".create_user").attr("disabled", false);
+          var obj = JSON.parse(res);
+          if (obj.success == "success" && obj.logged_in == true) {
+          	alert(obj.msg);
+            $('#RegisterForm')[0].reset();
+          } else {
+          	alert(obj.msg);
+          }
+        }
+      })
+    });
+    
+    /* get country state city  */
+    /* get country onload */
+    $.ajax({
+      url     : base_url+"admin_common_con/getCountries",
+      type    : "POST",
+      data    : { get_country: "country" },
+      cache   : false,
+      success : function(result) {
+        $("#RegisterForm-Country").html(result);
+      }
+    });
+    
+    $('#RegisterForm-Country').on('change', function() {
+      var country_id = $('option:selected', this).attr('data-country-id');
+      $.ajax({
+        url     : base_url+"admin_common_con/getStates",
+        type    : "POST",
+        data    : { country_id: country_id },
+        cache   : false,
+        success : function(result){
+          $("#RegisterForm-State").html(result);
+        }
+      });
+    });
+    
+    $('#RegisterForm-State').on('change', function() {
+      var state_id = $('option:selected', this).attr('data-state-id');
+      $.ajax({
+        url     : base_url+"admin_common_con/getCity",
+        type    : "POST",
+        data    : { state_id: state_id },
+        cache   : false,
+        success : function(result){
+          $("#RegisterForm-city").html(result);
+        }
+      });
+    });
+  });
+  
+  function errorMsg(msg, fieldId) {
+  	$("<span class='input-error-message'><svg aria-hidden='true' focusable='false' role='presentation' class='icon icon-error' viewBox='0 0 14 14'><g fill='none' fill-rule='evenodd'><path d='M7 0a7 7 0 0 1 7 7 7 7 0 1 1-7-7z'></path><path class='icon-error__symbol' d='M6.328 8.396l-.252-5.4h1.836l-.24 5.4H6.328zM6.04 10.16c0-.528.432-.972.96-.972s.972.444.972.972c0 .516-.444.96-.972.96a.97.97 0 0 1-.96-.96z' fill-rule='nonzero'></path></g></svg> "+msg+".</span>").insertAfter(fieldId);
+    $(fieldId).focus();
+    return false;
+  }
+  
+//   function focusOnField(fieldId){
+    
+//   }
+//   function checkIsEmail(email) {
+//     var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+//     if(!regex.test(email)) {
+//       return false;
+//     }else{
+//       return true;
+//     }
+//   }
+</script>

@@ -1,0 +1,91 @@
+ <style>
+   .announcement-bar {
+          background-color: {{ section.settings.color_bg }};
+        }
+    .announcement-bar__message {
+          color: {{ section.settings.color_text }};
+        }
+</style>
+<div id="owl-annnouncement-slider">
+{% for block in section.blocks %}
+<div class="item announcement-bar" role="region" aria-label="{{ 'sections.header.announcement_bar_label' | t }}">
+        <div class="header-page-width">
+        {%- unless block.settings.message_link == blank -%}
+          <a href="{{ block.settings.message_link }}" class="announcement-bar__link">
+        {%- endunless -%}
+      <p class="announcement-bar__message">
+        {{ block.settings.message_text | escape }}
+        {% if block.settings.icon_name != name  %}
+        <i class="fa {{block.settings.icon_name}}"></i>
+        {% endif %}      
+      </p>
+        {%- unless block.settings.message_link == blank -%}
+          </a>
+        {%- endunless -%}
+      </div>
+</div> 
+{% endfor %}
+</div>
+
+<script>
+$(document).ready(function() {
+ 
+  $("#owl-annnouncement-slider").owlCarousel({ 
+    autoPlay: 5000,
+    items : 1,
+    navigation:	true,
+    navigationText:	['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],	
+    pagination:	false
+        
+  });
+ 
+});  
+</script>  
+
+{% schema %}
+{
+    "name": "Annoumcement Slider",
+	"max_blocks": 5,
+    "settings": [
+{
+      "type": "color",
+      "id": "color_bg",
+      "label":"Bar"
+},
+{
+      "type": "color",
+      "id": "color_text",
+      "label": "Text"
+}
+
+],
+"blocks": [
+{
+"type": "text",
+"name": "Announcemnet Message",
+"settings":[
+{
+"type": "text",
+"id": "icon_name",
+"label": "Add Icon Name",
+"default": "fa fa-plane",
+"info": "Add Icon Name from here [Icon name sheet](https://fontawesome.com/v4.7.0/cheatsheet)"
+},
+{
+"type": "text",
+"id": "message_text",
+"label": "Add Text",
+"default": "Announce something here"
+},
+{
+"type": "url",
+"id": "message_link",
+"label":"Link",
+"info": "Optional"
+}
+]
+}
+]
+}
+{% endschema %}
+
