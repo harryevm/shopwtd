@@ -840,9 +840,10 @@ const testing = document.querySelectorAll(".row_size_td");
 testing.forEach(element => element.innerHTML += fieldValue2);
 function getSum(){
   var output='';
-  $('td.row_size_td').each(function () {
+  $('td.row_size_td').each(function (index) {
+    alert(index);
   var output = 0;
-  $(this).children('a').each(function () {
+  $(this).parents('.row_'+index).children('a').each(function () {
     output += parseInt(this.innerHTML); // "this" is the current element in the loop
   });
   return output;
