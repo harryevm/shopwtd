@@ -224,8 +224,8 @@
             </th>
             <th class="sizename">       
               {% assign beatles = product.metafields.custom.product_sizes | split: "||" %}
-              {% for size in beatles %}f
-                {{size}}
+              {% for size in beatles %}
+                <span id="option{{forloop.index}}"> {{size}}</span>
               {% endfor %}
 
               {% for size_option in product.options_with_values %}
