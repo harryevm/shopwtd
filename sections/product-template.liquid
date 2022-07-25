@@ -741,9 +741,10 @@ $('.product-single__thumbnail-image').click(function(){
             }
           } else {
             $($val_html).text($qty_row);
-            console.log($qty_row+','+$($val_html).text());
+            
             $wtdItems  = chkIsMatch($wtdItems, $wtd_id, $qty_row);                        
-            $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val]));            
+            $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
+            console.log($row_price);           
           }
           $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
       });      
