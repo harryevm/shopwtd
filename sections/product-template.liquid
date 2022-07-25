@@ -215,7 +215,6 @@
           </tr>
           <tr>
             <th>
-              {{product.metafields.custom.product_sizes}}
               {% for clr_option in product.options_with_values %}
               {% assign name_val = clr_option.name | downcase %}
               {% if name_val == 'color'%}
@@ -224,6 +223,11 @@
               {% endfor %}
             </th>
             <th class="sizename">       
+              {% assign beatles = product.metafields.custom.product_sizes | split: "||" %}
+              {% for size in beatles %}
+                {{size}}
+              {% endif %}
+
               {% for size_option in product.options_with_values %}
               {% assign size_val = size_option.name | downcase %}
               {% if size_val == 'size'%}
