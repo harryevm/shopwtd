@@ -741,9 +741,9 @@ $('.product-single__thumbnail-image').click(function(){
 
             }
           } else {
-            $(this).text($qty_row);
-            console.log($(this).text($qty_row));
-            $wtdItems  = chkIsMatch($wtdItems, $wtd_id,6);    
+            $($val_html).text($qty_row);
+            
+            $wtdItems  = chkIsMatch($wtdItems, $wtd_id, $qty_row);    
                   
             $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
             
