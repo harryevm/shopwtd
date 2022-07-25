@@ -723,7 +723,7 @@ $('.product-single__thumbnail-image').click(function(){
         if(parseInt($max_val_all) < parseInt($wtd_max_qty)) {
           $max_val_all = $wtd_max_qty;
         }
-        console.log($max_val_all)
+        console.log($wtd_qty_ttl +','+ $qty_row);
           if($wtd_qty_ttl < $qty_row) {
             var $max_val_qty = Math.max(...$max_val_qty_arr);
             $($val_html).text($wtd_qty_ttl);
