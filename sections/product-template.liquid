@@ -824,15 +824,19 @@ $('.product-single__thumbnail-image').click(function(){
 //  end 
 
 var input = document.getElementById('opt').innerText;
-let text = "";
+let fieldValue,fieldValue2 = "";
 var fields = input.split('||');
-var namesss = fields[0];
-var realvalue = namesss.split('-');
-console.log(realvalue);
+var field1 = fields[0];
+var realvalue = field1.split('-');
+var field2 = fields[1];
+var realvalue2 = field2.split('-');
 realvalue.forEach((item, index)=>{
-  text += "<span>" + item + "</span>"; 
+  fieldValue += "<span>" + item + "</span>"; 
 });
-document.getElementById("sizename").innerHTML  = text;
+realvalue2.forEach((item, index)=>{
+  fieldValue2 += "<span>" + item + "</span>"; 
+});
+document.getElementById("sizename").innerHTML  = fieldValue;
 </script>  
 
 
