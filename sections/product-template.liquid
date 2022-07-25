@@ -742,9 +742,8 @@ $('.product-single__thumbnail-image').click(function(){
 
             }
           } else {
-            console.log( $($val_html).siblings('.row_size_span'));
-            console.log( $(this));
-            $($val_html).text($qty_row);
+ 
+            $($val_html).siblings('.row_size_span').text($qty_row);
             
             $wtdItems  = chkIsMatch($wtdItems, $wtd_id, $qty_row);    
                   
