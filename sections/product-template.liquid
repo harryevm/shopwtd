@@ -227,7 +227,7 @@
            
             {% assign sizes = product.metafields.custom.product_sizes  | split: "||"%}   
                 {% for size in sizes %}
-                  <span>{{ size | first }}</span>
+                  <span>{{ size.first }}</span>
                 {% endfor %}
               {% comment %}
               {% for size_option in product.options_with_values %}
