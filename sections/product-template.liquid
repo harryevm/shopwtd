@@ -284,7 +284,7 @@
           {% assign cnt_class_num = cnt_class_num | plus:1 %}
           <tr class="row_{{ cnt_class_num }}">
             <td class="{{ clr_name_show }}">{{ clr_name_show }}</td>
-            <td class="row_size_td">
+            <td class="row_size_td">dsds
               {% for variant in product.variants %}
               {{variant.title}}
                 <span style="display:none;" class="row_size_span_money money buckscc-converted buckscc-money" {{ variant.price}}>{{ variant.price | divided_by: 100.00 }}</span>
