@@ -845,9 +845,9 @@ function getSum(){
   $(this).parents('.row_'+index+1).children('a').each(function () {
     output += parseInt(this.innerHTML); // "this" is the current element in the loop
   });
-  
+  return output;
 })
-return output;
+
 }
 var out=getSum();
 console.log(out);
