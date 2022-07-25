@@ -695,8 +695,9 @@ $('.product-single__thumbnail-image').click(function(){
         console.log(out);
     
       $(".row_"+$data_row_id+" a").each(function($i_val, $val_html) {
-        console.log($(this).parent());
-        var $wtd_id = $($val_html).attr("data-wtd-id");
+       
+        var $wtd_id =$(this).siblings('.row_size_span').attr("data-wtd-id");
+        console.log($wtd_id);
         var $node_count  = $(".row_"+$data_row_id+" .row_size_span").length -1;
         var $wtd_qty_ttl = parseInt($($val_html).attr("data-wtd-quantity"));
      var $wtd_qty_ttlpck = parseInt($($val_html).attr("data-wtd-max-qty"));
