@@ -839,12 +839,13 @@ document.getElementById("sizename").innerHTML  = fieldValue;
 const testing = document.querySelectorAll(".row_size_td");
 testing.forEach(element => element.innerHTML += fieldValue2);
 function getSum(){
-  var output=0;
+  var output='';
   $('td.row_size_td').each(function () {
-  
+  var output = 0;
   $(this).children('a').each(function () {
-      output += parseInt(this.innerHTML); // "this" is the current element in the loop
+    output += parseInt(this.innerHTML); // "this" is the current element in the loop
   });
+  return output;
   
 })
 return output;
