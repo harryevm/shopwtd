@@ -832,9 +832,9 @@ var namesss = fields[0];
 var realvalue = namesss.split('-');
 console.log(realvalue);
 realvalue.forEach((item, index)=>{
-  text += index + ": " + item + "<br>"; 
+  text += "<span>" + item + "</span>"; 
 });
-document.getElementById("demo").innerHTML  = text;
+document.getElementById("sizename").innerHTML  = text;
 </script>  
 
 
