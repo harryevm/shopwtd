@@ -680,12 +680,13 @@ $('.product-single__thumbnail-image').click(function(){
       
       $(".row_"+$data_row_id+" .row_size_span_money").each(function($idx, $val_html_money) {
         $wtd_vari_pc = parseFloat($($val_html_money).text().replace(/[^0-9.]/g, ""));
+        alert( $wtd_vari_pc);
         if(!$.inArray($idx, $wtd_vari_pc_arr) !== -1){
           $wtd_vari_pc_arr[$idx] = parseFloat($wtd_vari_pc);
           
         }
       });
-      alert( $wtd_vari_pc_arr[1]);
+      
       function getSum(test){
           var output = 0;
           $('.row_'+test+' td.row_size_td').children('a').each(function () {
