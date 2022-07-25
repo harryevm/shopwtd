@@ -828,9 +828,13 @@ var fields = input.split('||');
 var namesss = fields[0];
 var realvalue = namesss.split('-');
 console.log(realvalue);
+realvalue.forEach((item, index)=>{
+  text += index + ": " + item + "<br>"; 
+});
+document.getElementById("demo").innerHTML = text;
 </script>  
 
-
+<p id="demo"></p>
 
 
 
