@@ -744,7 +744,13 @@ $('.product-single__thumbnail-image').click(function(){
           } else {
 
             $($val_html).text($qty_row);
-            console.log('<span>'+ $qty_row += $qty_row +'</span>');
+            sum = 0;
+
+              while ($qty_row) {
+                  sum += $qty_row + $qty_row;
+
+              }
+              alert(sum);
             $wtdItems  = chkIsMatch($wtdItems, $wtd_id, $qty_row);    
                   
             $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
