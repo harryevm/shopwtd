@@ -740,6 +740,7 @@ $('.product-single__thumbnail-image').click(function(){
             }
           } else {
             $($val_html).text($qty_row);
+            console.log($val_html);
             console.log($($val_html)+','+$qty_row);
             console.log($val_html.text($qty_row));
             $wtdItems  = chkIsMatch($wtdItems, $wtd_id, $qty_row);                        
