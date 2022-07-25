@@ -682,6 +682,7 @@ $('.product-single__thumbnail-image').click(function(){
         $wtd_vari_pc = parseFloat($($val_html_money).text().replace(/[^0-9.]/g, ""));
         if(!$.inArray($idx, $wtd_vari_pc_arr) !== -1){
           $wtd_vari_pc_arr[$idx] = parseFloat($wtd_vari_pc);
+          alert($wtd_vari_pc_arr[$idx]);
         }
       });
       function getSum(test){
