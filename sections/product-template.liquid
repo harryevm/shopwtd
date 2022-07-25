@@ -1,4 +1,4 @@
-<div class="header-page-width fgf">
+<div class="header-page-width">
   {% render 'breadcrumbs' %}     
 </div>  
 <div class="product-template__container product-page-width"
@@ -215,6 +215,7 @@
           </tr>
           <tr>
             <th>
+              {{product.metafields.custom.product_sizes}}
               {% for clr_option in product.options_with_values %}
               {% assign name_val = clr_option.name | downcase %}
               {% if name_val == 'color'%}
