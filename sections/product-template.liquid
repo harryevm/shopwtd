@@ -678,7 +678,8 @@ $('.product-single__thumbnail-image').click(function(){
       var $qty_row;
       
       
-      $(".row_"+$data_row_id+" .row_size_span_money").each(function($idx, $val_html_money) {
+      $(".row_"+$data_row_id+" a").each(function($idx, $val_html_money) {
+        console.log($val_html_money);
         $wtd_vari_pc = parseFloat($($val_html_money).text().replace(/[^0-9.]/g, ""));
        alert($idx);
         if(!$.inArray($idx, $wtd_vari_pc_arr) !== -1){
