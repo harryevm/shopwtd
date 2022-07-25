@@ -838,6 +838,15 @@ document.getElementById("sizename").innerHTML  = fieldValue;
 
 const testing = document.querySelectorAll(".row_size_td");
 testing.forEach(element => element.innerHTML += fieldValue2);
+function getSum(){
+  var output=0;
+  $('td.row_size_td').children('a').each(function () {
+      output += parseInt(this.innerHTML); // "this" is the current element in the loop
+  });
+  return output;
+}
+var out=getSum();
+console.log(out);
 </script>  
 
 
