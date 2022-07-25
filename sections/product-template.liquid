@@ -838,6 +838,9 @@ realvalue2.forEach((item, index)=>{
   fieldValue2 += "<span>" + item + "</span>"; 
 });
 document.getElementById("sizename").innerHTML  = fieldValue;
+
+const testing = document.querySelectorAll(".row_size_td");
+testing.forEach(element => element.innerHTML += '<span>'fieldValue2+'</span>');
 </script>  
 
 
