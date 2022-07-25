@@ -1,4 +1,4 @@
-<div class="header-page-width dfssdf">
+<div class="header-page-width">
   {% render 'breadcrumbs' %}     
 </div>  
 <div class="product-template__container product-page-width"
@@ -108,7 +108,7 @@
                   {%- endif -%}
                   {%- endcapture -%}
 
-                  <img class="product-single__thumbnail-image" src="{{ media.preview_image | img_url: '110x110', scale: 2 }}" data-image="{{ media.preview_image | img_url:''}}" alt="{{ thumbnailAlt }}">
+                  <img class="product-single__thumbnail-image" src="{{ media.preview_image | img_url: '110x110', scale: 2 }}" data-image="{{ media.preview_image | img_url:''}}" alt="{{ thumbnailAlt }}" />
                   {%- if media.media_type == 'video' or media.media_type =='external_video' -%}
                   <div class="product-single__thumbnail-badge">
                     {% include 'icon-video-badge-full-color' %}
@@ -222,14 +222,13 @@
               {% endif %}
               {% endfor %}
             </th>
-            <th class="sizename">       
-    
-            {% assign sizes = product.metafields.custom.product_sizes | split: "-" %}
-
-                {% for size in sizes %}
-                  <span>{{ size }}</span>
-                {% endfor %}
-              {% comment %}
+            <th class="sizename">  rt
+            {% assign size_option = product.metafields.custom.product_sizes%}   
+            {{product.metafields.custom.product_sizes}} 
+            {% for size_option in size_option %} 
+             <span class="{{ size_option }}">{{size_option}}</span>
+            {% endfor %}
+             {% comment %} {% for size_option in product.options_with_values %} 
               {% for size_option in product.options_with_values %}
               {% assign size_val = size_option.name | downcase %}
               {% if size_val == 'size'%}
@@ -238,7 +237,7 @@
               <span class="{{ value }}"> {{ value }} </span>
               {% endfor %}
               {% endif %}
-              {% endfor %}{% endcomment %}
+              {% endfor %} {% endcomment %}
             </th>
             <th>Pack</th>
             <th style=" padding: 0 35px; ">Qty</th>
@@ -261,23 +260,19 @@
           {% assign variant_id = '' %}
           {% assign variant_title = '' %}
           {% for variant in product.variants %}
-            {% assign tempid = variant.id | append:'||' %}
-            {% assign temptitle = variant.title | append:'||' %}
-            {% assign prices = variant.price | append:'||' %}
-            {% unless variant_id contains tempid %}
-            {% assign variant_id = variant_id | append:tempid %}
-            {% endunless %}
-            {% unless variant_title contains temptitle %}
-            {% assign variant_title = variant_title | append:temptitle %}
-            {% assign pricesw = pricesw | append:prices %}
-            {% endunless %}
-      
+          {% assign tempid = variant.id | append:'||' %}
+          {% assign temptitle = variant.title | append:'||' %}
+          {% unless variant_id contains tempid %}
+          {% assign variant_id = variant_id | append:tempid %}
+          {% endunless %}
+          {% unless variant_title contains temptitle %}
+          {% assign variant_title = variant_title | append:temptitle %}
+          {% endunless %}
           {% endfor %}
           
            {% assign option_title = variant_title | split:  "||" %}
           {% assign option_id = variant_id | split:  "||" %}            
-          {% assign clr_name = variant_option2 | split:  "||" %} 
-          {% assign pricesw = pricesw | split:  "||" %}            
+          {% assign clr_name = variant_option2 | split:  "||" %}            
           {% for currency in shop.enabled_currencies %}
           {% assign currency_symbol = currency.symbol %}
           {% endfor %}          
@@ -285,43 +280,31 @@
             
           
           {% for clr_name_show in clr_name %}
-            {% assign test = ''  %}
-            {% for prices in pricesw %}
-                
-
-                {% if forloop.index == 1%}
-                  {% assign test = prices %}
-                {% elsif forloop.index == 2 %}
-                {% assign test2 = prices %}
-                {% elsif forloop.index == 3 %}
-                {% assign test = prices %}
-                {% elsif forloop.index == 4 %}
-                {% assign test = prices %}
-                {% elsif forloop.index == 5 %}
-                {% assign test = prices %}
-                {% elsif forloop.index == 6 %}
-                {% assign test = prices %}
-                {% elsif forloop.index == 7 %}
-                {% assign test = prices %}
-                {% endif %}
-
-
-            {% endfor %}
-            {{test2}}
           {% assign cnt_class_num = cnt_class_num | plus:1 %}
-          <tr class="row_{{ cnt_class_num }} name " data-attrs={{clr_name_show}}>
-            <td class="{{ clr_name_show }} {{test}}">{{ clr_name_show }}</td>
+          <tr class="row_{{ cnt_class_num }}">
+            <td class="{{ clr_name_show }}">{{ clr_name_show }}</td>
             <td class="row_size_td">
-              {% assign sizeqty = product.metafields.custom.product_size_quantities | split: "-" %}
+              {{size_option}}
+              {% for size_option_inner in product.options_with_values %}
+              {% assign size_val_inner = size_option_inner.name | downcase %}
+              {% if size_val_inner == 'size'%}                           
+              {% for value_inner in size_option_inner.values %}  
+ 
+              {% for variant in product.variants %}
               
-                {% for size_option_inner in sizeqty %}
-                  <span style="display:none;" class="row_size_span_money money buckscc-converted buckscc-money" {{ variant.price}}>{{ variant.price | divided_by: 100.00 }}</span>
-                  <span class="row_size_span" const-qty="{{size_option_inner}}" data-wtd-price="{{ variant.price }}" data-wtd-max-qty="{{ 15 | divided_by: size_option_inner }}" data-wtd-name="{{clr_name_show}}" data-wtd-id="{{variant.id}}" data-wtd-quantity="{{ variant.inventory_quantity }}" >{{size_option_inner | plus: 0}}</span>
-                 
-              
-                           
-                                        		
-                {% endfor %}
+              {% if variant.title contains clr_name_show and variant.title contains value_inner %}
+     			{% if variant.metafields.my_fields.pack_quantity != blank %}
+                <span style="display:none;" class="row_size_span_money money buckscc-converted buckscc-money" {{ variant.price}}>{{ variant.price | divided_by: 100.00 }}</span>
+                <span class="row_size_span" const-qty="{{variant.metafields.my_fields.pack_quantity}}" data-wtd-price="{{ variant.price }}" data-wtd-max-qty="{{ variant.inventory_quantity | divided_by: variant.metafields.my_fields.pack_quantity }}" data-wtd-name="{{variant.title}}" data-wtd-id="{{variant.id}}" data-wtd-quantity="{{ variant.inventory_quantity }}" >{{variant.metafields.my_fields.pack_quantity}}</span>
+              	{% else %}
+              	<span style="display:none;" class="row_size_span_money money buckscc-converted buckscc-money" {{ variant.price}}>{{ variant.price | divided_by: 100.00 }}</span>
+                <span class="row_size_span" const-qty="0" data-wtd-price="{{ variant.price }}" data-wtd-max-qty="{{ variant.inventory_quantity }}" data-wtd-name="{{variant.title}}" data-wtd-id="{{variant.id}}" data-wtd-quantity="{{ variant.inventory_quantity }}" >0</span>
+              	{% endif %}
+              {% endif %}
+              {% endfor %}               		
+              {% endfor %}
+              {% endif %}
+              {% endfor %}
             </td> 
             <td class="row_qty_td">
               <input type="number" name="product-pack-quantity" class="row_qty_input" min="0" value="0" data-row="{{ cnt_class_num }}" />
@@ -664,7 +647,7 @@ $('.product-single__thumbnail-image').click(function(){
   }
   
   $(document).ready(function() {
-    {% comment %} var productIds={};
+    var productIds={};
     $(".row_size_span").each(function($i_val, $val_html) {
      
     	var newvalue = $(this).attr('data-wtd-name');
@@ -675,19 +658,7 @@ $('.product-single__thumbnail-image').click(function(){
         }else{
            productIds[newvalue] = true;
         }
-    })  {% endcomment %}
-    var productI={};
-    $(".name").each(function($i_val, $val_html) {
-     
-    	var newvalues = $(this).attr('data-attrs');
-        if(productI[newvalues]){
-          {% comment %} $(this).prev().remove(); {% endcomment %}
-           $(this).remove();
-          
-        }else{
-          productI[newvalues] = true;
-        }
-    }) 
+    })
     $(".wtd_submit_atc").attr("disabled","disabled");
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault()
@@ -704,7 +675,7 @@ $('.product-single__thumbnail-image').click(function(){
       var $wtd_vari_pc      = 0;
       var $row_price        = 0;
       var $this_obj         = $(this);
-      var $current_qty      = 2;
+      var $current_qty      = $(this).val();
       var $data_row_id      = $(this).attr("data-row");
       $(".error_msg").remove();
       var $qty_row;
