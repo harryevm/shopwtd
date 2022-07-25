@@ -697,7 +697,7 @@ $('.product-single__thumbnail-image').click(function(){
       $(".row_"+$data_row_id+" a").each(function($i_val, $val_html) {
        
         var $wtd_id =$(this).siblings('.row_size_span').attr("data-wtd-id");
-        console.log($wtd_id);
+       
         var $node_count  = $(".row_"+$data_row_id+" a").length -1;
         var $wtd_qty_ttl = parseInt($(this).siblings('.row_size_span').attr("data-wtd-quantity"));
      var $wtd_qty_ttlpck = parseInt($(this).siblings('.row_size_span').attr("data-wtd-max-qty"));
@@ -705,7 +705,7 @@ $('.product-single__thumbnail-image').click(function(){
         var $wtd_var_qty = $($val_html).attr("const-qty");
         
         $qty_row = parseInt($current_qty) * $wtd_var_qty;
-        
+        console.log($qty_row);
         if(jQuery.inArray($wtd_qty_ttl, $invent_arr) !== -1) {} else { $invent_arr.push($wtd_qty_ttl); }
         if(jQuery.inArray($wtd_qty_ttlpck, $invent_arrpck) !== -1) {} else { $invent_arrpck.push($wtd_qty_ttlpck); }
         $specific_invt_arr.push($wtd_qty_ttl);
