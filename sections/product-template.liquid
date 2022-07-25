@@ -684,14 +684,24 @@ $('.product-single__thumbnail-image').click(function(){
           $wtd_vari_pc_arr[$idx] = parseFloat($wtd_vari_pc);
         }
       });
-		
-      $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
+      function getSum(test){
+          var output = 0;
+          $('.row_'+test+' td.row_size_td').children('a').each(function () {
+            output += parseInt(this.innerHTML); // "this" is the current element in the loop
+          });
+          return output;
+        }
+        var out=getSum();
+        console.log(out);
+      $(".row_"+$data_row_id+" .row_size_span").each(function(index,$i_val, $val_html) {
         var $wtd_id = $($val_html).attr("data-wtd-id");
         var $node_count  = $(".row_"+$data_row_id+" .row_size_span").length -1;
         var $wtd_qty_ttl = parseInt($($val_html).attr("data-wtd-quantity"));
      var $wtd_qty_ttlpck = parseInt($($val_html).attr("data-wtd-max-qty"));
         var $wtd_max_qty = $($val_html).attr("data-wtd-max-qty");
-        var $wtd_var_qty = $($val_html).attr("const-qty");
+        getSum()
+        var $wtd_var_qty = getSum(index);
+        // $($val_html).attr("const-qty");
         
         $qty_row = parseInt($current_qty) * $wtd_var_qty;
         
@@ -838,15 +848,7 @@ document.getElementById("sizename").innerHTML  = fieldValue;
 
 const testing = document.querySelectorAll(".row_size_td");
 testing.forEach(element => element.innerHTML += fieldValue2);
-function getSum(){
-  var output = 0;
-  $('.row_1 td.row_size_td').children('a').each(function () {
-    output += parseInt(this.innerHTML); // "this" is the current element in the loop
-  });
-  return output;
-}
-var out=getSum();
-console.log(out);
+
 </script>  
 
 
