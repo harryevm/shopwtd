@@ -1,4 +1,4 @@
-<p id="demo"></p><div class="header-page-width">
+<div class="header-page-width">
   {% render 'breadcrumbs' %}     
 </div>  
 <div class="product-template__container product-page-width"
@@ -222,9 +222,12 @@
               {% endif %}
               {% endfor %}
             </th>
-            <th class="sizename">       
+            <span id="opt">{{product.metafields.custom.product_sizes}}</span>
+            <th class="sizename" id="sizename">       
+
+              {% comment %
               {% assign beatles = product.metafields.custom.product_sizes | split: "||" %}
-              <span id="opt">{{product.metafields.custom.product_sizes}}</span>
+              
               {% for size in beatles %}
                 <span id="option{{forloop.index}}"> {{size}}</span>
               {% endfor %}
@@ -237,7 +240,7 @@
               <span class="{{ value }}"> {{ value }} </span>
               {% endfor %}
               {% endif %}
-              {% endfor %}
+              {% endfor %} {% endcomment %
             </th>
             <th>Pack</th>
             <th style=" padding: 0 35px; ">Qty</th>
