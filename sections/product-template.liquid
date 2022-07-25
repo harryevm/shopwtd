@@ -644,24 +644,6 @@ $('.product-single__thumbnail-image').click(function(){
   }
   
   $(document).ready(function() {
-    var input = document.getElementById('opt').innerText;
-let fieldValue = "";
-let fieldValue2 ="";
-var fields = input.split('||');
-var field1 = fields[0];
-var realvalue = field1.split('-');
-var field2 = fields[1];
-var realvalue2 = field2.split('-');
-realvalue.forEach((item, index)=>{
-  fieldValue += "<span>" + item + "</span>"; 
-});
-realvalue2.forEach((item, index)=>{
-  fieldValue2 += "<a const-qty='"+item+"'>" + item + "</a>"; 
-});
-document.getElementById("sizename").innerHTML  = fieldValue;
-
-const testing = document.querySelectorAll(".row_size_td");
-testing.forEach(element => element.innerHTML += fieldValue2);
     var productIds={};
     $(".row_size_span").each(function($i_val, $val_html) {
      
@@ -758,7 +740,7 @@ testing.forEach(element => element.innerHTML += fieldValue2);
             }
           } else {
             $($val_html).text($qty_row);
-            console.log($val_html);
+            console.log($val_html)
             console.log($($val_html)+','+$qty_row);
             console.log($val_html.text($qty_row));
             $wtdItems  = chkIsMatch($wtdItems, $wtd_id, $qty_row);                        
@@ -863,7 +845,24 @@ testing.forEach(element => element.innerHTML += fieldValue2);
   });
 //  end 
 
+var input = document.getElementById('opt').innerText;
+let fieldValue = "";
+let fieldValue2 ="";
+var fields = input.split('||');
+var field1 = fields[0];
+var realvalue = field1.split('-');
+var field2 = fields[1];
+var realvalue2 = field2.split('-');
+realvalue.forEach((item, index)=>{
+  fieldValue += "<span>" + item + "</span>"; 
+});
+realvalue2.forEach((item, index)=>{
+  fieldValue2 += "<a const-qty='"+item+"'>" + item + "</a>"; 
+});
+document.getElementById("sizename").innerHTML  = fieldValue;
 
+const testing = document.querySelectorAll(".row_size_td");
+testing.forEach(element => element.innerHTML += fieldValue2);
 
 </script>  
 
