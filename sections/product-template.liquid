@@ -224,8 +224,6 @@
             </th>
             <span id="opt">{{product.metafields.custom.product_sizes}}</span>
             <th class="sizename" id="sizename">       
-
-              {% comment %
               {% assign beatles = product.metafields.custom.product_sizes | split: "||" %}
               
               {% for size in beatles %}
@@ -240,7 +238,7 @@
               <span class="{{ value }}"> {{ value }} </span>
               {% endfor %}
               {% endif %}
-              {% endfor %} {% endcomment %
+              {% endfor %}
             </th>
             <th>Pack</th>
             <th style=" padding: 0 35px; ">Qty</th>
@@ -834,7 +832,7 @@ console.log(realvalue);
 realvalue.forEach((item, index)=>{
   text += "<span>" + item + "</span>"; 
 });
-document.getElementById("sizename").innerHTML  = text;
+document.getElementById("demo").innerHTML  = text;
 </script>  
 
 
