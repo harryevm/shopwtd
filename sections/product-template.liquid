@@ -657,6 +657,7 @@ $('.product-single__thumbnail-image').click(function(){
         }
     })
     $(".wtd_submit_atc").attr("disabled","disabled");
+    var highest = -Infinity;
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault();
       var $maxVals = $(this).parent().prev().children('.row_size_span').attr('data-wtd-max-qty');
@@ -764,7 +765,7 @@ $('.product-single__thumbnail-image').click(function(){
       }
       // console.log($current_qty+','+$max_val_arrpck);
       $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
-       
+         highest = Math.max(highest, parseFloat($($val_html).attr('data-wtd-max-qty')));
         if($current_qty > parseInt($($val_html).attr('data-wtd-max-qty'))){
           console.log($max_val_all);
           $("<p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; position: absolute; bottom: 0; right: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
@@ -856,7 +857,7 @@ $('.product-single__thumbnail-image').click(function(){
 // Start This function for common onchange pack button  
   $("#change_qty_all").on('change', function() {
     var all_qty = $(this).val(); // Taking the value of main btn
-     
+      $('input.row_qty_input').val(all_qty); // changing the value of inner pack btn
       $('input.row_qty_input').trigger('change'); // trigger the chnages in all indiviual btn
     return false;
   });
