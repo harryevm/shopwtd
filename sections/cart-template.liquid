@@ -31,13 +31,6 @@
                         {{ item.product.title }}
                       </a>
                     </div>
-                    
-                    {% assign beatles =item.product.metafields.custom.product_sizes | split: "||" %}
-                    {{ beatles.last}}
-                    {% for size in beatles %}
-                    
-                      <span id="option{{forloop.index}}"> {{size | replace: "-", "/"}}</span><br/>
-                    {% endfor %}
 
                     {%- assign variant_options = 'template ' | split: ' ' -%}
                     {%- if item.product.has_only_default_variant != true -%}
@@ -92,7 +85,9 @@
                         </li>
                       {%- endfor -%}
                     </ul>
-
+                    {% assign beatles =item.product.metafields.custom.product_sizes | split: "||" %}
+                    <p class="c_size">Sizes: {{ beatles.first | replace: "-", "/"}}</p>
+                    <p class="c_size_qty">Quantity(Per Pack): {{ beatles.last | replace: "-", "/"}}</p>
                     <p class="cart__remove">
                       <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="text-link text-link--accent" aria-label="{{ 'cart.label.remove' | t: product: item.title }}" data-cart-remove>{{ 'cart.general.remove' | t }}</a>
                     </p>
