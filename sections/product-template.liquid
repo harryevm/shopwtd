@@ -814,7 +814,7 @@ $('.product-single__thumbnail-image').click(function(){
 // end on change
 var numItems = $('.product-tabel .count_row').length;
           for(var i = 1; i <= numItems; i++){
-            console.log($('.row_'+i)); 
+            console.log($('.row_'+i).children('.row_qty_td').children().val()); 
           }
 // 	 start atc
   $(".wtd_submit_atc").on("click", function() {
