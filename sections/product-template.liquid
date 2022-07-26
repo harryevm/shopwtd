@@ -695,7 +695,7 @@ $('.product-single__thumbnail-image').click(function(){
         }
         var out=getSum();
 
-    
+        var totalQTY = 0;
       $(".row_"+$data_row_id+" a").each(function($i_val, $val_html) {
        
         var $wtd_id =$(this).siblings('.row_size_span').attr("data-wtd-id");
@@ -744,7 +744,8 @@ $('.product-single__thumbnail-image').click(function(){
           } else {
 
             $($val_html).text($qty_row);
-            console.log($qty_row);
+            totalQTY += parseInt($qty_row);
+            console.log(totalQTY);
             $wtdItems  = chkIsMatch($wtdItems, $wtd_id, $qty_row);    
                   
             $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
