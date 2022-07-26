@@ -771,7 +771,10 @@ $('.product-single__thumbnail-image').click(function(){
           $(this).parent().next().children('.row_qty_input').attr("max",parseInt($($val_html).attr('data-wtd-max-qty')));
         }
       })
-      
+      $("input").attr({
+       "max" : 10,        // substitute your own
+       "min" : 2          // values (or variables) here
+    });
       $wtdFormData = {
         'items': $wtdItems  
       }
