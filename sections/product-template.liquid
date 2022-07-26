@@ -658,10 +658,13 @@ $('.product-single__thumbnail-image').click(function(){
     })
     $(".wtd_submit_atc").attr("disabled","disabled");
     function texxttt(){
+      var arr = [];
 var numItems = $('.product-tabel .count_row').length;
           for(var i = 1; i <= numItems; i++){
             console.log($('.row_'+i).children('.row_qty_td').children().val());  
+            arr.push($('.row_'+i).children('.row_qty_td').children().val());
           }
+          console.log(arr);
         }
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault();
