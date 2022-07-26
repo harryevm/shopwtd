@@ -658,7 +658,8 @@ $('.product-single__thumbnail-image').click(function(){
     })
     $(".wtd_submit_atc").attr("disabled","disabled");
     $("input[name=product-pack-quantity]").on("change", function(e) {
-      e.preventDefault()
+      e.preventDefault();
+      $(this).attr({ "max" : 10, "min" : 2 });
       var $product_price    = $(".product__price .price__regular span span").text().split(" ");
       var $money_symbol     = $product_price[0];
           $money_symbol = $money_symbol.substring(0, 1);
@@ -760,7 +761,7 @@ $('.product-single__thumbnail-image').click(function(){
       var $spec_max_val_arr = Math.max(...$specific_invt_arr);
       if($qty_row > $spec_max_val_arr) {
       }
-  
+      // console.log($current_qty+','+$max_val_arrpck);
       $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
        
         if($current_qty >= parseInt($($val_html).attr('data-wtd-max-qty'))){
@@ -768,8 +769,7 @@ $('.product-single__thumbnail-image').click(function(){
           $("<p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; position: absolute; bottom: 0; right: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
           $("#change_qty_all").val($max_val_all);
           $(this).parent().next().children('.row_qty_input').attr("disabled","disabled");
-          $(this).parent().next().children('input').attr({ "max" : 10, "min" : 2 });
-          console.log($(this).parent().next().children('input').val());
+
         }
       })
       
