@@ -437,5 +437,7 @@
 }
 {% endschema %}
 <script>
-  console.log(localStorage.getItem("packArray"))
+  
+  var storedNames = JSON.parse(localStorage.getItem("packArray"));
+  console.log(storedNames);
 </script>
