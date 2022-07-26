@@ -31,7 +31,9 @@
                         {{ item.product.title }}
                       </a>
                     </div>
-                    "test1": {{ item.product.metafields.custom.product_sizes | json }}
+                    
+                    {% assign beatles =item.product.metafields.custom.product_sizes | split: "||" %}
+                    {{beatles}}
                     {%- assign variant_options = 'template ' | split: ' ' -%}
                     {%- if item.product.has_only_default_variant != true -%}
                       {%- assign variant_options = item.options_with_values -%}
