@@ -222,7 +222,7 @@
               {% endif %}
               {% endfor %}
             </th>
-            <span id="opt">{{product.metafields.custom.product_sizes}}</span>
+            <span id="opt" style="display: none;">{{product.metafields.custom.product_sizes}}</span>
             <th class="sizename" id="sizename">       
               {% assign beatles = product.metafields.custom.product_sizes | split: "||" %}
               
