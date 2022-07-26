@@ -771,6 +771,9 @@ $('.product-single__thumbnail-image').click(function(){
           $("#change_qty_all").val(parseInt($($val_html).attr('data-wtd-max-qty')));
           $(this).parent().next().children('.row_qty_input').attr("disabled","disabled");
 
+        }else{
+          $("#change_qty_all").val(parseInt($($val_html).attr('data-wtd-max-qty')));
+          $(this).parent().next().children('.row_qty_input').attr("disabled","false");
         }
       })
       
