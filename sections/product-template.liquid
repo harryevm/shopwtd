@@ -862,7 +862,7 @@ $('.product-single__thumbnail-image').click(function(){
     var all_qty = $(this).val(); // Taking the value of main btn
      
     for(var i=1;i<=$('.count_row').length;i++){
-      console.log($(this).children('input').val());
+      console.log($('.row_'+i).children('input').val());
     }
    
       $('input.row_qty_input').val(all_qty); // changing the value of inner pack btn
