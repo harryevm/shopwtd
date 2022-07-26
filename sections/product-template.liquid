@@ -661,10 +661,10 @@ $('.product-single__thumbnail-image').click(function(){
       var arr = [];
 var numItems = $('.product-tabel .count_row').length;
           for(var i = 1; i <= numItems; i++){
-            console.log($('.row_'+i).children('.row_qty_td').children().val());  
+              
             arr.push($('.row_'+i).children('.row_qty_td').children().val());
           }
-          console.log(arr);
+    
         }
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault();
@@ -846,7 +846,7 @@ var numItems = $('.product-tabel .count_row').length;
         if(sucess_obj){
           $('.wtd_submit_atc').after('<span class="cart_success_msg"> Items Added to Cart </span>');
           // window.location.href = window.Shopify.routes.root + 'cart/';
-          //  localStorage.setItem("mytime", Date.now());
+           localStorage.setItem("packArray", arr);
           
 
           //  $('.product-tabel .count_row').each(function($val){
