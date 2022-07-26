@@ -812,8 +812,7 @@ $('.product-single__thumbnail-image').click(function(){
     });
   })
 // end on change
-var numItems = $('.product-tabel .count_row').length;
-alert(numItems);
+
 // 	 start atc
   $(".wtd_submit_atc").on("click", function() {
     var wtd_count_obj = Object.keys($wtdFormData).length;
@@ -839,6 +838,11 @@ alert(numItems);
           $('.wtd_submit_atc').after('<span class="cart_success_msg"> Items Added to Cart </span>');
           // window.location.href = window.Shopify.routes.root + 'cart/';
           //  localStorage.setItem("mytime", Date.now());
+          var numItems = $('.product-tabel .count_row').length;
+          for(var i = 1; i <= numItems; i++){
+            console.log(i);
+          }
+
           //  $('.product-tabel .count_row').each(function($val){
             
           //  });
