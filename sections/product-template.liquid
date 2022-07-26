@@ -760,7 +760,7 @@ $('.product-single__thumbnail-image').click(function(){
       var $spec_max_val_arr = Math.max(...$specific_invt_arr);
       if($qty_row > $spec_max_val_arr) {
       }
-      
+      console.log($current_qty+','+$max_val_arrpck);
       if($current_qty > $max_val_arrpck){
         $("<p class='error_msg' style='color: #ff0000c7;font-size: 12px;margin: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
         $("#change_qty_all").val($max_val_all);
