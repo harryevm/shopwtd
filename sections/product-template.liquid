@@ -813,7 +813,8 @@ $('.product-single__thumbnail-image').click(function(){
   })
 // end on change
 $('.product-tabel .count_row').each(function($val, $htmls){
-            console.log($('.row_'+($val+1)));
+            var Vals = $('.row_'+($val+1)).children('input.row_qty_input').val();
+            alert(Vals);
            });
 // 	 start atc
   $(".wtd_submit_atc").on("click", function() {
