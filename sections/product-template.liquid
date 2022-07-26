@@ -812,16 +812,8 @@ $('.product-single__thumbnail-image').click(function(){
     });
   })
 // end on change
-var students = [];
-$('.product-tabel .count_row').each(function($val, $htmls){
-            var Vals = $('.row'+$val);  
-            students.push(Vals);
-           });
-
-students.forEach(myFunction);
-function myFunction(item) {
-  console.log(item.attr('class'));
-}
+var numItems = $('.product-tabel .count_row').length;
+alert(numItems);
 // 	 start atc
   $(".wtd_submit_atc").on("click", function() {
     var wtd_count_obj = Object.keys($wtdFormData).length;
@@ -846,7 +838,10 @@ function myFunction(item) {
         if(sucess_obj){
           $('.wtd_submit_atc').after('<span class="cart_success_msg"> Items Added to Cart </span>');
           // window.location.href = window.Shopify.routes.root + 'cart/';
-           
+          //  localStorage.setItem("mytime", Date.now());
+          //  $('.product-tabel .count_row').each(function($val){
+            
+          //  });
           setTimeout(function(){
             $('.cart_success_msg').remove();
           }, 5000);
