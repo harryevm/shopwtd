@@ -769,6 +769,7 @@ $('.product-single__thumbnail-image').click(function(){
           $("#change_qty_all").val($max_val_all);
           $(this).parent().next().children('.row_qty_input').attr("disabled","disabled");
           $(this).parent().next().children('input').attr({ "max" : 10, "min" : 2 });
+          console.log($(this).parent().next().children('input').val());
         }
       })
       
