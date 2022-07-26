@@ -718,7 +718,7 @@ $('.product-single__thumbnail-image').click(function(){
         if(jQuery.inArray($wtd_qty_ttl, $invent_arr) !== -1) {} else { $invent_arr.push($wtd_qty_ttl); }
         
         if(jQuery.inArray($wtd_qty_ttlpck, $invent_arrpck) !== -1) {} else { $invent_arrpck.push($wtd_qty_ttlpck); }
-        console.log($invent_arrpck);
+        
         $specific_invt_arr.push($wtd_qty_ttl);
         $max_val_qty_arr.push($wtd_max_qty);
        
@@ -761,6 +761,14 @@ $('.product-single__thumbnail-image').click(function(){
       if($qty_row > $spec_max_val_arr) {
       }
       console.log($current_qty+','+$max_val_arrpck);
+
+      
+      let txt = "";
+      $invent_arrpck.forEach(myFunction);
+      document.getElementById("demo").innerHTML = txt;
+        function myFunction(value, index, array) {
+          txt += value + "<br>";
+        }
       if($current_qty > $max_val_arrpck){
         $("<p class='error_msg' style='color: #ff0000c7;font-size: 12px;margin: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
         $("#change_qty_all").val($max_val_all);
@@ -1282,3 +1290,4 @@ testing.forEach(element => element.innerHTML += fieldValue2);
 ]
 }
 {% endschema %}
+<div id="demo"></div>
