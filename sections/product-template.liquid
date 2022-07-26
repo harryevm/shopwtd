@@ -760,7 +760,7 @@ $('.product-single__thumbnail-image').click(function(){
       var $spec_max_val_arr = Math.max(...$specific_invt_arr);
       if($qty_row > $spec_max_val_arr) {
       }
-      console.log($current_qty+','+$max_val_arrpck);
+  
       $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
        
         if($current_qty >= parseInt($($val_html).attr('data-wtd-max-qty'))){
