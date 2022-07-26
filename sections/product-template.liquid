@@ -762,7 +762,7 @@ $('.product-single__thumbnail-image').click(function(){
       }
       console.log($current_qty+','+$max_val_arrpck);
       $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
-        console.log($val_html);
+        console.log($($val_html).attr('data-wtd-max-qty'));
       })
       
       let txt = "";
