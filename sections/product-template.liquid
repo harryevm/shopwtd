@@ -825,6 +825,7 @@ $('.product-single__thumbnail-image').click(function(){
         $('.cart_success_msg').remove();
         if(sucess_obj){
           $('.wtd_submit_atc').after('<span class="cart_success_msg"> Items Added to Cart </span>');
+          window.location.href = window.Shopify.routes.root + 'cart/';
           setTimeout(function(){
             $('.cart_success_msg').remove();
           }, 5000);
