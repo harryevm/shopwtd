@@ -642,7 +642,7 @@ $('.product-single__thumbnail-image').click(function(){
     }
     return $items
   }
-  
+  let  arr;
   $(document).ready(function() {
     var productIds={};
     $(".row_size_span").each(function($i_val, $val_html) {
@@ -657,9 +657,9 @@ $('.product-single__thumbnail-image').click(function(){
         }
     })
     $(".wtd_submit_atc").attr("disabled","disabled");
-    let  arr = [];
+    
     function texxttt(){
-      
+      arr = [];
 var numItems = $('.product-tabel .count_row').length;
           for(var i = 1; i <= numItems; i++){
               
