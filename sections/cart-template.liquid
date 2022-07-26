@@ -34,6 +34,7 @@
                     
                     {% assign beatles =item.product.metafields.custom.product_sizes | split: "||" %}
                     {% for size in beatles %}
+                    {{ size.last}}
                       <span id="option{{forloop.index}}"> {{size | replace: "-", "/"}}</span><br/>
                     {% endfor %}
 
