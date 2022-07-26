@@ -860,10 +860,8 @@ $('.product-single__thumbnail-image').click(function(){
 // Start This function for common onchange pack button  
   $("#change_qty_all").on('change', function() {
     var all_qty = $(this).val(); // Taking the value of main btn
-    $('input.row_qty_input').each(function(){
-      console.log($(this).attr('max'));
-    });
-      $('input.row_qty_input').val(all_qty); // changing the value of inner pack btn
+
+      // changing the value of inner pack btn
       $('input.row_qty_input').trigger('change'); // trigger the chnages in all indiviual btn
     return false;
   });
