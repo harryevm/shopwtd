@@ -747,7 +747,7 @@ $('.product-single__thumbnail-image').click(function(){
             totalQTY += parseInt($qty_row);
             
             $wtdItems  = chkIsMatch($wtdItems, $wtd_id,totalQTY);    
-            console.log( $wtdItems);
+            // console.log( $wtdItems);
             $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
             
           }
@@ -760,7 +760,7 @@ $('.product-single__thumbnail-image').click(function(){
       var $spec_max_val_arr = Math.max(...$specific_invt_arr);
       if($qty_row > $spec_max_val_arr) {
       }
-      console.log($current_qty+','+$max_val_arrpck);
+      
 
       
       let txt = "";
@@ -770,6 +770,7 @@ $('.product-single__thumbnail-image').click(function(){
           txt += value + "<br>";
         }
       if($current_qty > txt){
+        console.log($current_qty+','+txt);
         $("<p class='error_msg' style='color: #ff0000c7;font-size: 12px;margin: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
         $("#change_qty_all").val($max_val_all);
       }
