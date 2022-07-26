@@ -768,7 +768,7 @@ $('.product-single__thumbnail-image').click(function(){
        
         if($current_qty > parseInt($($val_html).attr('data-wtd-max-qty'))){
           console.log($max_val_all);
-          console.log($("#change_qty_all").val());
+          console.log($("#change_qty_all").val()); 
           $("<p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; position: absolute; bottom: 0; right: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
           $("#change_qty_all").val($max_val_all);
           if(parseInt($($val_html).attr('data-wtd-max-qty')) > $current_qty){
