@@ -657,7 +657,7 @@ $('.product-single__thumbnail-image').click(function(){
         }
     })
     $(".wtd_submit_atc").attr("disabled","disabled");
-    
+    $packItem = [];
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault();
       var $maxVals = $(this).parent().prev().children('.row_size_span').attr('data-wtd-max-qty');
@@ -764,7 +764,7 @@ $('.product-single__thumbnail-image').click(function(){
       if($qty_row > $spec_max_val_arr) {
       }
       // console.log($current_qty+','+$max_val_arrpck);
-      $packItem = [];
+      
       $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
        
         if($current_qty > parseInt($($val_html).attr('data-wtd-max-qty'))){
