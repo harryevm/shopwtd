@@ -466,7 +466,7 @@
 </script>
 {% endunless %}
 <style>
-.product-tabel th.sizename,.product-tabel td.row_size_td { display: flex; justify-content: space-between; }
+.product-tabel th.sizename,.product-tabel td.row_size_td { display: flex; justify-content: space-between;position: relative; }
 .product-tabel th.sizename > span, .product-tabel td.row_size_td >span.row_size_span { display: inline-block; width: 35px; text-align: center; font-size: 15px; line-height: 35px; }
 td.row_price_td { display: flex; }
 </style>
@@ -765,7 +765,7 @@ $('.product-single__thumbnail-image').click(function(){
        
         if($current_qty >= parseInt($($val_html).attr('data-wtd-max-qty'))){
           console.log($current_qty);
-          $("<p class='error_msg' style='color: #ff0000c7;font-size: 12px;margin: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this).parent().next().children('.row_qty_input'));
+          $("<p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; position: absolute; bottom: 0; right: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
           $("#change_qty_all").val($max_val_all);
           $(this).parent().next().children('.row_qty_input').attr("disabled","disabled");
         }
