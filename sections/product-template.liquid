@@ -657,7 +657,7 @@ $('.product-single__thumbnail-image').click(function(){
         }
     })
     $(".wtd_submit_atc").attr("disabled","disabled");
-    var highest = -Infinity;
+    var highest = 0;
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault();
       var $maxVals = $(this).parent().prev().children('.row_size_span').attr('data-wtd-max-qty');
