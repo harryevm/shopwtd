@@ -762,20 +762,12 @@ $('.product-single__thumbnail-image').click(function(){
       }
       console.log($current_qty+','+$max_val_arrpck);
       $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
-        console.log($($val_html).attr('data-wtd-max-qty')+','+$current_qty);
-      })
-      
-      let txt = "";
-        $invent_arrpck.forEach(myFunction);
-
-        function myFunction(value, index, array) {
-          txt += value;
+       
+        if($current_qty > $($val_html).attr('data-wtd-max-qty')){
+          $("<p class='error_msg' style='color: #ff0000c7;font-size: 12px;margin: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
+          $("#change_qty_all").val($max_val_all);
         }
-        
-      if($current_qty > $max_val_arrpck){
-        $("<p class='error_msg' style='color: #ff0000c7;font-size: 12px;margin: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
-        $("#change_qty_all").val($max_val_all);
-      }
+      })
       
       $wtdFormData = {
         'items': $wtdItems  
