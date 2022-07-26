@@ -282,7 +282,7 @@
           
           {% for clr_name_show in clr_name %}
           {% assign cnt_class_num = cnt_class_num | plus:1 %}
-          <tr class="row_{{ cnt_class_num }}">
+          <tr class="count_row row_{{ cnt_class_num }}">
             <td class="{{ clr_name_show }}">{{ clr_name_show }}</td>
             <td class="row_size_td"> 
               {% for size_option_inner in product.options_with_values %}
@@ -657,7 +657,7 @@ $('.product-single__thumbnail-image').click(function(){
         }
     })
     $(".wtd_submit_atc").attr("disabled","disabled");
-    $packItem = [];
+    
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault();
       var $maxVals = $(this).parent().prev().children('.row_size_span').attr('data-wtd-max-qty');
@@ -764,7 +764,6 @@ $('.product-single__thumbnail-image').click(function(){
       if($qty_row > $spec_max_val_arr) {
       }
       // console.log($current_qty+','+$max_val_arrpck);
-      
       $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
        
         if($current_qty > parseInt($($val_html).attr('data-wtd-max-qty'))){
@@ -776,16 +775,12 @@ $('.product-single__thumbnail-image').click(function(){
         }
 
         }
-
-        $packItem.push($(this).parent().next().children('.row_qty_input').val());
-       alert($(this).length);
-
       })
       
       $wtdFormData = {
         'items': $wtdItems  
       }
-console.log($packItem);
+
         $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
         $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
         $(".row_"+$data_row_id+" .row_price_td .row_total").text($row_price.toFixed(2));
@@ -842,7 +837,7 @@ console.log($packItem);
         if(sucess_obj){
           $('.wtd_submit_atc').after('<span class="cart_success_msg"> Items Added to Cart </span>');
           // window.location.href = window.Shopify.routes.root + 'cart/';
-          
+           localStorage.setItem("mytime", Date.now());
           setTimeout(function(){
             $('.cart_success_msg').remove();
           }, 5000);
