@@ -861,9 +861,10 @@ $('.product-single__thumbnail-image').click(function(){
   $("#change_qty_all").on('change', function() {
     var all_qty = $(this).val(); // Taking the value of main btn
      
-    var max =$('input.row_qty_input').attr('max');
-    var min = parseInt($('input.row_qty_input').attr('min'));
-    console.log(max);
+    for(var i=1;i<=$('.count_row').length;i++){
+      console.log($(this).children('input').val());
+    }
+   
       $('input.row_qty_input').val(all_qty); // changing the value of inner pack btn
       $('input.row_qty_input').trigger('change'); // trigger the chnages in all indiviual btn
     return false;
