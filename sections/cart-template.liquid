@@ -33,7 +33,10 @@
                     </div>
                     
                     {% assign beatles =item.product.metafields.custom.product_sizes | split: "||" %}
-                    {{beatles}}
+                    {% for size in beatles %}
+                      <span id="option{{forloop.index}}"> {{size}}</span>
+                    {% endfor %}
+
                     {%- assign variant_options = 'template ' | split: ' ' -%}
                     {%- if item.product.has_only_default_variant != true -%}
                       {%- assign variant_options = item.options_with_values -%}
