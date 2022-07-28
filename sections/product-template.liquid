@@ -833,18 +833,18 @@ $('.product-single__thumbnail-image').click(function(){
       }else{
       	$('.wtd_submit_atc').attr("disabled","disabled");
       }
-      assessum($(this).parent().parent().attr('class'));
+      assessum($(this).parent().parent().attr('class'),$(this).attr('max'));
     });
   })
-  function assessum(values){
+  function assessum(values,attributes){
     let text1 = ".";
     console.log(values);
     let totalVal = 0;
     $('.'+values+" .row_size_td a").each(function($idx, $val_html_money) {
         totalVal += (parseInt($(this).text()) || 0);
-        console.log(totalVal);
+        
       });
-      
+      console.log(attributes);
   }
 // end on change
   
