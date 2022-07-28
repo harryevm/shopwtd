@@ -813,11 +813,13 @@ $('.product-single__thumbnail-image').click(function(){
       }else{
       	$('.wtd_submit_atc').attr("disabled","disabled");
       }
-      assessum($(this).parents('.count_row'));
+      $(".row_"+$data_row_id+" a").each(function($idx, $val_html_money) {
+        assessum($(this));
+      })
     });
   })
   function assessum(values){
-    
+    console.log(values);
     let totalVal = 0;
     $(".row_1 .row_size_td a").each(function($idx, $val_html_money) {
 
