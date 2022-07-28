@@ -841,12 +841,10 @@ $('.product-single__thumbnail-image').click(function(){
     console.log(values);
     let totalVal = 0;
     $('.'+values+" .row_size_td a").each(function($idx, $val_html_money) {
-
         totalVal += (parseInt($(this).text()) || 0);
-         
+        console.log(totalVal);
       });
-      totalVal = totalVal;
-      console.log(totalVal);
+      
   }
 // end on change
   
