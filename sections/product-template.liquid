@@ -304,7 +304,7 @@
               {% endfor %}
             </td> 
             <td class="row_qty_td">
-              <input type="number" name="product-pack-quantity" class="row_qty_input" min="0" value="0" data-row="{{ cnt_class_num }}" />
+              <input onchange="assessum($(this))" type="number" name="product-pack-quantity" class="row_qty_input" min="0" value="0" data-row="{{ cnt_class_num }}" />
             </td>
             <td class="row_units_td"><span class="row_units">0</span> Units</td>
             <td class="row_price_td"><span class="currency_symbol_wtd">$</span> <span class="row_total">0.00</span></td>
@@ -813,9 +813,7 @@ $('.product-single__thumbnail-image').click(function(){
       }else{
       	$('.wtd_submit_atc').attr("disabled","disabled");
       }
-      $(".row_"+$data_row_id+" a").each(function($idx, $val_html_money) {
-        assessum($(this));
-      })
+     
     });
   })
   function assessum(values){
