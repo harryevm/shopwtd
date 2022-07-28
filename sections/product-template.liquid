@@ -546,6 +546,26 @@ $(document).ready(function () {
 
   
 // Thumbnail Images and main product image code start  
+
+var input = document.getElementById('opt').innerText;
+let fieldValue = "";
+let fieldValue2 ="";
+var fields = input.split('||');
+var field1 = fields[0];
+var realvalue = field1.split('-');
+var field2 = fields[1];
+var realvalue2 = field2.split('-');
+realvalue.forEach((item, index)=>{
+  fieldValue += "<span>" + item + "</span>"; 
+});
+realvalue2.forEach((item, index)=>{
+  fieldValue2 += "<a const-qty='"+item+"'>" + item + "</a>"; 
+});
+document.getElementById("sizename").innerHTML  = fieldValue;
+
+const testing = document.querySelectorAll(".row_size_td");
+testing.forEach(element => element.innerHTML += fieldValue2);
+
 $( window ).on( "load", function() {
   
 $('.color-option-item').first().addClass("selected");  
@@ -880,24 +900,7 @@ $('.product-single__thumbnail-image').click(function(){
   });
 //  end 
 
-var input = document.getElementById('opt').innerText;
-let fieldValue = "";
-let fieldValue2 ="";
-var fields = input.split('||');
-var field1 = fields[0];
-var realvalue = field1.split('-');
-var field2 = fields[1];
-var realvalue2 = field2.split('-');
-realvalue.forEach((item, index)=>{
-  fieldValue += "<span>" + item + "</span>"; 
-});
-realvalue2.forEach((item, index)=>{
-  fieldValue2 += "<a const-qty='"+item+"'>" + item + "</a>"; 
-});
-document.getElementById("sizename").innerHTML  = fieldValue;
 
-const testing = document.querySelectorAll(".row_size_td");
-testing.forEach(element => element.innerHTML += fieldValue2);
 
 </script>  
 
