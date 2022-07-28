@@ -818,7 +818,7 @@ $('.product-single__thumbnail-image').click(function(){
   function assessum(values){
     console.log(values);
     let totalVal = 0;
-    $(totalVal+" a").each(function($idx, $val_html_money) {
+    $(totalVal+"  a").each(function($idx, $val_html_money) {
 
         totalVal += (parseInt($(this).text()) || 0);
         $wtd_vari_pc = parseFloat($(this).siblings('.row_size_span_money ').text().replace(/[^0-9.]/g, ""));
