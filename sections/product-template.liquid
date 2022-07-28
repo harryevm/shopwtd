@@ -660,7 +660,7 @@ $('.product-single__thumbnail-image').click(function(){
     
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault();
-      assessum($(this).parents('.count_row'));
+      
       var $maxVals = $(this).parent().prev().children('.row_size_span').attr('data-wtd-max-qty');
       $(this).attr({ "max" : $maxVals, "min" : 0 });
       var $product_price    = $(".product__price .price__regular span span").text().split(" ");
@@ -813,6 +813,7 @@ $('.product-single__thumbnail-image').click(function(){
       }else{
       	$('.wtd_submit_atc').attr("disabled","disabled");
       }
+      assessum($(this).parents('.count_row'));
     });
   })
   function assessum(values){
