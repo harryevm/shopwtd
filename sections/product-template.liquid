@@ -833,13 +833,13 @@ $('.product-single__thumbnail-image').click(function(){
       }else{
       	$('.wtd_submit_atc').attr("disabled","disabled");
       }
-      assessum($(this).parents('tr').children('.row_size_td a').text());
+      console.log($(this).parent());
     });
   })
   function assessum(values){
     console.log(values);
     let totalVal = 0;
-    $(values).each(function($idx, $val_html_money) {
+    $(".row_1 .row_size_td a").each(function($idx, $val_html_money) {
 
         totalVal += (parseInt($(this).text()) || 0);
          
