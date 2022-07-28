@@ -833,7 +833,7 @@ $('.product-single__thumbnail-image').click(function(){
       }else{
       	$('.wtd_submit_atc').attr("disabled","disabled");
       }
-      console.log($(this).parent());
+      console.log($(this).parent().prop('className'));
     });
   })
   function assessum(values){
