@@ -759,6 +759,11 @@ $('.product-single__thumbnail-image').click(function(){
               if($current_qty > $max_val_qty) {
                 $this_obj.val($max_val_qty);
                 $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
+                if($qty_units  < $max_val_all){
+                  console.log('111111111111111111111111111111111');
+                }else{
+                  console.log('2222222222222222222222222');
+                }
                 $row_price = $row_price + ($wtd_qty_ttl * $wtd_vari_pc_arr[$i_val]);                
                 return false;
               }
