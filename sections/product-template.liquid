@@ -558,8 +558,9 @@ var realvalue2 = field2.split('-');
 realvalue.forEach((item, index)=>{
   fieldValue += "<span>" + item + "</span>"; 
 });
+  console.log(realvalue2);
 realvalue2.forEach((item, index)=>{
-  fieldValue2 += "<a const-qty='"+item+"'>" + item + "</a>"; 
+  // fieldValue2 += "<a const-qty='"+item+"'>" + item + "</a>"; 
 });
 document.getElementById("sizename").innerHTML  = fieldValue;
 
@@ -734,7 +735,7 @@ $('.product-single__thumbnail-image').click(function(){
     //  console.log('wtd_qty_ttlpck: '+$wtd_qty_ttlpck);
         var $wtd_max_qty = $(this).siblings('.row_size_span').attr("data-wtd-max-qty");
         // console.log('wtd_max_qty: '+$wtd_max_qty);
-        // var $wtd_var_qty = $($val_html).attr("const-qty");
+        var $wtd_var_qty = $($val_html).attr("const-qty");
         // console.log('wtd_var_qty: '+$wtd_var_qty);
         
         $qty_row = parseInt($current_qty) * $wtd_var_qty;
