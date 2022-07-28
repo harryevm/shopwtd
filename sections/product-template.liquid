@@ -833,10 +833,10 @@ $('.product-single__thumbnail-image').click(function(){
       }else{
       	$('.wtd_submit_atc').attr("disabled","disabled");
       }
-      assessum($(this).parent().parent().attr('class'),$(this).attr('max'));
+      assessum($(this).parent().parent().attr('class'),$(this).attr('max'),$(this));
     });
   })
-  function assessum(values,attributes){
+  function assessum(values,attributes,current){
     let text1 = ".";
     console.log(values);
     let totalVal = 0;
@@ -844,6 +844,10 @@ $('.product-single__thumbnail-image').click(function(){
         totalVal += (parseInt($(this).text()) || 0);
         
       });
+      if(totalVal>=attributes){
+        current.attr("disabled","disabled");
+        alert();
+      }
       console.log(attributes);
   }
 // end on change
