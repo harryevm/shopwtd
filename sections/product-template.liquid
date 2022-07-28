@@ -677,6 +677,7 @@ $('.product-single__thumbnail-image').click(function(){
       var $this_obj         = $(this);
       var $current_qty      = $(this).val();
       var $data_row_id      = $(this).attr("data-row");
+      var totalVal = 0;
       $(".error_msg").remove();
       var $qty_row;
       
@@ -684,12 +685,14 @@ $('.product-single__thumbnail-image').click(function(){
       $(".row_"+$data_row_id+" a").each(function($idx, $val_html_money) {
         console.log($(this));
         console.log($(this).text());
+        totalVal += (parseInt($(this).text()) || 0);
         $wtd_vari_pc = parseFloat($(this).siblings('.row_size_span_money ').text().replace(/[^0-9.]/g, ""));
    
         if(!$.inArray($idx, $wtd_vari_pc_arr) !== -1){
           $wtd_vari_pc_arr[$idx] = parseFloat($wtd_vari_pc);
         }
       });
+      console.log(totalVal);
       
       function getSum(test){
           var output = 0;
