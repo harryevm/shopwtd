@@ -832,13 +832,13 @@ $('.product-single__thumbnail-image').click(function(){
         $('.row_price_td .row_total').each(function (index, value) {
           if ($(this).text() != "") {
             
-            $total_qty_amount = $total_qty_amount + parseFloat($(this).text());
+            // $total_qty_amount = $total_qty_amount + parseFloat($(this).text());
             
           }
         });
-        $(".total_pack").text(parseInt($total_qty_pack));
-        $(".total_qty").text(parseInt($total_qty_units)+" Units");
-        $(".final_price").text($money_symbol+""+$total_qty_amount.toFixed(2));
+        // $(".total_pack").text(parseInt($total_qty_pack));
+        // $(".total_qty").text(parseInt($total_qty_units)+" Units");
+        // $(".final_price").text($money_symbol+""+$total_qty_amount.toFixed(2));
       
       var totalPack = parseInt($('.total_pack').text());
       if(totalPack > 0) {
