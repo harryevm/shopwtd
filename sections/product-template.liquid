@@ -866,7 +866,7 @@ $('.product-single__thumbnail-image').click(function(){
         }else{
           $(".row_"+$data_row_id+" a").each(function($i, $html) {
             console.log($html);
-            var ttl_qty = $($html).text("ttl-qty");
+            var ttl_qty = $($html).text();
             $($html).attr("ttl-qty", ttl_qty);
             // $qty_units = parseInt($qty_units) + parseInt($($html).text());
           })
