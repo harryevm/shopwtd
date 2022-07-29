@@ -737,7 +737,7 @@ $('.product-single__thumbnail-image').click(function(){
         var totalQTY = 0;
       $(".row_"+$data_row_id+" a").each(function($i_val, $val_html) {
        console.log($val_html);
-        var $wtd_id =$(this).siblings('.row_size_span').attr("data-wtd-id");
+        // var $wtd_id =$(this).siblings('.row_size_span').attr("data-wtd-id");
       //  console.log($wtd_id);
         var $node_count  = $(".row_"+$data_row_id+" a").length -1;
         // console.log('node_count: '+$node_count);
@@ -793,10 +793,10 @@ $('.product-single__thumbnail-image').click(function(){
        
             totalQTY += parseInt($qty_row);
             console.log(totalQTY);
-          console.log($wtd_id);
-          console.log($wtdItems);
+          // console.log($wtd_id);
+          // console.log($wtdItems);
         
-            $wtdItems  = chkIsMatch($wtdItems, $wtd_id,totalQTY);    
+            // $wtdItems  = chkIsMatch($wtdItems, $wtd_id,totalQTY);    
             // console.log( $wtdItems);
             $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
             
@@ -844,12 +844,12 @@ $('.product-single__thumbnail-image').click(function(){
       //   }
       // })
 
-        console.log($wtdItems);
+      //   console.log($wtdItems);
         
-      $wtdFormData = {
-        'items': $wtdItems
-      }
-      console.log($wtdFormData);
+      // $wtdFormData = {
+      //   'items': $wtdItems
+      // }
+      // console.log($wtdFormData);
                   
           $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
           $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
@@ -910,8 +910,17 @@ $('.product-single__thumbnail-image').click(function(){
   
 // 	 start atc
   $(".wtd_submit_atc").on("click", function() {
-    console.log($wtdFormData);
+    var $items = [];    
+    $(".row_units").each(function($idx, $item_html) {
+      $items.push({'id': $item_html.attr("data-wtd-vari-id"), 'quantity': $item_html.text() });
+    });
+    console.log($items);
 
+    $wtdFormData = {
+        'items': $wtdItems
+      }
+    console.log($wtdFormData);
+    return false;
     var wtd_count_obj = Object.keys($wtdFormData).length;
     // console.log($wtdFormData);
     var totalPack = parseInt($('.total_pack').text());
