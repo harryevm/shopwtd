@@ -559,7 +559,8 @@ realvalue.forEach((item, index)=>{
   fieldValue += "<span>" + item + "</span>"; 
 });
 realvalue2.forEach((item, index)=>{
-  console.log();
+  console.log(item);
+  console.log(index);
   fieldValue2 += "<a const-qty='"+item+"'>" + item + "</a>"; 
 });
 document.getElementById("sizename").innerHTML  = fieldValue;
