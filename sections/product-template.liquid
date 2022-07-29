@@ -786,17 +786,15 @@ $('.product-single__thumbnail-image').click(function(){
             $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
             
           // }
-        
-        console.log(totalQTY);
-        console.log($max_val_all);
-        console.log($val_html);
-   if(totalQTY  < $max_val_all){
+            
+            console.log(totalQTY);
+            console.log($max_val_all);
+            console.log($val_html);
             console.log('aaaaaaaaaaaaaaaaaaaa');
           
-            // $($val_html).text($qty_row);
+            $($val_html).text($qty_row);
           
           $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
-        }
       });
       console.log(totalQTY);
       console.log($max_val_all);
