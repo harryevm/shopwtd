@@ -899,19 +899,15 @@ $('.product-single__thumbnail-image').click(function(){
       $items.push({'id': $($item_html).attr("data-wtd-vari-id"), 'quantity': $($item_html).text() });
     });
     console.log($items);
-
     $wtdFormData = {
-        'items': $items
-      }
+      'items': $items
+    }
     console.log($wtdFormData);
     var wtd_count_obj = Object.keys($wtdFormData).length;
     // console.log($wtdFormData);
     var totalPack = parseInt($('.total_pack').text());
 
     if(wtd_count_obj && parseInt($('.total_pack').text()) > 0) {
-      
-
-      
       fetch(window.Shopify.routes.root + 'cart/add.js', {
         method: 'POST',
         headers: {
@@ -920,7 +916,6 @@ $('.product-single__thumbnail-image').click(function(){
         body: JSON.stringify($wtdFormData)
       })
       .then(response => {
-        
         var sucess_obj = response.json();
         $('.cart_success_msg').remove();
         if(sucess_obj){
