@@ -634,11 +634,13 @@ $('.product-single__thumbnail-image').click(function(){
 // End 
 
 // variable define
-  var $wtdItems    = [];
-  var $wtdFormData = {};
-  var $invent_arr  = [];
-  var $invent_arrpck  = [];
-  var $max_val_all = 0;
+  var $wtdItems      = [];
+  var $wtdFormData   = {};
+  var $invent_arr    = [];
+  var $invent_arrpck = [];
+  var $max_val_all   = 0;
+  var $ttl_pack      = 0;
+  
 
   // Start This function for indiviual onchange pack button
   function chkIsMatch($items, $wtd_id, $pck_unit) {
@@ -695,7 +697,6 @@ $('.product-single__thumbnail-image').click(function(){
       var $total_qty_amount = 0;
       var $wtd_vari_pc      = 0;
       var $row_price        = 0;
-      var $ttl_pack         = 0;
       var $this_obj         = $(this);
       var $current_qty      = $(this).val();
       var $data_row_id      = $(this).attr("data-row");
