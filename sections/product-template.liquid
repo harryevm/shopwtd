@@ -792,7 +792,7 @@ $('.product-single__thumbnail-image').click(function(){
             console.log($val_html);
             console.log('aaaaaaaaaaaaaaaaaaaa');
           
-            $($val_html).text($qty_row);
+            $($val_html).attr("ttl-qty", $qty_row);
           
           $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
       });
