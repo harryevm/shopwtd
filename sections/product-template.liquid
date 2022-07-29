@@ -789,6 +789,8 @@ $('.product-single__thumbnail-image').click(function(){
         
         console.log(totalQTY);
         console.log($max_val_all);
+        setTimeout(function(){
+            $('.cart_success_msg').remove();
    if(totalQTY  < $max_val_all){
             console.log('aaaaaaaaaaaaaaaaaaaa');
           
@@ -796,6 +798,8 @@ $('.product-single__thumbnail-image').click(function(){
           
           $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
         }
+          }, 1000);
+          
       });
       console.log(totalQTY);
       console.log($max_val_all);
