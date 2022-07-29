@@ -817,10 +817,7 @@ $('.product-single__thumbnail-image').click(function(){
 
       if(totalQTY  < $max_val_all){
                   console.log('33333333333333333333333333');
-                }else{
-                  console.log('444444444444444444444444444');
-                }
-      
+                
         $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
         $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
         $(".row_"+$data_row_id+" .row_price_td .row_total").text($row_price.toFixed(2));
@@ -849,6 +846,12 @@ $('.product-single__thumbnail-image').click(function(){
       }else{
       	$('.wtd_submit_atc').attr("disabled","disabled");
       }
+
+
+        }else{
+                  console.log('444444444444444444444444444');
+                }
+      
       // assessum($(this).parent().parent().attr('class'),$(this).attr('max'),$(this));
     });
   })
