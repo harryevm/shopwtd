@@ -704,23 +704,23 @@ $('.product-single__thumbnail-image').click(function(){
       var $qty_row;
       
       
-      $(".row_"+$data_row_id+" a").each(function($idx, $val_html_money) {
+      // $(".row_"+$data_row_id+" a").each(function($idx, $val_html_money) {
       
-        $wtd_vari_pc = parseFloat($(this).siblings('.row_size_span_money ').text().replace(/[^0-9.]/g, ""));
+      //   $wtd_vari_pc = parseFloat($(this).siblings('.row_size_span_money ').text().replace(/[^0-9.]/g, ""));
    
-        if(!$.inArray($idx, $wtd_vari_pc_arr) !== -1){
-          $wtd_vari_pc_arr[$idx] = parseFloat($wtd_vari_pc);
-        }
-      });
+      //   if(!$.inArray($idx, $wtd_vari_pc_arr) !== -1){
+      //     $wtd_vari_pc_arr[$idx] = parseFloat($wtd_vari_pc);
+      //   }
+      // });
       
-      function getSum(test){
-          var output = 0;
-          $('.row_'+test+' td.row_size_td').children('a').each(function () {
-            output += parseInt(this.innerHTML); // "this" is the current element in the loop
-          });
-          return output;
-        }
-        var out=getSum();
+      // function getSum(test){
+      //     var output = 0;
+      //     $('.row_'+test+' td.row_size_td').children('a').each(function () {
+      //       output += parseInt(this.innerHTML); // "this" is the current element in the loop
+      //     });
+      //     return output;
+      //   }
+      //   var out=getSum();
 
         var totalQTY = 0;
       $(".row_"+$data_row_id+" a").each(function($i_val, $val_html) {
