@@ -293,7 +293,7 @@
                         {% for variant in product.variants %}
                             
                             {% if variant.title contains clr_name_show and variant.title contains value_inner %}
-                  
+                  {{ variant.id }}
                               <span style="display:none;" class="row_size_span_money money buckscc-converted buckscc-money" {{ variant.price}}>{{ variant.price | divided_by: 100.00 }}</span>
                               <span style="display:none;" class="row_size_span" const-qty="{{variant.metafields.my_fields.pack_quantity}}" data-wtd-price="{{ variant.price }}" data-wtd-max-qty="{{ variant.inventory_quantity  }}" data-wtd-name="{{variant.title}}" data-wtd-id="{{variant.id}}" data-wtd-quantity="{{ variant.inventory_quantity }}" >{{variant.metafields.my_fields.pack_quantity}}</span>
 
@@ -782,7 +782,7 @@ $('.product-single__thumbnail-image').click(function(){
        
             totalQTY += parseInt($qty_row);
             
-            $wtdItems  = chkIsMatch($wtdItems, $wtd_id,totalQTY);    
+            // $wtdItems  = chkIsMatch($wtdItems, $wtd_id,totalQTY);    
             // console.log( $wtdItems);
             $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
             
@@ -830,12 +830,10 @@ $('.product-single__thumbnail-image').click(function(){
       //   }
       // })
 
-        console.log($wtdItems);
-      console.log($wtdFormData);
         
-      $wtdFormData = {
-        'items': $wtdItems
-      }
+      // $wtdFormData = {
+      //   'items': $wtdItems
+      // }
                   
           $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
           $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
@@ -895,8 +893,28 @@ $('.product-single__thumbnail-image').click(function(){
 // end on change
   
 // 	 start atc
+  $items = [];
   $(".wtd_submit_atc").on("click", function() {
-    console.log($wtdFormData);
+    $(".row_units").each(function($i, $html) {
+      var ttl_qty = $($html).text();
+      $wtdFormData = {
+        'items': $items.push({'id': $wtd_id, 'quantity': $pck_unit
+      }
+//       items: [
+//   {
+//     id: 36323170943141,
+//     quantity: 1
+//   },
+//   {
+//     id: 36323170943141,
+//     selling_plan: 6717605,
+//     quantity: 1
+//   }
+// ]
+      
+      $($html).attr("ttl-qty", ttl_qty);
+    })
+    
 
     var wtd_count_obj = Object.keys($wtdFormData).length;
     // console.log($wtdFormData);
