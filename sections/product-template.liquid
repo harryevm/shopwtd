@@ -691,7 +691,7 @@ $('.product-single__thumbnail-image').click(function(){
       var $specific_invt_arr= [];
       var $max_val_qty_arr  = [];
       var $wtd_vari_pc_arr  = [];
-      var $ttl_qty_attr_arr = {};
+      var $ttl_qty_attr_arr = [];
       var $qty_units        = 0;
       var $total_qty_pack   = 0;
       var $total_qty_units  = 0;
@@ -794,7 +794,7 @@ $('.product-single__thumbnail-image').click(function(){
             console.log('aaaaaaaaaaaaaaaaaaaa');
           
             $($val_html).attr("ttl-qty", $qty_row);
-            $ttl_qty_attr_arr[$i_val] = $val_html;
+            $ttl_qty_attr_arr.push($val_html);
           $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
       });
       console.log(totalQTY);
@@ -810,20 +810,20 @@ $('.product-single__thumbnail-image').click(function(){
       if($qty_row > $spec_max_val_arr) {
       }
       // console.log($current_qty+','+$max_val_arrpck);
-      $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
-        // console.log($max_val_all);
-        if($current_qty > parseInt($($val_html).attr('data-wtd-max-qty'))){
+      // $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
+      //   // console.log($max_val_all);
+      //   if($current_qty > parseInt($($val_html).attr('data-wtd-max-qty'))){
 
           
-          $("<p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; position: absolute; bottom: 0; right: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
-          $("#change_qty_all").val($max_val_all);
-          if(parseInt($($val_html).attr('data-wtd-max-qty')) > $current_qty){
-            // console.log($("#change_qty_all").val());
-          $(this).parent().next().children('.row_qty_input').attr("disabled","disabled");
-        }
+      //     $("<p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; position: absolute; bottom: 0; right: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
+      //     $("#change_qty_all").val($max_val_all);
+      //     if(parseInt($($val_html).attr('data-wtd-max-qty')) > $current_qty){
+      //       // console.log($("#change_qty_all").val());
+      //     $(this).parent().next().children('.row_qty_input').attr("disabled","disabled");
+      //   }
 
-        }
-      })
+      //   }
+      // })
       
       // $wtdFormData = {
       //   'items': $wtdItems  
