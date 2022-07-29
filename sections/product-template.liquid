@@ -785,8 +785,10 @@ $('.product-single__thumbnail-image').click(function(){
             
           }
           $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
-      });      
+      });
       
+      if(totalQTY  < $max_val_all){
+                  console.log('33333333333333333333333333');
       var $max_val_arr = Math.max.apply(Math, $invent_arr);
       var $max_val_arrpck = Math.max.apply(Math, $invent_arrpck);
             
@@ -815,8 +817,7 @@ $('.product-single__thumbnail-image').click(function(){
 
 
 
-      if(totalQTY  < $max_val_all){
-                  console.log('33333333333333333333333333');
+      
                 
         $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
         $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
