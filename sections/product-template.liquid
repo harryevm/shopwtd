@@ -713,14 +713,14 @@ $('.product-single__thumbnail-image').click(function(){
         }
       });
       
-      function getSum(test){
-          var output = 0;
-          $('.row_'+test+' td.row_size_td').children('a').each(function () {
-            output += parseInt(this.innerHTML); // "this" is the current element in the loop
-          });
-          return output;
-        }
-        var out=getSum();
+      // function getSum(test){
+      //     var output = 0;
+      //     $('.row_'+test+' td.row_size_td').children('a').each(function () {
+      //       output += parseInt(this.innerHTML); // "this" is the current element in the loop
+      //     });
+      //     return output;
+      //   }
+      //   var out=getSum();
 
         var totalQTY = 0;
       $(".row_"+$data_row_id+" a").each(function($i_val, $val_html) {
@@ -736,7 +736,7 @@ $('.product-single__thumbnail-image').click(function(){
     //  console.log('wtd_qty_ttlpck: '+$wtd_qty_ttlpck);
         var $wtd_max_qty = $(this).siblings('.row_size_span').attr("data-wtd-max-qty");
         // console.log('wtd_max_qty: '+$wtd_max_qty);
-        var $wtd_var_qty = $($val_html).attr("const-qty");
+        var $wtd_var_qty = 2;
         // console.log('wtd_var_qty: '+$wtd_var_qty);
         
         $qty_row = parseInt($current_qty) * $wtd_var_qty;
@@ -753,30 +753,30 @@ $('.product-single__thumbnail-image').click(function(){
           $max_val_all = $wtd_max_qty;
         }
 
-          if($wtd_qty_ttl < $qty_row) {
-            console.log('55555555555555555555555555555555555555');
-            var $max_val_qty = Math.max(...$max_val_qty_arr);
-            $($val_html).text($wtd_qty_ttl);
-            $wtdItems = chkIsMatch($wtdItems, $wtd_id, $wtd_qty_ttl);
-            if($i_val == $node_count) {
-              console.log('88888888888888888888888888888888');
-              if($current_qty > $max_val_qty) {
-                console.log('77777777777777777777777777777');
-                $this_obj.val($max_val_qty);
-                $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
-                if($qty_units  < $max_val_all){
-                  console.log('111111111111111111111111111111111');
-                }else{
-                  console.log('2222222222222222222222222');
-                }
-                $row_price = $row_price + ($wtd_qty_ttl * $wtd_vari_pc_arr[$i_val]);                
-                return false;
-              }
-            } else {
-              $row_price = $row_price + ($wtd_qty_ttl * $wtd_vari_pc_arr[$i_val]);
+          // if($wtd_qty_ttl < $qty_row) {
+          //   console.log('55555555555555555555555555555555555555');
+          //   var $max_val_qty = Math.max(...$max_val_qty_arr);
+          //   $($val_html).text($wtd_qty_ttl);
+          //   $wtdItems = chkIsMatch($wtdItems, $wtd_id, $wtd_qty_ttl);
+          //   if($i_val == $node_count) {
+          //     console.log('88888888888888888888888888888888');
+          //     if($current_qty > $max_val_qty) {
+          //       console.log('77777777777777777777777777777');
+          //       $this_obj.val($max_val_qty);
+          //       $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
+          //       if($qty_units  < $max_val_all){
+          //         console.log('111111111111111111111111111111111');
+          //       }else{
+          //         console.log('2222222222222222222222222');
+          //       }
+          //       $row_price = $row_price + ($wtd_qty_ttl * $wtd_vari_pc_arr[$i_val]);                
+          //       return false;
+          //     }
+          //   } else {
+          //     $row_price = $row_price + ($wtd_qty_ttl * $wtd_vari_pc_arr[$i_val]);
 
-            }
-          } else {
+          //   }
+          // } else {
             console.log('666666666666666666666');
             $($val_html).text($qty_row);
             totalQTY += parseInt($qty_row);
@@ -785,7 +785,7 @@ $('.product-single__thumbnail-image').click(function(){
             // console.log( $wtdItems);
             $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
             
-          }
+          // }
           $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
       });
       console.log(totalQTY);
