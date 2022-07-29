@@ -179,7 +179,7 @@
                   <label for="updates_{{ item.key }}" class="cart__qty-label" aria-label="{{ 'cart.label.quantity' | t }}" data-quantity-label-mobile>
                     {{ 'cart.label.qty' | t }}
                   </label>
-                  <input id="updates_{{ item.key }}" class="cart__qty-input" type="number"
+                  <input id="updates_{{ item.key }}" class="cart__qty-input 22222" type="number"
                     value="{{ item.quantity }}" min="0" pattern="[0-9]*"
                     data-quantity-input data-quantity-item="{{ forloop.index }}" data-quantity-input-mobile>
                 </div>
@@ -193,7 +193,7 @@
                 
                 <div class="cart__qty">
                   <label for="updates_large_{{ item.key }}" class="cart__qty-label" data-quantity-label-desktop>{{ 'cart.label.quantity' | t }}</label>
-                  <input id="updates_large_{{ item.key }}" class="cart__qty-input" type="number"
+                  <input id="updates_large_{{ item.key }}" class="cart__qty-input 11111" type="number"
                     name="updates[]" value="{{ item.quantity }}" min="0" pattern="[0-9]*"
                     data-quantity-input data-quantity-item="{{ forloop.index }}" data-quantity-input-desktop>
                 </div>
