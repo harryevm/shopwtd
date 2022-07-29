@@ -864,7 +864,7 @@ $('.product-single__thumbnail-image').click(function(){
           console.log($ttl_pack);
           console.log($current_qty);
           $this_obj.attr("data-pack", $current_qty);
-        }else{
+        }else{ 
           $(".row_"+$data_row_id+" a").each(function($i, $html) {
             var ttl_qty = $($html).text();
             $($html).attr("ttl-qty", ttl_qty);
