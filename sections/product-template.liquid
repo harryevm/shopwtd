@@ -829,9 +829,12 @@ $('.product-single__thumbnail-image').click(function(){
 
       //   }
       // })
-      
+
+        console.log($wtdItems);
+      console.log($wtdFormData);
+        
       $wtdFormData = {
-        'items': $wtdItems  
+        'items': $wtdItems
       }
                   
           $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
@@ -893,7 +896,7 @@ $('.product-single__thumbnail-image').click(function(){
   
 // 	 start atc
   $(".wtd_submit_atc").on("click", function() {
-    cosole.log($wtdFormData);
+    console.log($wtdFormData);
 
     return false;
     var wtd_count_obj = Object.keys($wtdFormData).length;
