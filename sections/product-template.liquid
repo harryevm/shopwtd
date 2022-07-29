@@ -724,13 +724,13 @@ $('.product-single__thumbnail-image').click(function(){
 
         var totalQTY = 0;
       $(".row_"+$data_row_id+" a").each(function($i_val, $val_html) {
-       return false;
-        var $wtd_id =$(this).siblings('.row_size_span').attr("data-wtd-id");
-      //  console.log($wtd_id);
-        var $node_count  = $(".row_"+$data_row_id+" a").length -1;
-        // console.log('node_count: '+$node_count);
-        var $wtd_qty_ttl = parseInt($(this).siblings('.row_size_span').attr("data-wtd-quantity"));
-        // console.log('wtd_qty_ttl: '+$wtd_qty_ttl);
+       
+      //   var $wtd_id =$(this).siblings('.row_size_span').attr("data-wtd-id");
+      // //  console.log($wtd_id);
+      //   var $node_count  = $(".row_"+$data_row_id+" a").length -1;
+      //   // console.log('node_count: '+$node_count);
+      //   var $wtd_qty_ttl = parseInt($(this).siblings('.row_size_span').attr("data-wtd-quantity"));
+      //   // console.log('wtd_qty_ttl: '+$wtd_qty_ttl);
        
      var $wtd_qty_ttlpck = parseInt($(this).siblings('.row_size_span').attr("data-wtd-max-qty"));
     //  console.log('wtd_qty_ttlpck: '+$wtd_qty_ttlpck);
