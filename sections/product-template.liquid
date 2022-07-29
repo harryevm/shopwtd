@@ -758,7 +758,7 @@ $('.product-single__thumbnail-image').click(function(){
             $wtdItems = chkIsMatch($wtdItems, $wtd_id, $wtd_qty_ttl);
             if($i_val == $node_count) {
               console.log('88888888888888888888888888888888');
-              if($current_qty > $max_val_qty) {
+              if($current_qty > $max_val_qty) { 
                 console.log('77777777777777777777777777777');
                 $this_obj.val($max_val_qty);
                 $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
