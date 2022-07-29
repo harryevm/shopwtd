@@ -304,7 +304,16 @@
               {% endfor %}
             </td> 
             <td class="row_qty_td">
-              <input type="number" name="product-pack-quantity" class="row_qty_input" min="0" value="0" data-row="{{ cnt_class_num }}" />
+            {% for size_option_inner in product.options_with_values %}
+                {% assign size_val_inner = size_option_inner.name | downcase %}
+                    {% for value_inner in size_option_inner.values %}  
+                        {% for variant in product.variants %}
+                            {% if variant.title contains clr_name_show and variant.title contains value_inner %}
+                              <input type="number" data-wtd-vari-id="{{variant.id}}" name="product-pack-quantity" class="row_qty_input" min="0" value="0" data-row="{{ cnt_class_num }}" />
+                            {% endif %}
+                        {% endfor %}               		
+                    {% endfor %}
+              {% endfor %}
             </td>
             <td class="row_units_td"><span class="row_units">0</span> Units</td>
             <td class="row_price_td"><span class="currency_symbol_wtd">$</span> <span class="row_total">0.00</span></td>
