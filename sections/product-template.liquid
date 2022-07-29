@@ -781,27 +781,15 @@ $('.product-single__thumbnail-image').click(function(){
             console.log('666666666666666666666');
        
             totalQTY += parseInt($qty_row);
-            console.log(totalQTY);
-        console.log($wtd_id);
-        console.log($wtdItems);
-        
-            $wtdItems  = chkIsMatch($wtdItems, $wtd_id,totalQTY);    
-            // console.log( $wtdItems);
+            
             $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
             
           // }
             
-            console.log(totalQTY);
-            console.log($max_val_all);
-            console.log($val_html);
-            console.log('aaaaaaaaaaaaaaaaaaaa');
-          
             $($val_html).attr("ttl-qty", $qty_row);
             // $ttl_qty_attr_arr.push($val_html);
           
       });
-      console.log(totalQTY);
-      console.log($max_val_all);
       if(totalQTY  < $max_val_all){
         $(".row_"+$data_row_id+" a").each(function($i, $html) {
         console.log($html);
@@ -833,16 +821,23 @@ $('.product-single__thumbnail-image').click(function(){
       //   }
       // })
 
-        console.log($wtdItems);
         
-      $wtdFormData = {
-        'items': $wtdItems
-      }
-      console.log($wtdFormData);
                   
           $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
           $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
           $(".row_"+$data_row_id+" .row_price_td .row_total").text($row_price.toFixed(2));
+
+          console.log($wtdItems);
+        
+          $wtdItems  = chkIsMatch($wtdItems, $wtd_id, $qty_units);    
+          // console.log( $wtdItems);
+      
+          console.log($wtdItems);
+          $wtdFormData = {
+            'items': $wtdItems
+          }
+          console.log($wtdFormData);
+        
           $('.row_qty_input').each(function (index, value) {
             if ($(this).val() != "")
               $total_qty_pack = $total_qty_pack + parseInt($(this).val());
