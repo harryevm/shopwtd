@@ -282,7 +282,7 @@
           
           {% for clr_name_show in clr_name %}
           {% assign cnt_class_num = cnt_class_num | plus:1 %}
-          <tr class="count_row row_{{ cnt_class_num }}">
+          <tr class="row_{{ cnt_class_num }}">
             <td class="{{ clr_name_show }}">{{ clr_name_show }}</td>
             <td class="row_size_td"> 
               {% for size_option_inner in product.options_with_values %}
@@ -546,6 +546,26 @@ $(document).ready(function () {
 
   
 // Thumbnail Images and main product image code start  
+
+var input = document.getElementById('opt').innerText;
+let fieldValue = "";
+let fieldValue2 ="";
+var fields = input.split('||');
+var field1 = fields[0];
+var realvalue = field1.split('-');
+var field2 = fields[1];
+var realvalue2 = field2.split('-');
+realvalue.forEach((item, index)=>{
+  fieldValue += "<span>" + item + "</span>"; 
+});
+realvalue2.forEach((item, index)=>{
+  fieldValue2 += "<a const-qty='"+item+"'>" + item + "</a>"; 
+});
+document.getElementById("sizename").innerHTML  = fieldValue;
+
+const testing = document.querySelectorAll(".row_size_td");
+testing.forEach(element => element.innerHTML += fieldValue2);
+
 $( window ).on( "load", function() {
   
 $('.color-option-item').first().addClass("selected");  
@@ -660,6 +680,7 @@ $('.product-single__thumbnail-image').click(function(){
     
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault();
+      
       var $maxVals = $(this).parent().prev().children('.row_size_span').attr('data-wtd-max-qty');
       $(this).attr({ "max" : $maxVals, "min" : 0 });
       var $product_price    = $(".product__price .price__regular span span").text().split(" ");
@@ -682,6 +703,7 @@ $('.product-single__thumbnail-image').click(function(){
       
       
       $(".row_"+$data_row_id+" a").each(function($idx, $val_html_money) {
+      
         $wtd_vari_pc = parseFloat($(this).siblings('.row_size_span_money ').text().replace(/[^0-9.]/g, ""));
    
         if(!$.inArray($idx, $wtd_vari_pc_arr) !== -1){
@@ -724,19 +746,27 @@ $('.product-single__thumbnail-image').click(function(){
         
         $specific_invt_arr.push($wtd_qty_ttl);
         $max_val_qty_arr.push($wtd_max_qty);
-       
+      //  console.log($wtd_max_qty);
         if(parseInt($max_val_all) < parseInt($wtd_max_qty)) {
           $max_val_all = $wtd_max_qty;
         }
 
           if($wtd_qty_ttl < $qty_row) {
+            console.log('55555555555555555555555555555555555555');
             var $max_val_qty = Math.max(...$max_val_qty_arr);
             $($val_html).text($wtd_qty_ttl);
             $wtdItems = chkIsMatch($wtdItems, $wtd_id, $wtd_qty_ttl);
             if($i_val == $node_count) {
+              console.log('88888888888888888888888888888888');
               if($current_qty > $max_val_qty) {
+                console.log('77777777777777777777777777777');
                 $this_obj.val($max_val_qty);
                 $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
+                if($qty_units  < $max_val_all){
+                  console.log('111111111111111111111111111111111');
+                }else{
+                  console.log('2222222222222222222222222');
+                }
                 $row_price = $row_price + ($wtd_qty_ttl * $wtd_vari_pc_arr[$i_val]);                
                 return false;
               }
@@ -745,7 +775,7 @@ $('.product-single__thumbnail-image').click(function(){
 
             }
           } else {
-
+            console.log('666666666666666666666');
             $($val_html).text($qty_row);
             totalQTY += parseInt($qty_row);
             
@@ -765,22 +795,29 @@ $('.product-single__thumbnail-image').click(function(){
       }
       // console.log($current_qty+','+$max_val_arrpck);
       $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
-       
+        // console.log($max_val_all);
         if($current_qty > parseInt($($val_html).attr('data-wtd-max-qty'))){
-          console.log($max_val_all);
+
+          
           $("<p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; position: absolute; bottom: 0; right: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
           $("#change_qty_all").val($max_val_all);
           if(parseInt($($val_html).attr('data-wtd-max-qty')) > $current_qty){
+            // console.log($("#change_qty_all").val());
           $(this).parent().next().children('.row_qty_input').attr("disabled","disabled");
         }
 
         }
       })
       
-      $wtdFormData = {
-        'items': $wtdItems  
-      }
+      // $wtdFormData = {
+      //   'items': $wtdItems  
+      // }
 
+
+
+      if(totalQTY  < $max_val_all){
+                  console.log('33333333333333333333333333');
+                
         $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
         $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
         $(".row_"+$data_row_id+" .row_price_td .row_total").text($row_price.toFixed(2));
@@ -809,12 +846,29 @@ $('.product-single__thumbnail-image').click(function(){
       }else{
       	$('.wtd_submit_atc').attr("disabled","disabled");
       }
+
+
+        }else{
+                  console.log('444444444444444444444444444');
+                }
+      
+      // assessum($(this).parent().parent().attr('class'),$(this).attr('max'),$(this));
     });
   })
+  function assessum(values,attributes,current){
+    let text1 = ".";
+    let totalVal = 0;
+    $('.'+values+" .row_size_td a").each(function($idx, $val_html_money) {
+        totalVal += (parseInt($(this).text()) || 0);
+        
+      });
+      if(totalVal>=attributes){
+        current.attr("disabled","disabled");
+        console.log();
+      }
+  }
 // end on change
-$('.product-tabel .count_row').each(function($val, $htmls){
-            console.log($('.row_'+($val+1))
-           });
+  
 // 	 start atc
   $(".wtd_submit_atc").on("click", function() {
     var wtd_count_obj = Object.keys($wtdFormData).length;
@@ -839,7 +893,7 @@ $('.product-tabel .count_row').each(function($val, $htmls){
         if(sucess_obj){
           $('.wtd_submit_atc').after('<span class="cart_success_msg"> Items Added to Cart </span>');
           // window.location.href = window.Shopify.routes.root + 'cart/';
-           
+          //  localStorage.setItem("mytime", Date.now());
           setTimeout(function(){
             $('.cart_success_msg').remove();
           }, 5000);
@@ -862,28 +916,11 @@ $('.product-tabel .count_row').each(function($val, $htmls){
     var all_qty = $(this).val(); // Taking the value of main btn
       $('input.row_qty_input').val(all_qty); // changing the value of inner pack btn
       $('input.row_qty_input').trigger('change'); // trigger the chnages in all indiviual btn
-    return false;
+ 
   });
 //  end 
 
-var input = document.getElementById('opt').innerText;
-let fieldValue = "";
-let fieldValue2 ="";
-var fields = input.split('||');
-var field1 = fields[0];
-var realvalue = field1.split('-');
-var field2 = fields[1];
-var realvalue2 = field2.split('-');
-realvalue.forEach((item, index)=>{
-  fieldValue += "<span>" + item + "</span>"; 
-});
-realvalue2.forEach((item, index)=>{
-  fieldValue2 += "<a const-qty='"+item+"'>" + item + "</a>"; 
-});
-document.getElementById("sizename").innerHTML  = fieldValue;
 
-const testing = document.querySelectorAll(".row_size_td");
-testing.forEach(element => element.innerHTML += fieldValue2);
 
 </script>  
 
