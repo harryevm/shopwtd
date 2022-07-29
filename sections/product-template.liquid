@@ -691,7 +691,7 @@ $('.product-single__thumbnail-image').click(function(){
       var $specific_invt_arr= [];
       var $max_val_qty_arr  = [];
       var $wtd_vari_pc_arr  = [];
-      var $ttl_qty_attr_arr = [];
+      var $ttl_qty_attr_arr = {};
       var $qty_units        = 0;
       var $total_qty_pack   = 0;
       var $total_qty_units  = 0;
@@ -794,7 +794,7 @@ $('.product-single__thumbnail-image').click(function(){
             console.log('aaaaaaaaaaaaaaaaaaaa');
           
             $($val_html).attr("ttl-qty", $qty_row);
-            $ttl_qty_attr_arr.push($val_html);
+            $ttl_qty_attr_arr[$i_val] = $val_html;
           $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
       });
       console.log(totalQTY);
