@@ -778,11 +778,7 @@ $('.product-single__thumbnail-image').click(function(){
             console.log('666666666666666666666');
             $($val_html).text($qty_row);
             totalQTY += parseInt($qty_row);
-            if(totalQTY  < $max_val_all){
-                  console.log('33333333333333333333333333');
-                }else{
-                  console.log('444444444444444444444444444');
-                }
+            
             $wtdItems  = chkIsMatch($wtdItems, $wtd_id,totalQTY);    
             // console.log( $wtdItems);
             $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
@@ -813,10 +809,18 @@ $('.product-single__thumbnail-image').click(function(){
         }
       })
       
-      $wtdFormData = {
-        'items': $wtdItems  
-      }
+      // $wtdFormData = {
+      //   'items': $wtdItems  
+      // }
 
+
+
+      if(totalQTY  < $max_val_all){
+                  console.log('33333333333333333333333333');
+                }else{
+                  console.log('444444444444444444444444444');
+                }
+      
         $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
         $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
         $(".row_"+$data_row_id+" .row_price_td .row_total").text($row_price.toFixed(2));
