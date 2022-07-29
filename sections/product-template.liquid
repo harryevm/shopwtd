@@ -830,9 +830,9 @@ $('.product-single__thumbnail-image').click(function(){
       //   }
       // })
       
-      // $wtdFormData = {
-      //   'items': $wtdItems  
-      // }
+      $wtdFormData = {
+        'items': $wtdItems  
+      }
                   
           $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
           $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
@@ -864,6 +864,12 @@ $('.product-single__thumbnail-image').click(function(){
           console.log($current_qty);
           $this_obj.attr("data-pack", $current_qty);
         }else{
+          $(".row_"+$data_row_id+" a").each(function($i, $html) {
+            console.log($html);
+            var ttl_qty = $($html).text("ttl-qty");
+            $($html).attr("ttl-qty", ttl_qty);
+            // $qty_units = parseInt($qty_units) + parseInt($($html).text());
+          })
           var data_pack = $this_obj.attr("data-pack");
           $this_obj.val(data_pack);
          $("<p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; bottom: 0; right: 0;'>AVAILABLE PACK: "+ data_pack +"</p>").insertAfter($this_obj);
