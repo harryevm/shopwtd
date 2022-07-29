@@ -713,15 +713,15 @@ $('.product-single__thumbnail-image').click(function(){
       //   }
       // });
       
-      function getSum(test){
-          var output = 0;
-          $('.row_'+test+' td.row_size_td').children('a').each(function () {
-            output += parseInt(this.innerHTML); // "this" is the current element in the loop
-          });
-          return output;
-        }
-        // var out=getSum();
-console.log(out);
+      // function getSum(test){
+      //     var output = 0;
+      //     $('.row_'+test+' td.row_size_td').children('a').each(function () {
+      //       output += parseInt(this.innerHTML); // "this" is the current element in the loop
+      //     });
+      //     return output;
+      //   }
+      //   var out=getSum();
+
         var totalQTY = 0;
       $(".row_"+$data_row_id+" a").each(function($i_val, $val_html) {
        
