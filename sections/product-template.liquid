@@ -799,11 +799,9 @@ $('.product-single__thumbnail-image').click(function(){
             $($val_html).attr("ttl-qty", $qty_row);
           
       });
-      console.log(totalQTY);
       console.log($max_val_all);
       if(totalQTY  < $max_val_all){
         $(".row_"+$data_row_id+" a").each(function($i, $html) {
-        console.log($html);
           var ttl_qty = $($html).attr("ttl-qty");
           $($html).text(ttl_qty);
           $qty_units = parseInt($qty_units) + parseInt($($html).text());
