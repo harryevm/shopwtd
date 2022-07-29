@@ -559,6 +559,7 @@ realvalue.forEach((item, index)=>{
   fieldValue += "<span>" + item + "</span>"; 
 });
 realvalue2.forEach((item, index)=>{
+  console.log();
   fieldValue2 += "<a const-qty='"+item+"'>" + item + "</a>"; 
 });
 document.getElementById("sizename").innerHTML  = fieldValue;
@@ -704,23 +705,23 @@ $('.product-single__thumbnail-image').click(function(){
       var $qty_row;
       
       
-      // $(".row_"+$data_row_id+" a").each(function($idx, $val_html_money) {
+      $(".row_"+$data_row_id+" a").each(function($idx, $val_html_money) {
       
-      //   $wtd_vari_pc = parseFloat($(this).siblings('.row_size_span_money ').text().replace(/[^0-9.]/g, ""));
+        $wtd_vari_pc = parseFloat($(this).siblings('.row_size_span_money ').text().replace(/[^0-9.]/g, ""));
    
-      //   if(!$.inArray($idx, $wtd_vari_pc_arr) !== -1){
-      //     $wtd_vari_pc_arr[$idx] = parseFloat($wtd_vari_pc);
-      //   }
-      // });
+        if(!$.inArray($idx, $wtd_vari_pc_arr) !== -1){
+          $wtd_vari_pc_arr[$idx] = parseFloat($wtd_vari_pc);
+        }
+      });
       
-      // function getSum(test){
-      //     var output = 0;
-      //     $('.row_'+test+' td.row_size_td').children('a').each(function () {
-      //       output += parseInt(this.innerHTML); // "this" is the current element in the loop
-      //     });
-      //     return output;
-      //   }
-      //   var out=getSum();
+      function getSum(test){
+          var output = 0;
+          $('.row_'+test+' td.row_size_td').children('a').each(function () {
+            output += parseInt(this.innerHTML); // "this" is the current element in the loop
+          });
+          return output;
+        }
+        var out=getSum();
 
         var totalQTY = 0;
       $(".row_"+$data_row_id+" a").each(function($i_val, $val_html) {
@@ -740,7 +741,7 @@ $('.product-single__thumbnail-image').click(function(){
         // console.log('wtd_var_qty: '+$wtd_var_qty);
         
         $qty_row = parseInt($current_qty) * $wtd_var_qty;
-        console.log($wtd_var_qty+','+$current_qty)
+        // console.log($wtd_var_qty+','+$current_qty)
  
         if(jQuery.inArray($wtd_qty_ttl, $invent_arr) !== -1) {} else { $invent_arr.push($wtd_qty_ttl); }
         
@@ -864,18 +865,18 @@ $('.product-single__thumbnail-image').click(function(){
       // assessum($(this).parent().parent().attr('class'),$(this).attr('max'),$(this));
     });
   })
-  // function assessum(values,attributes,current){
-  //   let text1 = ".";
-  //   let totalVal = 0;
-  //   $('.'+values+" .row_size_td a").each(function($idx, $val_html_money) {
-  //       totalVal += (parseInt($(this).text()) || 0);
+  function assessum(values,attributes,current){
+    let text1 = ".";
+    let totalVal = 0;
+    $('.'+values+" .row_size_td a").each(function($idx, $val_html_money) {
+        totalVal += (parseInt($(this).text()) || 0);
         
-  //     });
-  //     if(totalVal>=attributes){
-  //       current.attr("disabled","disabled");
-  //       console.log();
-  //     }
-  // }
+      });
+      if(totalVal>=attributes){
+        current.attr("disabled","disabled");
+        console.log();
+      }
+  }
 // end on change
   
 // 	 start atc
