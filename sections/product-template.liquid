@@ -779,21 +779,21 @@ $('.product-single__thumbnail-image').click(function(){
 
           //   }
           // } else {
-          //   console.log('666666666666666666666');
-          //   $($val_html).text($qty_row);
-          //   totalQTY += parseInt($qty_row);
+            console.log('666666666666666666666');
+            $($val_html).text($qty_row);
+            totalQTY += parseInt($qty_row);
             
-          //   $wtdItems  = chkIsMatch($wtdItems, $wtd_id,totalQTY);    
-          //   // console.log( $wtdItems);
-          //   $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
+            $wtdItems  = chkIsMatch($wtdItems, $wtd_id,totalQTY);    
+            // console.log( $wtdItems);
+            $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
             
-          // // }
-          // $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
+          // }
+          $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
       });
   
       console.log(totalQTY);
       console.log($max_val_all);
-      // if(totalQTY  < $max_val_all){
+      if(totalQTY  < $max_val_all){
       //             console.log('33333333333333333333333333');
       // var $max_val_arr = Math.max.apply(Math, $invent_arr);
       // var $max_val_arrpck = Math.max.apply(Math, $invent_arrpck);
@@ -855,12 +855,12 @@ $('.product-single__thumbnail-image').click(function(){
       //   console.log($current_qty);
       // $ttl_pack = $current_qty;
 
-        // }else{
-        // console.log($ttl_pack);
-        // console.log($current_qty);
-        // $this_obj.val($ttl_pack);
-        //           console.log('444444444444444444444444444');
-        //         }
+        }else{
+        console.log($ttl_pack);
+        console.log($current_qty);
+        $this_obj.val($ttl_pack);
+                  console.log('444444444444444444444444444');
+                }
       
       // assessum($(this).parent().parent().attr('class'),$(this).attr('max'),$(this));
     });
