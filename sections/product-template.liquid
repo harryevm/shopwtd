@@ -864,18 +864,18 @@ $('.product-single__thumbnail-image').click(function(){
       // assessum($(this).parent().parent().attr('class'),$(this).attr('max'),$(this));
     });
   })
-  function assessum(values,attributes,current){
-    let text1 = ".";
-    let totalVal = 0;
-    $('.'+values+" .row_size_td a").each(function($idx, $val_html_money) {
-        totalVal += (parseInt($(this).text()) || 0);
+  // function assessum(values,attributes,current){
+  //   let text1 = ".";
+  //   let totalVal = 0;
+  //   $('.'+values+" .row_size_td a").each(function($idx, $val_html_money) {
+  //       totalVal += (parseInt($(this).text()) || 0);
         
-      });
-      if(totalVal>=attributes){
-        current.attr("disabled","disabled");
-        console.log();
-      }
-  }
+  //     });
+  //     if(totalVal>=attributes){
+  //       current.attr("disabled","disabled");
+  //       console.log();
+  //     }
+  // }
 // end on change
   
 // 	 start atc
