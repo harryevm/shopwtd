@@ -808,12 +808,12 @@ $('.product-single__thumbnail-image').click(function(){
         })
         console.log($ttl_qty_attr_arr);
                   console.log('33333333333333333333333333');
-      var $max_val_arr = Math.max.apply(Math, $invent_arr);
-      var $max_val_arrpck = Math.max.apply(Math, $invent_arrpck);
-            
-      var $spec_max_val_arr = Math.max(...$specific_invt_arr);
-      if($qty_row > $spec_max_val_arr) {
-      }
+        // var $max_val_arr = Math.max.apply(Math, $invent_arr);
+        // var $max_val_arrpck = Math.max.apply(Math, $invent_arrpck);
+              
+        // var $spec_max_val_arr = Math.max(...$specific_invt_arr);
+        // if($qty_row > $spec_max_val_arr) {
+        // }
       // console.log($current_qty+','+$max_val_arrpck);
       // $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
       //   // console.log($max_val_all);
@@ -833,47 +833,40 @@ $('.product-single__thumbnail-image').click(function(){
       // $wtdFormData = {
       //   'items': $wtdItems  
       // }
-
-
-
+                  
+          $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
+          $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
+          $(".row_"+$data_row_id+" .row_price_td .row_total").text($row_price.toFixed(2));
+          $('.row_qty_input').each(function (index, value) {
+            if ($(this).val() != "")
+              $total_qty_pack = $total_qty_pack + parseInt($(this).val());
+          });
+          $('.row_units_td span').each(function (index, value) {
+            if ($(this).text() != "")
+              $total_qty_units = $total_qty_units + parseInt($(this).text());
+          });
+          $('.row_price_td .row_total').each(function (index, value) {
+            if ($(this).text() != "") {
+              $total_qty_amount = $total_qty_amount + parseFloat($(this).text());
+            }
+          });
+          $(".total_pack").text(parseInt($total_qty_pack));
+          $(".total_qty").text(parseInt($total_qty_units)+" Units");
+          $(".final_price").text($money_symbol+""+$total_qty_amount.toFixed(2));
       
-                
-        $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
-        $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
-        $(".row_"+$data_row_id+" .row_price_td .row_total").text($row_price.toFixed(2));
-        $('.row_qty_input').each(function (index, value) {
-          if ($(this).val() != "")
-            $total_qty_pack = $total_qty_pack + parseInt($(this).val());
-        });
-        $('.row_units_td span').each(function (index, value) {
-          if ($(this).text() != "")
-            $total_qty_units = $total_qty_units + parseInt($(this).text());
-        });
-        $('.row_price_td .row_total').each(function (index, value) {
-          if ($(this).text() != "") {
-            $total_qty_amount = $total_qty_amount + parseFloat($(this).text());
+          var totalPack = parseInt($('.total_pack').text());
+          if(totalPack > 0) {
+          	$('.wtd_submit_atc').removeAttr("disabled");
+          }else{
+          	$('.wtd_submit_atc').attr("disabled","disabled");
           }
-        });
-        $(".total_pack").text(parseInt($total_qty_pack));
-        $(".total_qty").text(parseInt($total_qty_units)+" Units");
-        $(".final_price").text($money_symbol+""+$total_qty_amount.toFixed(2));
-      
-      var totalPack = parseInt($('.total_pack').text());
-      if(totalPack > 0) {
-      	$('.wtd_submit_atc').removeAttr("disabled");
-      }else{
-      	$('.wtd_submit_atc').attr("disabled","disabled");
-      }
-        console.log($ttl_pack);
-        console.log($current_qty);
-      $ttl_pack = $current_qty;
-
+          console.log($ttl_pack);
+          console.log($current_qty);
+          $this_obj.attr("data-pack", $current_qty);
         }else{
-        console.log($ttl_pack);
-        console.log($current_qty);
-        $this_obj.val($ttl_pack);
-                  console.log('444444444444444444444444444');
-                }
+          $this_obj.val($this_obj.attr("data-pack"));
+          console.log('444444444444444444444444444');
+        }
       
       // assessum($(this).parent().parent().attr('class'),$(this).attr('max'),$(this));
     });
