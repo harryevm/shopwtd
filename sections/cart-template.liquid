@@ -45,7 +45,7 @@
                       {%- endfor -%}
 
                       <li
-                        class="11111111111 product-details__item product-details__item--property
+                        class="product-details__item product-details__item--property
                         {% if item.selling_plan_allocation == empty %} hide {% endif %}"
                         data-cart-item-selling-plan-name
                       >
@@ -69,7 +69,7 @@
 
                       {%- for p in properties -%}
                         {% assign property_first_char = p.first | slice: 0 %}
-                        <li class="22222222222222222 product-details__item product-details__item--property
+                        <li class="product-details__item product-details__item--property
                           {%if property_size == 0 or p.last == blank or property_first_char == '_' %} hide{% endif %}" data-cart-item-property>
                           <span class="product-details__item-label" data-cart-item-property-name>{{ p.first }}: </span>
 
@@ -97,7 +97,12 @@
               </td>
               <td>
                 <div class="pack-input-information">
-                <input type="number" style="width: 70px;" value="2" min="1" />
+                {%- for p in properties -%}
+                  {% assign property_first_char = p.first | slice: 0 %}
+                    {%if property_size == 0 or p.last == blank or property_first_char == '_' %} hide{% endif %}" data-cart-item-property>
+                    <span class="product-details__item-label" data-cart-item-property-name>{{ p.first }}: </span>
+                    <input type="number" style="width: 70px;" value="{{ p.first }}" min="1" />
+                {%- endfor -%}
                 <div>
               </td>
               <td class="cart__price text-right">
