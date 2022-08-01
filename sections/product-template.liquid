@@ -713,130 +713,41 @@ $('.product-single__thumbnail-image').click(function(){
       var $this_obj         = $(this);
       var $current_qty      = $(this).val();
       var $data_row_id      = $(this).attr("data-row");
-      // $(".error_msg").remove();
+      var $qty_row          = 0;
+      
       $this_obj.next().css("display", "none");
-      var $qty_row;
-      
-      
       $(".row_"+$data_row_id+" a").each(function($idx, $val_html_money) {
-      
         $wtd_vari_pc = parseFloat($(this).siblings('.row_size_span_money ').text().replace(/[^0-9.]/g, ""));
-   
         if(!$.inArray($idx, $wtd_vari_pc_arr) !== -1){
           $wtd_vari_pc_arr[$idx] = parseFloat($wtd_vari_pc);
         }
       });
       
-      // function getSum(test){
-      //     var output = 0;
-      //     $('.row_'+test+' td.row_size_td').children('a').each(function () {
-      //       output += parseInt(this.innerHTML); // "this" is the current element in the loop
-      //     });
-      //     return output;
-      //   }
-      //   var out=getSum();
-
-        var totalQTY = 0;
+      var totalQTY = 0;
       $(".row_"+$data_row_id+" a").each(function($i_val, $val_html) {
-        // var $wtd_id =$(this).siblings('.row_size_span').attr("data-wtd-id");
         var $node_count  = $(".row_"+$data_row_id+" a").length -1;
         var $wtd_qty_ttl = parseInt($(this).siblings('.row_size_span').attr("data-wtd-quantity"));
-       
-     var $wtd_qty_ttlpck = parseInt($(this).siblings('.row_size_span').attr("data-wtd-max-qty"));
-    //  console.log('wtd_qty_ttlpck: '+$wtd_qty_ttlpck);
+        var $wtd_qty_ttlpck = parseInt($(this).siblings('.row_size_span').attr("data-wtd-max-qty"));
         var $wtd_max_qty = $(this).siblings('.row_size_span').attr("data-wtd-max-qty");
-        // console.log('wtd_max_qty: '+$wtd_max_qty);
         var $wtd_var_qty = $($val_html).attr("const-qty");
-        // console.log('wtd_var_qty: '+$wtd_var_qty);
-        
+
         $qty_row = parseInt($current_qty) * $wtd_var_qty;
-        // console.log($wtd_var_qty+','+$current_qty)
- 
         if(jQuery.inArray($wtd_qty_ttl, $invent_arr) !== -1) {} else { $invent_arr.push($wtd_qty_ttl); }
-        
         if(jQuery.inArray($wtd_qty_ttlpck, $invent_arrpck) !== -1) {} else { $invent_arrpck.push($wtd_qty_ttlpck); }
         
         $specific_invt_arr.push($wtd_qty_ttl);
         $max_val_qty_arr.push($wtd_max_qty);
-      //  console.log($wtd_max_qty);
-        // if(parseInt($max_val_all) < parseInt($wtd_max_qty)) {
-          $max_val_all = $wtd_max_qty;
-        // }
-
-          // if($wtd_qty_ttl < $qty_row) {
-          //   console.log('55555555555555555555555555555555555555');
-          //   var $max_val_qty = Math.max(...$max_val_qty_arr);
-          //   $($val_html).text($wtd_qty_ttl);
-          //   $wtdItems = chkIsMatch($wtdItems, $wtd_id, $wtd_qty_ttl);
-          //   if($i_val == $node_count) {
-          //     console.log('88888888888888888888888888888888');
-          //     if($current_qty > $max_val_qty) {
-          //       console.log('77777777777777777777777777777');
-          //       $this_obj.val($max_val_qty);
-          //       $qty_units = parseInt($qty_units) + parseInt($($val_html).text());
-          //       if($qty_units  < $max_val_all){
-          //         console.log('111111111111111111111111111111111');
-          //       }else{
-          //         console.log('2222222222222222222222222');
-          //       }
-          //       $row_price = $row_price + ($wtd_qty_ttl * $wtd_vari_pc_arr[$i_val]);                
-          //       return false;
-          //     }
-          //   } else {
-          //     $row_price = $row_price + ($wtd_qty_ttl * $wtd_vari_pc_arr[$i_val]);
-
-          //   }
-          // } else {
-            console.log('666666666666666666666');
-       
-            totalQTY += parseInt($qty_row);
-          // console.log($wtd_id);
-          // console.log($wtdItems);
-        
-            // console.log( $wtdItems);
-            $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
-            
-          // }
-          
-            $($val_html).attr("ttl-qty", $qty_row);
-          
+        $max_val_all = $wtd_max_qty;
+        totalQTY += parseInt($qty_row);
+        $row_price = parseFloat($row_price) + ($qty_row * parseFloat($wtd_vari_pc_arr[$i_val])); 
+        $($val_html).attr("ttl-qty", $qty_row);
       });
-      console.log($max_val_all);
       if(totalQTY  < $max_val_all){
         $(".row_"+$data_row_id+" a").each(function($i, $html) {
           var ttl_qty = $($html).attr("ttl-qty");
           $($html).text(ttl_qty);
           $qty_units = parseInt($qty_units) + parseInt($($html).text());
         })
-        // var $max_val_arr = Math.max.apply(Math, $invent_arr);
-        // var $max_val_arrpck = Math.max.apply(Math, $invent_arrpck);
-              
-        // var $spec_max_val_arr = Math.max(...$specific_invt_arr);
-        // if($qty_row > $spec_max_val_arr) {
-        // }
-      // console.log($current_qty+','+$max_val_arrpck);
-      // $(".row_"+$data_row_id+" .row_size_span").each(function($i_val, $val_html) {
-      //   // console.log($max_val_all);
-      //   if($current_qty > parseInt($($val_html).attr('data-wtd-max-qty'))){
-
-          
-      //     $("<p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; position: absolute; bottom: 0; right: 0;'>AVAILABLE PACK: "+ $max_val_all +"</p>").insertAfter($(this));
-      //     $("#change_qty_all").val($max_val_all);
-      //     if(parseInt($($val_html).attr('data-wtd-max-qty')) > $current_qty){
-      //       // console.log($("#change_qty_all").val());
-      //     $(this).parent().next().children('.row_qty_input').attr("disabled","disabled");
-      //   }
-
-      //   }
-      // })
-
-      //   console.log($wtdItems);
-        
-      // $wtdFormData = {
-      //   'items': $wtdItems
-      // }
-      // console.log($wtdFormData);
-                  
           $(".row_"+$data_row_id+" .row_units_td span").text($qty_units);
           $(".row_"+$data_row_id+" .row_price_td .currency_symbol_wtd").text($money_symbol);
           $(".row_"+$data_row_id+" .row_price_td .row_total").text($row_price.toFixed(2));
@@ -856,15 +767,12 @@ $('.product-single__thumbnail-image').click(function(){
           $(".total_pack").text(parseInt($total_qty_pack));
           $(".total_qty").text(parseInt($total_qty_units)+" Units");
           $(".final_price").text($money_symbol+""+$total_qty_amount.toFixed(2));
-      
           var totalPack = parseInt($('.total_pack').text());
           if(totalPack > 0) {
           	$('.wtd_submit_atc').removeAttr("disabled");
           }else{
           	$('.wtd_submit_atc').attr("disabled","disabled");
           }
-          console.log($ttl_pack);
-          console.log($current_qty);
           $this_obj.attr("data-pack", $current_qty);
         }else{ 
           $(".row_"+$data_row_id+" a").each(function($i, $html) {
@@ -875,24 +783,9 @@ $('.product-single__thumbnail-image').click(function(){
           $this_obj.val(data_pack);
           $this_obj.next().text("AVAILABLE PACK: "+ data_pack);
           $this_obj.next().css("display", "block");
-          console.log('444444444444444444444444444');
         }
-      
-      // assessum($(this).parent().parent().attr('class'),$(this).attr('max'),$(this));
     });
   })
-  function assessum(values,attributes,current){
-    let text1 = ".";
-    let totalVal = 0;
-    $('.'+values+" .row_size_td a").each(function($idx, $val_html_money) {
-        totalVal += (parseInt($(this).text()) || 0);
-        
-      });
-      if(totalVal>=attributes){
-        current.attr("disabled","disabled");
-        console.log();
-      }
-  }
 // end on change
   
 // 	 start atc
