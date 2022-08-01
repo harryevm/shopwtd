@@ -98,15 +98,11 @@
               <td>
                 <div class="pack-input-information">
                 {%- for p in properties -%}
-                  {% assign property_first_char = p.first | slice: 0 %}
-                    {%if property_size == 0 or p.last == blank or property_first_char == '_' %} hide{% endif %}" data-cart-item-property>
-                    <span class="product-details__item-label" data-cart-item-property-name>{{ p.first }}: </span>
-                    <input type="number" style="width: 70px;" value="{{ p.first }}" min="1" />
                   {%- if p.last contains '/uploads/' -%}
-                              <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-                            {%- else -%}
-                              {{ p.last }}
-                            {%- endif -%}
+                    <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                  {%- else -%}
+                    <input type="number" style="width: 70px;" value="{{ p.last }}" min="1" />
+                  {%- endif -%}
                 {%- endfor -%}
                 <div>
               </td>
