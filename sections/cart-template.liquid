@@ -341,16 +341,21 @@
 <script>
   $(document).ready(function () {
     $(".wtd_update_pack").on("click", function(){
+      var $ttl_qty = 0;
       $(this).next().show();
-      var data_meta_pack  = $(this).attr("data-meta-pack");
-      var data_variant_id = $(this).attr("data-variant-id");
-      var data_max_qty    = $(this).attr("data-max-qty");
-      $(this).val();
+      var $data_meta_pack  = $(this).attr("data-meta-pack");
+      var $data_variant_id = $(this).attr("data-variant-id");
+      var $data_max_qty    = $(this).attr("data-max-qty");
+      var $curr_pack_val   = $(this).val();
       console.log($(this).val());
-      data_meta_pack = data_meta_pack.
+      var $meta_pack_arr = $data_meta_pack.split("-");
+      console.log($meta_pack_arr);
+      $($meta_pack_arr).each(function($idx, $val) {
+        $ttl_qty += parseInt($curr_pack_val)*parseInt($val);
+      });
+      console.log($ttl_qty);
     });
-        
-  })
+  });
 </script>
 
 {% schema %}
