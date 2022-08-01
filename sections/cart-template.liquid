@@ -99,7 +99,7 @@
                 <div class="pack-input-information">
                 {%- for p in properties -%}
                   {% assign wtd_data_pack = p.last | split: ", " %}
-
+                  {{ wtd_data_pack }}
                   {% for pack_qty in wtd_data_pack %}
                     {{ pack_qty }}
                     <input type="number" style="width: 70px;" value="{{ pack_qty }}" min="1" />
