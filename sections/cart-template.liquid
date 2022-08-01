@@ -363,8 +363,8 @@
       } else {
         console.log("errr");
         $(this).next().hide();
-        $(this).next().find(p).text("Pack is not available.");
-        $(this).next().find(p).show();
+        $(this).next('p').text("Pack is not available.");
+        $(this).next('p').show();
       }
     });
   });
