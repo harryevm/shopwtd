@@ -305,6 +305,7 @@
             </td> 
             <td class="row_qty_td">
               <input type="number" name="product-pack-quantity" class="row_qty_input" min="0" value="0" data-row="{{ cnt_class_num }}" />
+              <p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; bottom: 0; right: 0; display: none'></p>
             </td>
             <td class="row_units_td">
             {% for size_option_inner in product.options_with_values %}
