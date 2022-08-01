@@ -102,6 +102,7 @@
                 {%- for p in properties -%}
                   <input class="wtd_update_pack" type="number" style="width: 70px;" data-meta-pack="{{ beatles.last }}" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
                   <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" value="Update" style="display:none">
+                  <p class="wtd_pack_err"></p>
                 {%- endfor -%}
                 <div>
               </td>
@@ -340,6 +341,7 @@
 
 <script>
   $(document).ready(function () {
+    $update_cart = "";
     $(".wtd_update_pack").on("click", function(){
       var $ttl_qty = 0;
       $(this).next().show();
@@ -347,20 +349,18 @@
       var $data_variant_id = $(this).attr("data-variant-id");
       var $data_max_qty    = $(this).attr("data-max-qty");
       var $curr_pack_val   = $(this).val();
-      console.log($(this).val());
-      var $meta_pack_arr = $data_meta_pack.split("-");
-      console.log($meta_pack_arr);
+      var $meta_pack_arr   = $data_meta_pack.split("-");
       $($meta_pack_arr).each(function($idx, $val) {
-        console.log($val);
         console.log(parseInt($curr_pack_val)*parseInt($val));
         $ttl_qty += parseInt($curr_pack_val)*parseInt($val);
       });
       console.log($ttl_qty);
       if($data_max_qty > $ttl_qty) {
         console.log("update cart");
-        
+        $update_cart = { $data_variant_id: $ttl_qty };
       } else {
         $(this).next().hide();
+        $(this).next().find(p).text("Pack is not available.")
       }
     });
   });
