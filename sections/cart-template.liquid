@@ -101,8 +101,9 @@
                   {% assign wtd_data = p.last %}
                   {% assign wtd_data_pack = wtd_data | split: "," %}
                   {{ wtd_data_pack.first }}
+                    <input type="number" style="width: 70px;" value="{{ wtd_data_pack.first }}" min="1" />
+                  
                   {% for pack_qty in wtd_data_pack %}
-                    <input type="number" style="width: 70px;" value="{{ pack_qty.first }}" min="1" />
                   {% endfor %}                  
                 {%- endfor -%}
                 <div>
