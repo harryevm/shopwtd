@@ -652,18 +652,7 @@ $('.product-single__thumbnail-image').click(function(){
   // Start This function for indiviual onchange pack button
   $(document).ready(function() {
     var productIds={};
-    // $(".row_size_span").each(function($i_val, $val_html) {
-    // 	var newvalue = $(this).attr('data-wtd-name');
-    //     if(productIds[newvalue]){
-    //       $(this).prev().remove();
-    //        $(this).remove();
-          
-    //     }else{
-    //        productIds[newvalue] = true;
-    //     }
-    // })
     $(".wtd_submit_atc").attr("disabled","disabled");
-
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault();
       var $maxVals = $(this).parent().prev().children('.row_size_span').attr('data-wtd-max-qty');
