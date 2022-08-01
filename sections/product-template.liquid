@@ -872,7 +872,7 @@ $('.product-single__thumbnail-image').click(function(){
           })
           var data_pack = $this_obj.attr("data-pack");
           $this_obj.val(data_pack);
-         $("<p class='error_msg' style='color: #ff0000c7; font-size: 12px; margin: 0; bottom: 0; right: 0;'>AVAILABLE PACK: "+ data_pack +"</p>").insertAfter($this_obj);
+         $(".error_msg").text("AVAILABLE PACK: "+ data_pack);
           console.log('444444444444444444444444444');
         }
       
