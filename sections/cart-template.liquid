@@ -101,7 +101,7 @@
                 {% assign vari_id  = item_url | split: "=" %}
                 {%- for p in properties -%}
                   <input class="wtd_update_pack" type="number" style="width: 70px;" data-meta-pack="{{ beatles.last }}" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
-                  <input type="button" class="cart__submit btn btn--small-wide" value="Update" style="display:none">
+                  <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" value="Update" style="display:none">
                 {%- endfor -%}
                 <div>
               </td>
@@ -341,12 +341,21 @@
 <script>
   $(document).ready(function () {
     $(".wtd_update_pack").on("click", function(){
+      var $ttl_qty = 0;
       $(this).next().show();
-      $(this).val();
+      var $data_meta_pack  = $(this).attr("data-meta-pack");
+      var $data_variant_id = $(this).attr("data-variant-id");
+      var $data_max_qty    = $(this).attr("data-max-qty");
+      var $curr_pack_val   = $(this).val();
       console.log($(this).val());
+      var $meta_pack_arr = $data_meta_pack.split("-");
+      console.log($meta_pack_arr);
+      $($meta_pack_arr).each(function($idx, $val) {
+        $ttl_qty += parseInt($curr_pack_val)*parseInt($val);
+      });
+      console.log($ttl_qty);
     });
-        
-  })
+  });
 </script>
 
 {% schema %}
