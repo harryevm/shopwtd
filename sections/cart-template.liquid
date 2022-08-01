@@ -1,4 +1,4 @@
-{% if customer %}
+      {% if customer %}
 <div class="page-width" data-section-id="{{ section.id }}" data-section-type="cart-template" data-ajax-enabled="{{ section.settings.cart_ajax_enable }}">
 
   <div {% if cart.item_count == 0 %}class="hide" {% endif %}data-cart-wrapper>
@@ -102,7 +102,7 @@
                 {%- for p in properties -%}
                   <input class="wtd_update_pack" type="number" style="width: 70px;" data-meta-pack="{{ beatles.last }}" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
                   <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" value="Update" style="display:none">
-                  <p class="wtd_pack_err"></p>
+                  <p class="wtd_pack_err" style="display:none"></p>
                 {%- endfor -%}
                 <div>
               </td>
@@ -358,14 +358,13 @@
       if($data_max_qty > $ttl_qty) {
         console.log("update cart");
         $update_cart = { $data_variant_id: $ttl_qty };
-        $(this).next('p').text("Pack is not available.");
-        $(this).next('p').hide();
+        $(this).nextAll().eq(1).text("");
+        $(this).nextAll().eq(1).hide();
       } else {
         console.log("errr");
         $(this).next().hide();
         $(this).nextAll().eq(1).text("Pack is not available.");
-  $(this).nextAll().eq(2).text("Pack is not available.");
-        $(this).next('p').show();
+        $(this).nextAll().eq(1).show();
       }
     });
   });
