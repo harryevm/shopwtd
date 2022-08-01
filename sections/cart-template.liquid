@@ -99,13 +99,8 @@
                 <div class="pack-input-information">
                 {% assign item_url = item.url %}
                 {% assign vari_id = item_url | split: "=" %}
-                {{item.variant.inventory_quantity}}
                 {%- for p in properties -%}
-                  {% assign wtd_data = p.last %}
-                  {% assign wtd_data_pack = wtd_data | split: "," %}
-                    <input type="number" style="width: 70px;" data-variant-id="{{ vari_id.last }}" data-max-qty="{{ wtd_data_pack.last }}" value="{{ wtd_data_pack.first }}" min="1" />
-                  {% for pack_qty in wtd_data_pack %}
-                  {% endfor %}                  
+                  <input type="number" style="width: 70px;" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
                 {%- endfor -%}
                 <div>
               </td>
