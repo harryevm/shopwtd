@@ -633,7 +633,6 @@ $( '.color-option-item' ).on( "click", function() {
       $('.product-single__media').find('.zoomImg').attr('src' , colorvariant_img);
 
     });
-
 });  
 // end  
 
@@ -646,60 +645,32 @@ $('.product-single__thumbnail-image').click(function(){
 // End 
 
 // variable define
-  var $wtdItems      = [];
   var $wtdFormData   = {};
   var $invent_arr    = [];
   var $invent_arrpck = [];
   var $max_val_all   = 0;
-  var $ttl_pack      = 0;
-  
-
   // Start This function for indiviual onchange pack button
-  function chkIsMatch($items, $wtd_id, $pck_unit) {
-    const $isMatch = $items.some(element => {
-      if (element.id === $wtd_id) {
-        return $wtd_id;
-      } else {
-        return false;
-      }
-    });
-
-    if($isMatch) {
-      $wtdItems.forEach((element, index, items_arr) => {
-        if($isMatch == true && element.id == $wtd_id) {
-          $wtdItems[index].quantity = $pck_unit;
-        }
-      });
-
-    } else {
-      $items.push({'id': $wtd_id, 'quantity': $pck_unit});
-    }
-    return $items
-  }
-  
   $(document).ready(function() {
     var productIds={};
-    $(".row_size_span").each(function($i_val, $val_html) {
-     
-    	var newvalue = $(this).attr('data-wtd-name');
-        if(productIds[newvalue]){
-          $(this).prev().remove();
-           $(this).remove();
+    // $(".row_size_span").each(function($i_val, $val_html) {
+    // 	var newvalue = $(this).attr('data-wtd-name');
+    //     if(productIds[newvalue]){
+    //       $(this).prev().remove();
+    //        $(this).remove();
           
-        }else{
-           productIds[newvalue] = true;
-        }
-    })
+    //     }else{
+    //        productIds[newvalue] = true;
+    //     }
+    // })
     $(".wtd_submit_atc").attr("disabled","disabled");
-    
+
     $("input[name=product-pack-quantity]").on("change", function(e) {
       e.preventDefault();
-      
       var $maxVals = $(this).parent().prev().children('.row_size_span').attr('data-wtd-max-qty');
       $(this).attr({ "max" : $maxVals, "min" : 0 });
       var $product_price    = $(".product__price .price__regular span span").text().split(" ");
       var $money_symbol     = $product_price[0];
-          $money_symbol = $money_symbol.substring(0, 1);
+          $money_symbol     = $money_symbol.substring(0, 1);
       var $specific_invt_arr= [];
       var $max_val_qty_arr  = [];
       var $wtd_vari_pc_arr  = [];
