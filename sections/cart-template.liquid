@@ -103,7 +103,7 @@
                 {%- for p in properties -%}
                   {% assign wtd_data = p.last %}
                   {% assign wtd_data_pack = wtd_data | split: "," %}
-                    <input type="number" style="width: 70px;-moz-appearance: textfield;" data-variant-id="{{ vari_id.last }}" data-max-qty="{{ wtd_data_pack.last }}" value="{{ wtd_data_pack.first }}" min="1" />
+                    <input type="number" style="width: 70px;" data-variant-id="{{ vari_id.last }}" data-max-qty="{{ wtd_data_pack.last }}" value="{{ wtd_data_pack.first }}" min="1" />
                   {% for pack_qty in wtd_data_pack %}
                   {% endfor %}                  
                 {%- endfor -%}
