@@ -351,9 +351,16 @@
       var $meta_pack_arr = $data_meta_pack.split("-");
       console.log($meta_pack_arr);
       $($meta_pack_arr).each(function($idx, $val) {
+        console.log($val);
+        console.log(parseInt($curr_pack_val)*parseInt($val));
         $ttl_qty += parseInt($curr_pack_val)*parseInt($val);
       });
       console.log($ttl_qty);
+      if($data_max_qty > $ttl_qty) {
+        
+      } else {
+        $(this).next().hide();
+      }
     });
   });
 </script>
