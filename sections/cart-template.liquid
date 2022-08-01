@@ -100,19 +100,8 @@
                 {%- for p in properties -%}
                   {% assign wtd_data = p.last %}
                   {% assign wtd_data_pack = wtd_data | split: "," %}
-
-                  {% assign beatles = wtd_data | split: ", " %}
-
-{% for member in beatles %}
-  {{ member }}
-{% endfor %}
-
-                  
-                  {{ wtd_data_pack }}
                   {% for pack_qty in wtd_data_pack %}
-                    {{ pack_qty }}
                     <input type="number" style="width: 70px;" value="{{ pack_qty }}" min="1" />
-                    
                   {% endfor %}                  
                 {%- endfor -%}
                 <div>
