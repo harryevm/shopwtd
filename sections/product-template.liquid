@@ -714,6 +714,7 @@ $('.product-single__thumbnail-image').click(function(){
       var $current_qty      = $(this).val();
       var $data_row_id      = $(this).attr("data-row");
       // $(".error_msg").remove();
+      $this_obj.next().css("display", "none");
       var $qty_row;
       
       
