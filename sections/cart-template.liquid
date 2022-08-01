@@ -354,7 +354,7 @@
         console.log(parseInt($curr_pack_val)*parseInt($val));
         $ttl_qty += parseInt($curr_pack_val)*parseInt($val);
       });
-      console.log($ttl_qty);
+      console.log($data_variant_id);
       if($data_max_qty > $ttl_qty) {
         console.log("update cart");
         $update_cart = { $data_variant_id: $ttl_qty };
