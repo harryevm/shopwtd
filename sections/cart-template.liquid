@@ -99,7 +99,7 @@
                 <div class="pack-input-information">
                 {% assign item_url = item.url %}
                 {% assign vari_id = item_url | split: "=" %}
-                {{lineitem.variant.inventory_quantity}}
+                {{item.variant.inventory_quantity}}
                 {%- for p in properties -%}
                   {% assign wtd_data = p.last %}
                   {% assign wtd_data_pack = wtd_data | split: "," %}
