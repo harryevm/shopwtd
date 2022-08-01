@@ -101,19 +101,17 @@
                   {% assign wtd_data = p.last %}
                   {% assign wtd_data_pack = wtd_data | split: "," %}
                     <input type="number" style="width: 70px;" data-max-qty="{{ wtd_data_pack.last }}" value="{{ wtd_data_pack.first }}" min="1" />
-                  
                   {% for pack_qty in wtd_data_pack %}
                   {% endfor %}                  
                 {%- endfor -%}
                 <div>
               </td>
-              <td class="cart__price text-right">
 
+              <td class="cart__price text-right">
                 {%- assign hasDiscount = false -%}
                 {%- if item.original_price != item.final_price -%}
                   {%- assign hasDiscount = true -%}
                 {%- endif -%}
-
                 <div data-cart-item-price>
                   <dl data-cart-item-price-list>
                     {%- comment -%}
