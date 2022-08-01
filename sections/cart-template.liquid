@@ -358,12 +358,13 @@
       if($data_max_qty > $ttl_qty) {
         console.log("update cart");
         $update_cart = { $data_variant_id: $ttl_qty };
-        $(this).next().find(p).text("");
-        $(this).next().find(p).hide();
+        $(this).next('p').text("Pack is not available.");
+        $(this).next('p').hide();
       } else {
         console.log("errr");
         $(this).next().hide();
-        $(this).next('p').text("Pack is not available.");
+        $(this).nextAll().eq(1).text("Pack is not available.");
+  $(this).nextAll().eq(2).text("Pack is not available.");
         $(this).next('p').show();
       }
     });
