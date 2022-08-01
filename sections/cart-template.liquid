@@ -97,6 +97,7 @@
               </td>
               <td>
                 <div class="pack-input-information">
+            {{ item.url }}
                 {%- for p in properties -%}
                   {% assign wtd_data = p.last %}
                   {% assign wtd_data_pack = wtd_data | split: "," %}
