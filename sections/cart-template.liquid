@@ -340,7 +340,7 @@
 
 <script>
   $(document).ready(function () {
-    $(".wtd_update_pack").on("click", function(){ 
+    $(".wtd_update_pack").on("click", function(){
       var $ttl_qty = 0;
       $(this).next().show();
       var $data_meta_pack  = $(this).attr("data-meta-pack");
@@ -358,6 +358,7 @@
       console.log($ttl_qty);
       if($data_max_qty > $ttl_qty) {
         console.log("update cart");
+        
       } else {
         $(this).next().hide();
       }
