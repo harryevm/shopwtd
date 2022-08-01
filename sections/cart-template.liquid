@@ -100,8 +100,8 @@
                 {% assign item_url = item.url %}
                 {% assign vari_id = item_url | split: "=" %}
                 {%- for p in properties -%}
-                  <input type="number" style="width: 70px;" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
-                  <input type="button" class="cart__submit btn btn--small-wide" value="Update">
+                  <input class="wtd_update_pack" type="number" style="width: 70px;" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
+                  <input type="button" class="cart__submit btn btn--small-wide" value="Update" style="display:none">
                 {%- endfor -%}
                 <div>
               </td>
@@ -338,7 +338,14 @@
 </script>
 {% endif %}
 
-
+<script>
+  $(document).ready(function () {
+    $(".wtd_update_pack").on("click", funtion() {
+      $(this).next().show();
+      $(this).val();
+    })
+  })
+</script>
 
 {% schema %}
 {
