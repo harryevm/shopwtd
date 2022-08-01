@@ -346,12 +346,12 @@
       var $data_meta_pack  = $(this).attr("data-meta-pack");
       var $data_variant_id = $(this).attr("data-variant-id");
       var $data_max_qty    = $(this).attr("data-max-qty");
-      var $curr_pack_val   = $(this).val();
+      var curr_pack_val   = $(this).val();
       console.log($(this).val());
-      var $meta_pack_arr = $data_meta_pack.split("-");
-      console.log($meta_pack_arr);
-      $($meta_pack_arr).each(function($idx, $val) {
-        $ttl_qty += parseInt($curr_pack_val)*parseInt($val);
+      var meta_pack_arr = $data_meta_pack.split("-");
+      console.log(meta_pack_arr);
+      $(meta_pack_arr).each(function($idx, $val) {
+        $ttl_qty += parseInt(curr_pack_val)*parseInt($val);
       });
       console.log($ttl_qty);
     });
