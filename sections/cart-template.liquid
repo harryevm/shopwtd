@@ -99,9 +99,6 @@
                 <div class="pack-input-information">
                 {% assign item_url = item.url %}
                 {% assign vari_id  = item_url | split: "=" %}
-                {% assign meta_val = item.product.metafields.custom.product_sizes | split: "||" %}
-              {{ meta_val.last }}
-                    {{ meta_val.last | replace: "-", "/"}}
                 {%- for p in properties -%}
                   <input class="wtd_update_pack" type="number" style="width: 70px;" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
                   <input type="button" class="cart__submit btn btn--small-wide" value="Update" style="display:none">
