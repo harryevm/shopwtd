@@ -408,8 +408,16 @@
       let $update_cart_obj = Object.keys($items_cart).length;
       if ($update_cart_obj && $update_cart_obj != "") {
         console.log("333333");
+        fetch(window.Shopify.routes.root + 'cart/change.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify($items_cart)
+        })
       }
     });
+    
     $("input[name=update]").on("click", function() {
       
     })
