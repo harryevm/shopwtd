@@ -371,12 +371,12 @@
       console.log($data_variant_id);
       if($data_max_qty > $ttl_qty) {
         $(this).next().show();
-        console.log("update cart");
-        $update_cart = $update_cart[$data_variant_id] = $ttl_qty;
         $(this).nextAll().eq(1).text("");
         $(this).nextAll().eq(1).hide();
-        var aaa = $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
-        console.log(aaa);
+        $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
+        $update_cart.push({$data_variant_id: $ttl_qty});
+        console.log("update cart");
+        
       } else {
         console.log("errr");
         $(this).next().hide();
