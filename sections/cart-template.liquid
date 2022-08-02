@@ -379,7 +379,6 @@
           let items = cart.items;
           console.log(items);
           console.log(items.length);
-          // for(let $i = 0; $i < items.length; i++){
           $(items).each(function($idx, $cart_val) {
             console.log($cart_val);
             console.log($cart_val.variant_id);
@@ -387,14 +386,8 @@
               $items_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               $items_all_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
             }
-
           });
         });
-        // $items_cart[$data_variant_id]     = $ttl_qty;
-        // $items_all_cart[$data_variant_id] = $ttl_qty;
-    //     $items_all_cart[$data_variant_id] = ]properties: {
-    //   'First name': 'Caroline'
-    // }
         console.log("update cart");
       } else {
         console.log("errr");
