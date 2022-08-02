@@ -381,17 +381,17 @@
           console.log(items.length);
           for(let i=0; i < items.length; i++){
             console.log(items[i].variant_id);
-          //   if (items[i].variant_id == $data_variant_id) {
-          //     $items_cart.push(
-          //       {
-          //         'id': $data_variant_id,
-          //         'quantity': $ttl_qty,
-          //         'properties': {
-          //           'Pack': $curr_pack_val
-          //         }
-          //       }
-          //     );
-          //   }
+            if (items[i].variant_id == $data_variant_id) {
+              $items_cart.push(
+                {
+                  'id': $data_variant_id,
+                  'quantity': $ttl_qty,
+                  'properties': {
+                    'Pack': $curr_pack_val
+                  }
+                }
+              );
+            }
 
             setTimeout(function(){
               return false;
