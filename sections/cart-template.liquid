@@ -367,7 +367,6 @@
       let $curr_pack_val   = $(this).val();
       let $meta_pack_arr   = $data_meta_pack.split("-");
       $($meta_pack_arr).each(function($idx, $val) {
-        console.log(parseInt($curr_pack_val)*parseInt($val));
         $ttl_qty += parseInt($curr_pack_val)*parseInt($val);
       });
       console.log($data_variant_id);
