@@ -381,7 +381,8 @@
           console.log(items.length);
           // for(let $i = 0; $i < items.length; i++){
           $(items).each(function($idx, $cart_val) {
-            console.log($cart_val[$idx].variant_id);
+            console.log($cart_val);
+            console.log($cart_val.variant_id);
             // if (items[$i].variant_id == $data_variant_id) {
             //   $items_cart.push({'line': $i,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
             //   $items_all_cart.push({'line': $i,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
@@ -404,7 +405,7 @@
       setTimeout(function(){
         console.log("$items_cart");
         console.log($items_cart);
-      }, 1000);
+      }, 2000);
 
       // console.log($items_all_cart);
     });
