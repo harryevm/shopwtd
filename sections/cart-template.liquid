@@ -428,17 +428,8 @@
           },
           body: JSON.stringify($items_cart)
         }).then(response => {
-          var sucess_obj = response.json();
+          var sucess_obj = response;
           console.log(sucess_obj);
-          // $('.cart_success_msg').remove();
-          // if(sucess_obj){
-          //   $('.wtd_submit_atc').after('<span class="cart_success_msg"> Items Added to Cart </span>');
-          //   // window.location.href = window.Shopify.routes.root + 'cart/';
-          //   //  localStorage.setItem("mytime", Date.now());
-          //   setTimeout(function(){
-          //     $('.cart_success_msg').remove();
-          //   }, 5000);
-          // }
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -447,7 +438,7 @@
     });
     
     $("input[name=update]").on("click", function() {
-      
+      .console.log($items_all_cart);
     })
   });
 </script>
