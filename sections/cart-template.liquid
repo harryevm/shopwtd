@@ -361,7 +361,7 @@
         $(this).nextAll().eq(1).text("");
         $(this).nextAll().eq(1).hide();
         var aa = $(this).closest('.cart__row').children('.cart__qty-input');
-        var aaa = $(this).parents(".cart__row").children(".cart__qty-input");
+        var aaa = $(this).parents(".cart__row").find(".cart__qty-input");
 
         console.log(aa);
         console.log(aaa);
