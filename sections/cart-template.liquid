@@ -360,7 +360,7 @@
     $(".wtd_update_pack").on("change", function(){
       var $ttl_qty         = 0;
       var $data_meta_pack  = $(this).attr("data-meta-pack");
-      var data_variant_id = $(this).attr("data-variant-id");
+      var $data_variant_id = $(this).attr("data-variant-id").toString();
       var $data_max_qty    = $(this).attr("data-max-qty");
       var $curr_pack_val   = $(this).val();
       var $meta_pack_arr   = $data_meta_pack.split("-");
@@ -368,13 +368,13 @@
         console.log(parseInt($curr_pack_val)*parseInt($val));
         $ttl_qty += parseInt($curr_pack_val)*parseInt($val);
       });
-      console.log(data_variant_id);
+      console.log($data_variant_id);
       if($data_max_qty > $ttl_qty) {
         $(this).next().show();
         $(this).nextAll().eq(1).text("");
         $(this).nextAll().eq(1).hide();
         $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
-        $update_cart.push({data_variant_id: $ttl_qty});
+        $update_cart.push({$data_variant_id: $ttl_qty});
         console.log("update cart");
         
       } else {
