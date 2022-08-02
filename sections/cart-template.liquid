@@ -381,15 +381,20 @@
           console.log(items);
           console.log(items.length);
           $(items).each(function($idx, $cart_val) {
+            let $properties_obj = {};
             console.log($cart_val);
             console.log($cart_val.variant_id);
             if ($cart_val.variant_id == $data_variant_id) {
               $items_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               $items_all_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+
+              $properties_obj['Pack']   = $curr_pack_val;
               
-              // $items_cart[$data_variant_id]     = $ttl_qty;
+              $items_cart['line']       = $idx+1;
+              $items_cart['quantity']   = $ttl_qty;
+              $items_cart['properties'] = $properties_obj;
+              
               // $items_all_cart[$data_variant_id] = $ttl_qty;
-                    
             }
           });
           $(this).nextAll().eq(0).attr("disabled", false);
