@@ -388,11 +388,11 @@
               // $items_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               // $items_all_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               $properties_obj['Pack']   = $curr_pack_val;
-              $items_cart['line']       = $idx+1;
+              $items_cart['id']       = $data_variant_id;
               $items_cart['quantity']   = $ttl_qty;
               $items_cart['properties'] = $properties_obj;
 
-              $items_all_cart['line']       = $idx+1;
+              $items_all_cart['id']       = $idx+1;
               $items_all_cart['quantity']   = $ttl_qty;
               $items_all_cart['properties'] = $properties_obj;
               // $items_all_cart[$data_variant_id] = $ttl_qty;
