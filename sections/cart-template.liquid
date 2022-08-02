@@ -345,8 +345,10 @@
     $flag = 0;
     $(".wtd_update_pack").on("click", function(){
       console.log(11111111);
-      if($flag == 0)
+      if($flag == 0) {
         $(this).next().show();
+        $flag = 1;
+      }
     });
     
     $(".wtd_update_pack").on("change", function(){
