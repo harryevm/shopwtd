@@ -344,9 +344,7 @@
     $update_cart = "";
     $flag = 0;
     $(".wtd_update_pack").on("click", function(){
-      console.log(11111111);
       if($flag == 0) {
-        console.log(33333);
         $(this).next().show();
         $flag = 1;
       }
@@ -366,6 +364,7 @@
       });
       console.log($data_variant_id);
       if($data_max_qty > $ttl_qty) {
+        $(this).next().show();
         console.log("update cart");
         $update_cart = { $data_variant_id: $ttl_qty };
         $(this).nextAll().eq(1).text("");
