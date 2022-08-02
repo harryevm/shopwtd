@@ -383,10 +383,10 @@
           $(items).each(function($idx, $cart_val) {
             console.log($cart_val);
             console.log($cart_val.variant_id);
-            // if (items[$i].variant_id == $data_variant_id) {
-            //   $items_cart.push({'line': $i,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-            //   $items_all_cart.push({'line': $i,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-            // }
+            if ($cart_val.variant_id == $data_variant_id) {
+              $items_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              $items_all_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+            }
 
           });
         });
