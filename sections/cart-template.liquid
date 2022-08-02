@@ -356,9 +356,9 @@
       }
     });
     
-    let $update_all_cart = [];
+    let $update_all_cart = {};
     $(".wtd_update_pack").on("change", function(){
-      let $update_cart     = [];
+      let $update_cart     = {};
       let $ttl_qty         = 0;
       let $data_meta_pack  = $(this).attr("data-meta-pack");
       let $data_variant_id = $(this).attr("data-variant-id");
@@ -385,8 +385,8 @@
         $(this).nextAll().eq(1).show();
       }
 
-      console.log(JSON.stringify($update_cart));
-      console.log(JSON.stringify($update_all_cart));
+      console.log($update_cart);
+      console.log($update_all_cart);
     });
 
     $(".wtd_update_qty").on("click", function() {
