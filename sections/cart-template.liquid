@@ -341,6 +341,13 @@
 
 <script>
   $(document).ready(function () {
+    $(document).keypress(
+      function(event){
+        if (event.which == '13') {
+          event.preventDefault();
+        }
+    });
+        
     $update_cart = "";
     $flag = 0;
     $(".wtd_update_pack").on("click", function(){
