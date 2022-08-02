@@ -344,11 +344,12 @@
     $update_cart = "";
     $(".wtd_update_pack").on("click", function(){
       console.log(11111111);
-      $(this).next().show();
+      // $(this).next().show();
     });
     
     $(".wtd_update_pack").on("change", function(){
       console.log(222222222);
+      $(this).next().show();
       var $ttl_qty         = 0;
       var $data_meta_pack  = $(this).attr("data-meta-pack");
       var $data_variant_id = $(this).attr("data-variant-id");
