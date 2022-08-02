@@ -356,10 +356,10 @@
       }
     });
     
-    let $update_all_cart = [];
-    let $items_cart      = [];
+    let $items_all_cart = [];
+    let $items_cart     = [];
     $(".wtd_update_pack").on("change", function(){
-      $items_cart      = [];
+      $items_cart          = [];
       let $ttl_qty         = 0;
       let $data_meta_pack  = $(this).attr("data-meta-pack");
       let $data_variant_id = $(this).attr("data-variant-id");
@@ -379,18 +379,11 @@
           let items = cart.items;
           console.log(items);
           console.log(items.length);
-          for(let i=0; i < items.length; i++){
-            console.log(items[i].variant_id);
-            if (items[i].variant_id == $data_variant_id) {
-              $items_cart.push(
-                {
-                  'id': $data_variant_id,
-                  'quantity': $ttl_qty,
-                  'properties': {
-                    'Pack': $curr_pack_val
-                  }
-                }
-              );
+          for(let $i = 0; $i < items.length; i++){
+            console.log(items[$i].variant_id);
+            if (items[$i].variant_id == $data_variant_id) {
+              $items_cart.push({'line': $i,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              $items_all_cart.push({'line': $i,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
             }
 
             setTimeout(function(){
@@ -399,8 +392,8 @@
           }
         });
         // $items_cart[$data_variant_id]     = $ttl_qty;
-        // $update_all_cart[$data_variant_id] = $ttl_qty;
-    //     $update_all_cart[$data_variant_id] = ]properties: {
+        // $items_all_cart[$data_variant_id] = $ttl_qty;
+    //     $items_all_cart[$data_variant_id] = ]properties: {
     //   'First name': 'Caroline'
     // }
         console.log("update cart");
@@ -415,7 +408,7 @@
         console.log($items_cart);
       }, 1000);
 
-      // console.log($update_all_cart);
+      // console.log($items_all_cart);
     });
 
     $(".wtd_update_qty").on("click", function() {
