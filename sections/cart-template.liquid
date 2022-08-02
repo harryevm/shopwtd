@@ -377,6 +377,7 @@
         $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
         jQuery.getJSON('/cart.js', function(cart) {
           let items = cart.items;
+          console.log(items);
           console.log(items.length);
           // for(let init=0; init < items.length; i++){
           //   console.log(items[init].variant_id);
