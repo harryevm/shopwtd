@@ -360,6 +360,8 @@
         $update_cart = { $data_variant_id: $ttl_qty };
         $(this).nextAll().eq(1).text("");
         $(this).nextAll().eq(1).hide();
+        $(this).closest('.cart__row').children('.cart__qty-input').val($ttl_qty);
+
       } else {
         console.log("errr");
         $(this).next().hide();
