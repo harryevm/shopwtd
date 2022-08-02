@@ -379,17 +379,15 @@
           let items = cart.items;
           console.log(items);
           console.log(items.length);
-          for(let $i = 0; $i < items.length; i++){
-            console.log(items[$i].variant_id);
-            if (items[$i].variant_id == $data_variant_id) {
-              $items_cart.push({'line': $i,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-              $items_all_cart.push({'line': $i,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-            }
+          // for(let $i = 0; $i < items.length; i++){
+          $($meta_pack_arr).each(function($idx, $cart_val) {
+            console.log($cart_val[$idx].variant_id);
+            // if (items[$i].variant_id == $data_variant_id) {
+            //   $items_cart.push({'line': $i,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+            //   $items_all_cart.push({'line': $i,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+            // }
 
-            setTimeout(function(){
-              return false;
-            }, 5000);
-          }
+          });
         });
         // $items_cart[$data_variant_id]     = $ttl_qty;
         // $items_all_cart[$data_variant_id] = $ttl_qty;
