@@ -379,9 +379,9 @@
           let items = cart.items;
           console.log(items);
           console.log(items.length);
-          for(let init=0; init < items.length; i++){
-            console.log(items[init].variant_id);
-            if (items[init].variant_id == $data_variant_id) {
+          for(let i=0; i < items.length; i++){
+            console.log(items[i].variant_id);
+            if (items[i].variant_id == $data_variant_id) {
               $items_cart.push(
                 {
                   'id': $data_variant_id,
