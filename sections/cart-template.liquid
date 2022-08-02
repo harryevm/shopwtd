@@ -390,9 +390,9 @@
 
               $properties_obj['Pack']   = $curr_pack_val;
               
-              $items_cart['line']       = $idx;
+              $items_cart['line']       = $idx+1;
               $items_cart['quantity']   = $ttl_qty;
-              // $items_cart['properties'] = $properties_obj;
+              $items_cart['properties'] = $properties_obj;
               
               // $items_all_cart[$data_variant_id] = $ttl_qty;
             }
