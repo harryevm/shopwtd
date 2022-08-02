@@ -294,7 +294,7 @@
             <div class="cart__buttons-container">
               <div class="cart__submit-controls">
                 {%- unless section.settings.cart_ajax_enable -%}
-                <input type="submit" name="update"
+                <input type="button" name="update"
                   class="cart__submit btn btn--secondary"
                   value="{{ 'cart.general.update' | t }}">
                 {%- endunless -%}
@@ -347,7 +347,7 @@
           event.preventDefault();
         }
     });
-        
+    
     $update_cart = "";
     $flag = 0;
     $(".wtd_update_pack").on("click", function(){
@@ -358,7 +358,6 @@
     });
     
     $(".wtd_update_pack").on("change", function(){
-      console.log(222222222);
       var $ttl_qty         = 0;
       var $data_meta_pack  = $(this).attr("data-meta-pack");
       var $data_variant_id = $(this).attr("data-variant-id");
@@ -373,7 +372,7 @@
       if($data_max_qty > $ttl_qty) {
         $(this).next().show();
         console.log("update cart");
-        $update_cart = { $data_variant_id: $ttl_qty };
+        $update_cart = { '$data_variant_id': $ttl_qty };
         $(this).nextAll().eq(1).text("");
         $(this).nextAll().eq(1).hide();
         var aaa = $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
@@ -387,6 +386,13 @@
 
       console.log($update_cart);
     });
+
+    $(".wtd_update_qty").on("click", function() {
+      console.log($update_cart);
+    });
+    $("input[name=update]").on("click", function() {
+      
+    })
   });
 </script>
 
