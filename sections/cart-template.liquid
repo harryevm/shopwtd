@@ -102,7 +102,7 @@
                 {% assign vari_id  = item_url | split: "=" %}
                 {%- for p in properties -%}
                   <input class="wtd_update_pack" type="number" style="width: 70px;" data-meta-pack="{{ beatles.last }}" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
-                  <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" value="Update" data-line-upd="{{ forloop_idx }}" style="display:none">
+                  <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" value="Update" data-line-upd="{{ forloop_idx }}" data-variant-updid="{{ vari_id.last }}" style="display:none">
                   <p class="wtd_pack_err" style="display:none"></p>
                 {%- endfor -%}
                 <div>
@@ -374,20 +374,22 @@
       if($data_max_qty > $ttl_qty) {
         $(this).next().show();
         $(this).nextAll().eq(1).text("");
+        $(this).nextAll().eq(1).attr("data-pack-qty", $curr_pack_val);
+        $(this).nextAll().eq(1).attr("data-ttl-qty", $ttl_qty);
         $(this).nextAll().eq(1).hide();
         // $(this).nextAll().eq(0).attr("disabled", true);
         $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
         jQuery.getJSON('/cart.js', function(cart) {
           let items = cart.items;
           
-          $(items).each(function($idx, $cart_val) {
-            $idx = $idx + 1;
+          // $(items).each(function($idx, $cart_val) {
+            // $idx = $idx + 1;
             // console.log($idx);
             // $.inArray($idx, $check_arr) === -1 && 
             if ($cart_val.variant_id == $data_variant_id) {
-              $check_arr.push($idx);
-              // $items_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-              $items_all_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              // $check_arr.push($idx);
+              // // $items_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              // $items_all_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
              
               // $properties_obj['Pack']   = $curr_pack_val;
               // $items_cart['id']       = $data_variant_id;
@@ -409,17 +411,18 @@
         $(this).nextAll().eq(1).text("Pack is not available.");
         $(this).nextAll().eq(1).show();
       }
-      setTimeout(function(){
-        $(this).nextAll().eq(0).attr("disabled", false);
-        // console.log("$items_cart");
-        console.log($items_all_cart);
+      // setTimeout(function(){
+      //   $(this).nextAll().eq(0).attr("disabled", false);
+      //   // console.log("$items_cart");
+      //   console.log($items_all_cart);
 
-        $items_all_cart.sort();
-        console.log($items_all_cart);
-      }, 1000);
+      //   $items_all_cart.sort();
+      //   console.log($items_all_cart);
+      // }, 1000);
     });
 
-    $(".wtd_update_qty, input[name=update]").on("click", function(e) {
+    // , input[name=update]"
+    $(".wtd_update_qty).on("click", function(e) {
       e.preventDefault();
       console.log($items_all_cart);
       let $updid = $(this).attr("data-line-upd");
