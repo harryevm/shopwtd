@@ -98,7 +98,6 @@
               <td>
                 <div class="pack-input-information">
                 {% assign forloop_idx = forloop.index %}
-            {{ forloop_idx }}
                 {% assign item_url = item.url %}
                 {% assign vari_id  = item_url | split: "=" %}
                 {%- for p in properties -%}
