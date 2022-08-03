@@ -378,11 +378,13 @@
         $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
         jQuery.getJSON('/cart.js', function(cart) {
           let items = cart.items;
+          
           $(items).each(function($idx, $cart_val) {
-            let $properties_obj = {};
+            // let $properties_obj = {};
             if ($cart_val.variant_id == $data_variant_id) {
               $items_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               $items_all_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+             
               // $properties_obj['Pack']   = $curr_pack_val;
               // $items_cart['id']       = $data_variant_id;
               // $items_cart['quantity']   = $ttl_qty;
