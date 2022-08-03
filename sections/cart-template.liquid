@@ -433,7 +433,7 @@
           let $pack_qty    = $($items_val).attr("data-pack-qty");
           let $ttl_qty     = $($items_val).attr("data-ttl-qty");
           $properties_obj['Pack']   = $pack_qty;
-          $items_cart['line']       = $line_id;
+          $items_cart['line']       = $line_id_new;
           $items_cart['quantity']   = $ttl_qty;
           $items_cart['properties'] = $properties_obj;
           if ($pack_qty != "" && $line_id != "" && $ttl_qty != "") {
