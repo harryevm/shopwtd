@@ -356,10 +356,10 @@
       }
     });
     
-    let $items_all_cart = {};
-    let $items_cart     = {};
+    let $items_all_cart = [];
+    let $items_cart     = [];
     $(".wtd_update_pack").on("change", function(){
-      $items_cart          = {};
+      $items_cart          = [];
       let $ttl_qty         = 0;
       let $data_meta_pack  = $(this).attr("data-meta-pack");
       let $data_variant_id = $(this).attr("data-variant-id");
@@ -369,7 +369,6 @@
       $($meta_pack_arr).each(function($idx, $val) {
         $ttl_qty += parseInt($curr_pack_val)*parseInt($val);
       });
-      console.log($data_variant_id);
       if($data_max_qty > $ttl_qty) {
         $(this).next().show();
         $(this).nextAll().eq(1).text("");
@@ -378,12 +377,8 @@
         $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
         jQuery.getJSON('/cart.js', function(cart) {
           let items = cart.items;
-          console.log(items);
-          console.log(items.length);
           $(items).each(function($idx, $cart_val) {
             let $properties_obj = {};
-            console.log($cart_val);
-            console.log($cart_val.variant_id);
             if ($cart_val.variant_id == $data_variant_id) {
               $items_cart.push({'id': $data_variant_id,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               $items_all_cart.push({'id': $data_variant_id,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
