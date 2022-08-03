@@ -101,7 +101,7 @@
                 {% assign vari_id  = item_url | split: "=" %}
                 {%- for p in properties -%}
                   <input class="wtd_update_pack" type="number" style="width: 70px;" data-meta-pack="{{ beatles.last }}" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
-                  <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" value="Update" data-variant-updid="{{ vari_id.last }}" style="display:none">
+                  <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" value="Update" data-line-upd="{{ forloop.index }}" style="display:none">
                   <p class="wtd_pack_err" style="display:none"></p>
                 {%- endfor -%}
                 <div>
@@ -414,8 +414,7 @@
     $(".wtd_update_qty").on("click", function(e) {
       e.preventDefault();
       console.log($items_all_cart);
-      // let $updid = $(this).attr("data-variant-updid");
-      let $updid = 2;
+      let $updid = $(this).attr("data-line-upd");
       let $items_all_cart_obj = Object.keys($items_all_cart).length;
       if ($items_all_cart_obj) {
         console.log("333333");
