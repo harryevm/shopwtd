@@ -382,7 +382,7 @@
             let $properties_obj = {};
             if ($cart_val.variant_id == $data_variant_id) {
               $items_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-              $items_all_cart.push({'id': $cart_val.variant_id,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              $items_all_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               // $properties_obj['Pack']   = $curr_pack_val;
               // $items_cart['id']       = $data_variant_id;
               // $items_cart['quantity']   = $ttl_qty;
@@ -421,8 +421,8 @@
         console.log("333333");
         $($items_all_cart).each(function($idx, $items_cart) {
           console.log($items_cart.line);
-          // if ($updid == "change")
-          // if ($items_cart.line == $updid) {
+          if ($updid == "change")
+          if ($items_cart.line == $updid) {
             fetch(window.Shopify.routes.root + 'cart/change.js', {
               method: 'POST',
               headers: {
@@ -436,7 +436,7 @@
             .catch((error) => {
               console.error('Error:', error);
             });
-          // } 
+          } 
         });
       }
     });
