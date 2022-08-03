@@ -295,7 +295,7 @@
             <div class="cart__buttons-container">
               <div class="cart__submit-controls">
                 {%- unless section.settings.cart_ajax_enable -%}
-                <input type="button" name="update"
+                <input type="button" name="update" data-line-upd="change"
                   class="cart__submit btn btn--secondary"
                   value="{{ 'cart.general.update' | t }}">
                 {%- endunless -%}
@@ -381,8 +381,8 @@
           $(items).each(function($idx, $cart_val) {
             let $properties_obj = {};
             if ($cart_val.variant_id == $data_variant_id) {
-              $items_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-              $items_all_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              $items_cart.push({'linee': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              $items_all_cart.push({'linee': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               // $properties_obj['Pack']   = $curr_pack_val;
               // $items_cart['id']       = $data_variant_id;
               // $items_cart['quantity']   = $ttl_qty;
@@ -421,9 +421,8 @@
         console.log("333333");
         $($items_all_cart).each(function($idx, $items_cart) {
           console.log($items_cart.line);
+          if ($updid == "change")
           if ($items_cart.line == $updid) {
-            console.log(44444444444);
-            console.log($items_cart);
             fetch(window.Shopify.routes.root + 'cart/change.js', {
               method: 'POST',
               headers: {
