@@ -101,7 +101,7 @@
                 {% assign vari_id  = item_url | split: "=" %}
                 {%- for p in properties -%}
                   <input class="wtd_update_pack" type="number" style="width: 70px;" data-meta-pack="{{ beatles.last }}" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
-                  <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" value="Update" style="display:none">
+                  <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" value="Update" data-variant-updid="{{ vari_id.last }}" style="display:none">
                   <p class="wtd_pack_err" style="display:none"></p>
                 {%- endfor -%}
                 <div>
@@ -385,16 +385,16 @@
             console.log($cart_val);
             console.log($cart_val.variant_id);
             if ($cart_val.variant_id == $data_variant_id) {
-              // $items_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-              // $items_all_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-              $properties_obj['Pack']   = $curr_pack_val;
-              $items_cart['id']       = $data_variant_id;
-              $items_cart['quantity']   = $ttl_qty;
-              $items_cart['properties'] = $properties_obj;
+              $items_cart.push({'id': $data_variant_id,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              $items_all_cart.push({'id': $data_variant_id,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              // $properties_obj['Pack']   = $curr_pack_val;
+              // $items_cart['id']       = $data_variant_id;
+              // $items_cart['quantity']   = $ttl_qty;
+              // $items_cart['properties'] = $properties_obj;
 
-              $items_all_cart['id']       = $idx+1;
-              $items_all_cart['quantity']   = $ttl_qty;
-              $items_all_cart['properties'] = $properties_obj;
+              // $items_all_cart['id']       = $data_variant_id;
+              // $items_all_cart['quantity']   = $ttl_qty;
+              // $items_all_cart['properties'] = $properties_obj;
               // $items_all_cart[$data_variant_id] = $ttl_qty;
             }
           });
@@ -418,22 +418,28 @@
 
     $(".wtd_update_qty").on("click", function() {
       console.log($items_cart);
-      let $update_cart_obj = Object.keys($items_cart).length;
-      if ($update_cart_obj && $update_cart_obj != "") {
+      let $updid = $(this).attr("data-variant-updid");
+      let $items_all_cart_obj = Object.keys($items_all_cart).length;
+      console.log($items_all_cart_obj);
+      if ($items_all_cart_obj) {
         console.log("333333");
-        fetch(window.Shopify.routes.root + 'cart/change.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify($items_cart)
-        }).then(response => {
-          var sucess_obj = response;
-          console.log(sucess_obj);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
+        $($items_all_cart_obj).each(function($idx, $items) {
+          console.log($items);
         });
+        
+        // fetch(window.Shopify.routes.root + 'cart/change.js', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   },
+        //   body: JSON.stringify($items_cart)
+        // }).then(response => {
+        //   var sucess_obj = response;
+        //   console.log(sucess_obj);
+        // })
+        // .catch((error) => {
+        //   console.error('Error:', error);
+        // });
       }
     });
     
