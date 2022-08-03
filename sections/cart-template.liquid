@@ -414,14 +414,14 @@
     $(".wtd_update_qty").on("click", function(e) {
       e.preventDefault();
       console.log($items_all_cart);
-      let $updid = $(this).attr("data-variant-updid");
+      // let $updid = $(this).attr("data-variant-updid");
+      let $updid = 2;
       let $items_all_cart_obj = Object.keys($items_all_cart).length;
       if ($items_all_cart_obj) {
         console.log("333333");
         $($items_all_cart).each(function($idx, $items_cart) {
-          console.log($items_cart.id);
-          console.log($items_cart.id);
-          if ($items_cart.id == $updid) {
+          console.log($items_cart.line);
+          if ($items_cart.line == $updid) {
             console.log(44444444444);
             console.log($items_cart);
             fetch(window.Shopify.routes.root + 'cart/change.js', {
