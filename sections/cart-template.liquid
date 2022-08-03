@@ -381,8 +381,8 @@
           $(items).each(function($idx, $cart_val) {
             let $properties_obj = {};
             if ($cart_val.variant_id == $data_variant_id) {
-              $items_cart.push({'linee': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-              $items_all_cart.push({'linee': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              $items_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              $items_all_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               // $properties_obj['Pack']   = $curr_pack_val;
               // $items_cart['id']       = $data_variant_id;
               // $items_cart['quantity']   = $ttl_qty;
