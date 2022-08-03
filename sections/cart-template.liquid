@@ -378,15 +378,15 @@
         $(this).nextAll().eq(1).attr("data-ttl-qty", $ttl_qty);
         $(this).nextAll().eq(1).hide();
         // $(this).nextAll().eq(0).attr("disabled", true);
-        $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
-        jQuery.getJSON('/cart.js', function(cart) {
-          let items = cart.items;
+        // $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
+        // jQuery.getJSON('/cart.js', function(cart) {
+        //   let items = cart.items;
           
           // $(items).each(function($idx, $cart_val) {
             // $idx = $idx + 1;
             // console.log($idx);
             // $.inArray($idx, $check_arr) === -1 && 
-            if ($cart_val.variant_id == $data_variant_id) {
+            // if ($cart_val.variant_id == $data_variant_id) {
               // $check_arr.push($idx);
               // // $items_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               // $items_all_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
