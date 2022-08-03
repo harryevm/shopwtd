@@ -374,8 +374,8 @@
       if($data_max_qty > $ttl_qty) {
         $(this).next().show();
         $(this).nextAll().eq(1).text("");
-        $(this).nextAll().eq(1).attr("data-pack-qty", $curr_pack_val);
-        $(this).nextAll().eq(1).attr("data-ttl-qty", $ttl_qty);
+        $(this).nextAll().eq(0).attr("data-pack-qty", $curr_pack_val);
+        $(this).nextAll().eq(0).attr("data-ttl-qty", $ttl_qty);
         $(this).nextAll().eq(1).hide();
         // $(this).nextAll().eq(0).attr("disabled", true);
         // $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
