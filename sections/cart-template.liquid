@@ -378,7 +378,7 @@
         $(this).nextAll().eq(0).attr("data-ttl-qty", $ttl_qty);
         $(this).nextAll().eq(1).hide();
         // $(this).nextAll().eq(0).attr("disabled", true);
-        // $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
+        $(this).parents(".cart__row").find(".cart__qty-input").val($ttl_qty);
         // jQuery.getJSON('/cart.js', function(cart) {
         //   let items = cart.items;
           
