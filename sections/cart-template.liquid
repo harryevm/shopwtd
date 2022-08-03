@@ -405,14 +405,15 @@
       setTimeout(function(){
         $(this).nextAll().eq(0).attr("disabled", false);
         console.log("$items_cart");
-        console.log($items_cart);
+        console.log($items_all_cart);
       }, 2000);
 
       // console.log($items_all_cart);
     });
 
-    $(".wtd_update_qty").on("click", function() {
-      console.log($items_cart);
+    $(".wtd_update_qty").on("click", function(e) {
+      e.preventDefault();
+      console.log($items_all_cart);
       let $updid = $(this).attr("data-variant-updid");
       let $items_all_cart_obj = Object.keys($items_all_cart).length;
       console.log($items_all_cart_obj);
