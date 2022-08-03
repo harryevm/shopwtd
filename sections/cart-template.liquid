@@ -410,7 +410,7 @@
       }, 1000);
     });
 
-    $(".wtd_update_qty").on("click", function(e) {
+    $(".wtd_update_qty, input[name=update]").on("click", function(e) {
       e.preventDefault();
       console.log($items_all_cart);
       let $updid = $(this).attr("data-line-upd");
