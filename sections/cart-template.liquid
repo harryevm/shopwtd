@@ -359,6 +359,7 @@
     
     let $items_all_cart = [];
     let $items_cart     = [];
+    let $check_arr      = [];
     $(".wtd_update_pack").on("change", function(){
       $items_cart          = [];
       let $ttl_qty         = 0;
@@ -380,10 +381,12 @@
           let items = cart.items;
           
           $(items).each(function($idx, $cart_val) {
-            // let $properties_obj = {};
-            if ($cart_val.variant_id == $data_variant_id) {
-              $items_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
-              $items_all_cart.push({'line': $idx+1,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+            $idx = $idx + 1;
+            console.log($idx);
+            if ($.inArray($idx, $check_arr) === -1 && $cart_val.variant_id == $data_variant_id) {
+              $check_arr.push($idx);
+              // $items_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
+              $items_all_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
              
               // $properties_obj['Pack']   = $curr_pack_val;
               // $items_cart['id']       = $data_variant_id;
@@ -407,7 +410,7 @@
       }
       setTimeout(function(){
         $(this).nextAll().eq(0).attr("disabled", false);
-        console.log("$items_cart");
+        // console.log("$items_cart");
         console.log($items_all_cart);
       }, 1000);
     });
