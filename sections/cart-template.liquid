@@ -422,25 +422,32 @@
     });
 
     // , input[name=update]"
+    $("input[name=update]").on("click", function(e) {
+      $(".wtd_update_qty").each(function($idx, $items_val) {
+        console.log($(this).val());
+        $(this).trigger( "click" );
+      });
+    });
+
     $(".wtd_update_qty, input[name=update]").on("click", function(e) {
       e.preventDefault();
       let $items_cart     = {};
       let $properties_obj = {}
       let $line_id  = $(this).attr("data-line-upd");
-      if ($line_id == "change") {
-        $(".wtd_update_qty").each(function($idx, $items_val) {
-          let $line_id_new = $(this).attr("data-line-upd");
-          let $pack_qty    = $($items_val).attr("data-pack-qty");
-          let $ttl_qty     = $($items_val).attr("data-ttl-qty");
-          $properties_obj['Pack']   = $pack_qty;
-          $items_cart['line']       = $line_id_new;
-          $items_cart['quantity']   = $ttl_qty;
-          $items_cart['properties'] = $properties_obj;
-          if ($pack_qty != "" && $line_id != "" && $ttl_qty != "") {
-            changeCartUpd($items_cart);
-          }
-        });
-      } else {
+      // if ($line_id == "change") {
+      //   $(".wtd_update_qty").each(function($idx, $items_val) {
+      //     let $line_id_new = $(this).attr("data-line-upd");
+      //     let $pack_qty    = $($items_val).attr("data-pack-qty");
+      //     let $ttl_qty     = $($items_val).attr("data-ttl-qty");
+      //     $properties_obj['Pack']   = $pack_qty;
+      //     $items_cart['line']       = $line_id_new;
+      //     $items_cart['quantity']   = $ttl_qty;
+      //     $items_cart['properties'] = $properties_obj;
+      //     if ($pack_qty != "" && $line_id != "" && $ttl_qty != "") {
+      //       changeCartUpd($items_cart);
+      //     }
+      //   });
+      // } else {
         let $pack_qty = $(this).attr("data-pack-qty");
         let $ttl_qty  = $(this).attr("data-ttl-qty");
         $properties_obj['Pack']   = $pack_qty;
@@ -450,7 +457,7 @@
         if ($pack_qty != "" && $line_id != "" && $ttl_qty != "") {
           changeCartUpd($items_cart);
         }
-      }
+      // }
       
 
       // let $items_all_cart_obj = Object.keys($items_all_cart).length;
