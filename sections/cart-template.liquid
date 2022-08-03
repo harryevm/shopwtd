@@ -434,8 +434,9 @@
       $items_cart['line']       = $line_id;
       $items_cart['quantity']   = $ttl_qty;
       $items_cart['properties'] = $properties_obj;
-      console.log($items_cart);
-            changeCartUpd($items_cart);
+      if ($pack_qty != "" && $line_id != "" && $ttl_qty != "") {
+        changeCartUpd($items_cart);
+      }
       
 
       // let $items_all_cart_obj = Object.keys($items_all_cart).length;
