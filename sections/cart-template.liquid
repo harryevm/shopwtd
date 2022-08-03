@@ -433,6 +433,8 @@
   });
   
   function changeCartUpd($items_cart) {
+    console.log("calcalaclac");
+    console.log($items_cart);
     fetch(window.Shopify.routes.root + 'cart/change.js', {
       method: 'POST',
       headers: {
@@ -442,7 +444,7 @@
     }).then(response => {
       var sucess_obj = response;
       if (sucess_obj.ok == true && sucess_obj.status == 200) {
-        location.reload(true);
+        // location.reload(true);
       }
     })
     .catch((error) => {
