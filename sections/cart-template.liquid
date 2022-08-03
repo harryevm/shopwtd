@@ -428,9 +428,9 @@
       let $properties_obj = {}
       let $line_id  = $(this).attr("data-line-upd");
       if ($line_id == "change") {
-        $(".wtd_update_qty").each(function($idx, $items_cart) {
-          let $pack_qty = $($items_cart).attr("data-pack-qty");
-          let $ttl_qty  = $($items_cart).attr("data-ttl-qty");
+        $(".wtd_update_qty").each(function($idx, $items_val) {
+          let $pack_qty = $($items_val).attr("data-pack-qty");
+          let $ttl_qty  = $($items_val).attr("data-ttl-qty");
           $properties_obj['Pack']   = $pack_qty;
           $items_cart['line']       = $line_id;
           $items_cart['quantity']   = $ttl_qty;
