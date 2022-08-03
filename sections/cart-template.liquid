@@ -418,24 +418,24 @@
       let $items_all_cart_obj = Object.keys($items_all_cart).length;
       if ($items_all_cart_obj) {
         console.log("333333");
-        $($items_all_cart).each(function($idx, $items) {
-          console.log($items);
-          console.log($items.id);
+        $($items_all_cart).each(function($idx, $items_cart) {
+          console.log($items_cart.id);
+          if ($items_cart.id == $updid) {
+            fetch(window.Shopify.routes.root + 'cart/change.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify($items_cart)
+            }).then(response => {
+              var sucess_obj = response;
+              console.log(sucess_obj);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+          } 
         });
-        
-        // fetch(window.Shopify.routes.root + 'cart/change.js', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/json'
-        //   },
-        //   body: JSON.stringify($items_cart)
-        // }).then(response => {
-        //   var sucess_obj = response;
-        //   console.log(sucess_obj);
-        // })
-        // .catch((error) => {
-        //   console.error('Error:', error);
-        // });
       }
     });
     
