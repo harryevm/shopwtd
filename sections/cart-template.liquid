@@ -424,23 +424,34 @@
     // , input[name=update]"
     $(".wtd_update_qty").on("click", function(e) {
       e.preventDefault();
+      let $items_cart     = {};
+      let $properties_obj = {}
       console.log($items_all_cart);
-      let $updid = $(this).attr("data-line-upd");
-      console.log($updid);
-      let $items_all_cart_obj = Object.keys($items_all_cart).length;
-      if ($items_all_cart_obj) {
-        console.log("333333");
-        $($items_all_cart).each(function($idx, $items_cart) {
-          console.log($items_cart.line);
-          if ($updid == "change") {
-            console.log("cccccccccc");
+      let $line_id  = $(this).attr("data-line-upd");
+      let $pack_qty = $(this).attr("data-pack-qty");
+      let $ttl_qty  = $(this).attr("data-ttl-qty");
+      $properties_obj['Pack']   = $pack_qty;
+      $items_cart['line']       = $line_id;
+      $items_cart['quantity']   = $ttl_qty;
+      $items_cart['properties'] = $properties_obj;
+      console.log($items_cart);
             changeCartUpd($items_cart);
-          } else if ($items_cart.line == $updid) {
-            console.log("dddddddddddddd");
-            changeCartUpd($items_cart);
-          }
-        });
-      }
+      
+
+      // let $items_all_cart_obj = Object.keys($items_all_cart).length;
+      // if ($items_all_cart_obj) {
+        // console.log("333333");
+        // $($items_all_cart).each(function($idx, $items_cart) {
+        //   console.log($items_cart.line);
+        //   if ($updid == "change") {
+        //     console.log("cccccccccc");
+        //     changeCartUpd($items_cart);
+        //   } else if ($items_cart.line == $updid) {
+        //     console.log("dddddddddddddd");
+        //     changeCartUpd($items_cart);
+        //   }
+        // });
+      // }
     });
   });
   
