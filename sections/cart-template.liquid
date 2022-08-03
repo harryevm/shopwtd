@@ -406,7 +406,7 @@
         $(this).nextAll().eq(0).attr("disabled", false);
         console.log("$items_cart");
         console.log($items_all_cart);
-      }, 2000);
+      }, 1000);
 
       // console.log($items_all_cart);
     });
@@ -421,7 +421,8 @@
         console.log("333333");
         $($items_all_cart_obj).each(function($idx, $items) {
           console.log($items);
-          console.log($items.variant_id);
+          console.log($idx);
+          console.log($items);
         });
         
         // fetch(window.Shopify.routes.root + 'cart/change.js', {
