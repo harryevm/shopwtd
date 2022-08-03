@@ -481,8 +481,9 @@
       body: JSON.stringify($items_cart)
     }).then(response => {
       var sucess_obj = response;
+      console.log(sucess_obj);
       if (sucess_obj.ok == true && sucess_obj.status == 200) {
-        location.reload(true);
+        // location.reload(true);
       }
     })
     .catch((error) => {
