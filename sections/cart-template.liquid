@@ -416,13 +416,11 @@
       console.log($items_all_cart);
       let $updid = $(this).attr("data-variant-updid");
       let $items_all_cart_obj = Object.keys($items_all_cart).length;
-      console.log($items_all_cart_obj);
       if ($items_all_cart_obj) {
         console.log("333333");
         $($items_all_cart).each(function($idx, $items) {
           console.log($items);
-          console.log($idx);
-          console.log($items);
+          console.log($items.variant_id);
         });
         
         // fetch(window.Shopify.routes.root + 'cart/change.js', {
