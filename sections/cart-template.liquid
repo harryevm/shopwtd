@@ -102,7 +102,7 @@
                 {% assign vari_id  = item_url | split: "=" %}
                 {%- for p in properties -%}
                   <input class="wtd_update_pack" type="number" style="width: 70px;" data-meta-pack="{{ beatles.last }}" data-variant-id="{{ vari_id.last }}" data-max-qty="{{item.variant.inventory_quantity}}" value="{{ p.last }}" min="1" />
-                  <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" data-pack-qty=""{{ p.last }}"" data-ttl-qty="{{ item.quantity }}"" value="Update" data-line-upd="{{ forloop_idx }}" data-variant-updid="{{ vari_id.last }}" style="display:none">
+                  <input type="button" class="wtd_update_qty cart__submit btn btn--small-wide" data-pack-qty="{{ p.last }}" data-ttl-qty="{{ item.quantity }}"" value="Update" data-line-upd="{{ forloop_idx }}" data-variant-updid="{{ vari_id.last }}" style="display:none">
                   <p class="wtd_pack_err" style="display:none"></p>
                 {%- endfor -%}
                 <div>
