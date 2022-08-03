@@ -383,7 +383,7 @@
           $(items).each(function($idx, $cart_val) {
             $idx = $idx + 1;
             console.log($idx);
-            if ($.inArray($idx, $check_arr) === -1 && $cart_val.variant_id == $data_variant_id) {
+            // if ($.inArray($idx, $check_arr) === -1 && $cart_val.variant_id == $data_variant_id) {
               $check_arr.push($idx);
               // $items_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
               $items_all_cart.push({'line': $idx,'quantity': $ttl_qty,'properties': {'Pack': $curr_pack_val}});
@@ -397,7 +397,7 @@
               // $items_all_cart['quantity']   = $ttl_qty;
               // $items_all_cart['properties'] = $properties_obj;
               // $items_all_cart[$data_variant_id] = $ttl_qty;
-            }
+            // }
           });
           // $(this).nextAll().eq(0).attr("disabled", false);
         });
@@ -411,6 +411,9 @@
       setTimeout(function(){
         $(this).nextAll().eq(0).attr("disabled", false);
         // console.log("$items_cart");
+        console.log($items_all_cart);
+
+        $items_all_cart.sort();
         console.log($items_all_cart);
       }, 1000);
     });
