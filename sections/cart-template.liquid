@@ -420,7 +420,10 @@
         console.log("333333");
         $($items_all_cart).each(function($idx, $items_cart) {
           console.log($items_cart.id);
+          console.log($items_cart.id);
           if ($items_cart.id == $updid) {
+            console.log(44444444444);
+            console.log($items_cart);
             fetch(window.Shopify.routes.root + 'cart/change.js', {
               method: 'POST',
               headers: {
