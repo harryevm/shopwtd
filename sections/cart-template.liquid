@@ -296,7 +296,7 @@
               <div class="cart__submit-controls">
                 {%- unless section.settings.cart_ajax_enable -%}
                 <input type="button" name="update" data-line-upd="change"
-                  class="cart__submit btn btn--secondary"
+                  class="cart__submit btn btn--secondary hidden"
                   value="{{ 'cart.general.update' | t }}">
                 {%- endunless -%}
                 <input type="submit" name="checkout"
