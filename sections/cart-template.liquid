@@ -431,15 +431,7 @@
 
     $(".wtd_update_qty").on("click", function(e) {
       e.preventDefault();
-      jQuery.getJSON('/cart.js', function(cart) {
-        let items = cart.items;
-        $(items).each(function($idx, $cart_val) {
-          console.log($cart_val);
-          $cart_val.quantity = 5;
-          console.log($cart_val);
-          changeCartUpd($cart_val);
-        })
-      })
+      
         
       let $items_cart     = {};
       let $properties_obj = {}
@@ -464,6 +456,17 @@
         $items_cart['line']       = $line_id;
         $items_cart['quantity']   = $ttl_qty;
         $items_cart['properties'] = $properties_obj;
+        
+        jQuery.getJSON('/cart.js', function(cart) {
+          let items = cart.items;
+          $(items).each(function($idx, $cart_val) {
+            console.log($cart_val);
+            $cart_val.quantity = $ttl_qty;
+            console.log($cart_val);
+            changeCartUpd($cart_val);
+          })
+        })
+        
         if ($pack_qty != "" && $line_id != "" && $ttl_qty != "") {
           // changeCartUpd($items_cart);
         }
