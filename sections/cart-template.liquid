@@ -342,20 +342,22 @@
 
 <script>
   $(document).ready(function () {
+    /* disable enter button */
     $(document).keypress(
       function(event){
         if (event.which == '13') {
           event.preventDefault();
         }
     });
-    
-   let $flag = 0;
-    $(".wtd_update_pack").on("click", function(){
-      if($flag == 0) {
-        $(this).next().show();
-        $flag = 1;
-      }
-    });
+
+   /* code run only first time */ 
+   // let $flag = 0;
+    // $(".wtd_update_pack").on("click", function(){
+    //   if($flag == 0) {
+    //     $(this).next().show();
+    //     $flag = 1;
+    //   }
+    // });
     
     $(".wtd_update_pack").on("change", function(){
       let $ttl_qty         = 0;
