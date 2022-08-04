@@ -460,7 +460,7 @@
         jQuery.getJSON('/cart.js', function(cart) {
           let items = cart.items;
           $(items).each(function($idx, $cart_val) {
-            console.log($cart_val);
+            // console.log($cart_val);
             $cart_val.quantity = $ttl_qty;
             $cart_val.line = $line_id;
             $cart_val.properties = $properties_obj;
