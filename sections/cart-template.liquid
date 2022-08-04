@@ -207,7 +207,7 @@
                 <div class="cart__qty">
                   <label for="updates_large_{{ item.key }}" class="cart__qty-label" data-quantity-label-desktop>{{ 'cart.label.quantity' | t }}</label>
                   <span>{{ item.quantity }}</span>
-                   <input id="updates_large_{{ item.key }}" class="cart__qty-input n2" type="number"
+                   <input style="display: none" id="updates_large_{{ item.key }}" class="cart__qty-input n2" type="number"
                     name="updates[]" value="{{ item.quantity }}" min="0" pattern="[0-9]*"
                     data-quantity-input data-quantity-item="{{ forloop.index }}" data-quantity-input-desktop>
                 </div>
