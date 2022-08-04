@@ -435,6 +435,9 @@
         let items = cart.items;
         $(items).each(function($idx, $cart_val) {
           console.log($cart_val);
+          $cart_val.quantity = 5;
+          console.log($cart_val);
+          changeCartUpd($cart_val);
         })
       })
         
@@ -462,7 +465,7 @@
         $items_cart['quantity']   = $ttl_qty;
         $items_cart['properties'] = $properties_obj;
         if ($pack_qty != "" && $line_id != "" && $ttl_qty != "") {
-          changeCartUpd($items_cart);
+          // changeCartUpd($items_cart);
         }
       // }
       
@@ -487,7 +490,7 @@
   function changeCartUpd($items_cart) {
     console.log("calcalaclac");
     console.log($items_cart);
-    // jQuery.post('/cart/change.js', $items_cart);
+    jQuery.post('/cart/change.js', $items_cart);
 
     // fetch(window.Shopify.routes.root + 'cart/change.js', {
     //   method: 'POST',
