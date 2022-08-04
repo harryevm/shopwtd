@@ -361,12 +361,6 @@
     let $items_cart     = [];
     let $check_arr      = [];
     $(".wtd_update_pack").on("change", function(){
-
-      ShopifyAPI.onCartUpdate = function(cart){
-          //do something new with the cart contents
-          console.log(cart.item_count);
-      };
-            
       $items_cart          = [];
       let $ttl_qty         = 0;
       let $data_meta_pack  = $(this).attr("data-meta-pack");
@@ -486,22 +480,24 @@
   function changeCartUpd($items_cart) {
     console.log("calcalaclac");
     console.log($items_cart);
-    fetch(window.Shopify.routes.root + 'cart/change.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify($items_cart)
-    }).then(response => {
-      var sucess_obj = response;
-      console.log(sucess_obj);
-      if (sucess_obj.ok == true && sucess_obj.status == 200) {
-        // location.reload(true);
-      }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    jQuery.post('/cart/change.js', $items_cart);
+
+    // fetch(window.Shopify.routes.root + 'cart/change.js', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify($items_cart)
+    // }).then(response => {
+    //   var sucess_obj = response;
+    //   console.log(sucess_obj);
+    //   if (sucess_obj.ok == true && sucess_obj.status == 200) {
+    //     // location.reload(true);
+    //   }
+    // })
+    // .catch((error) => {
+    //   console.error('Error:', error);
+    // });
   }
 </script>
 
