@@ -431,6 +431,13 @@
 
     $(".wtd_update_qty").on("click", function(e) {
       e.preventDefault();
+      jQuery.getJSON('/cart.js', function(cart) {
+        let items = cart.items;
+        $(items).each(function($idx, $cart_val) {
+          console.log($cart_val);
+        })
+      })
+        
       let $items_cart     = {};
       let $properties_obj = {}
       let $line_id  = $(this).attr("data-line-upd");
@@ -480,7 +487,7 @@
   function changeCartUpd($items_cart) {
     console.log("calcalaclac");
     console.log($items_cart);
-    jQuery.post('/cart/change.js', $items_cart);
+    // jQuery.post('/cart/change.js', $items_cart);
 
     // fetch(window.Shopify.routes.root + 'cart/change.js', {
     //   method: 'POST',
