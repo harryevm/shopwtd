@@ -351,13 +351,13 @@
     });
 
    /* code run only first time */ 
-   // let $flag = 0;
-    // $(".wtd_update_pack").on("click", function(){
-    //   if($flag == 0) {
-    //     $(this).next().show();
-    //     $flag = 1;
-    //   }
-    // });
+   let $flag = 0;
+    $(".wtd_update_pack").on("click", function(){
+      if($flag == 0) {
+        $(this).next().show();
+        $flag = 1;
+      }
+    });
     
     $(".wtd_update_pack").on("change", function(){
       let $ttl_qty         = 0;
