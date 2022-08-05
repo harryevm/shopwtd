@@ -124,36 +124,36 @@
       event.preventDefault();
       
       $(".input-error-message").remove();
-      if ($("#"+formId+"FirstName").val() == "") {
-        return errorMsg("First name can't be blank", "#"+formId+"FirstName");
-      } else if ($("#"+formId+"LastName").val() == "") {
-        return errorMsg("Last name can't be blank", "#"+formId+"LastName");
-      } else if ($("#"+formId+"email").val() == "") {
-        return errorMsg("email can't be blank", "#"+formId+"email");
-      } else if ($("#"+formId+"TaxNumber").val() == "") {
-        return errorMsg("Tax number can't be blank", "#"+formId+"TaxNumber");
-      } else if ($("#"+formId+"LicenseFile").val() == "") {
-        return errorMsg("Please upload a scanned copy of business license", "#"+formId+"LicenseFile");
-      } else if ($("#"+formId+"Telephone").val() == "") {
-        return errorMsg("Telephone can't be blank", "#"+formId+"Telephone");
-      } else if ($("#"+formId+"Address").val() == "") {
-        return errorMsg("Address can't be blank", "#"+formId+"Address");
-      } else if ($("#"+formId+"Country").val() == "") {
-        return errorMsg("Country can't be blank", "#"+formId+"Country");
-      } else if ($("#"+formId+"State").val() == "") {
-        return errorMsg("State can't be blank ( Select Country First)", "#"+formId+"State");
-      } else if ($("#"+formId+"City").val() == "") {
-        return errorMsg("City can't be blank (Select State First)", "#"+formId+"City");
-      } else if ($("#"+formId+"ZipCode").val() == "") {
-        return errorMsg("Zip code can't be blank", "#"+formId+"ZipCode");
-      } else if ($("#"+formId+"Password").val() == "") {
-        return errorMsg("Password can't be blank", "#"+formId+"Password");
-      } else if ($("#"+formId+"Conf-password").val() == "") {
-        return errorMsg("Confirm password can't be blank", "#"+formId+"Conf-password");
-      }
+      // if ($("#"+formId+"FirstName").val() == "") {
+      //   return errorMsg("First name can't be blank", "#"+formId+"FirstName");
+      // } else if ($("#"+formId+"LastName").val() == "") {
+      //   return errorMsg("Last name can't be blank", "#"+formId+"LastName");
+      // } else if ($("#"+formId+"email").val() == "") {
+      //   return errorMsg("email can't be blank", "#"+formId+"email");
+      // } else if ($("#"+formId+"TaxNumber").val() == "") {
+      //   return errorMsg("Tax number can't be blank", "#"+formId+"TaxNumber");
+      // } else if ($("#"+formId+"LicenseFile").val() == "") {
+      //   return errorMsg("Please upload a scanned copy of business license", "#"+formId+"LicenseFile");
+      // } else if ($("#"+formId+"Telephone").val() == "") {
+      //   return errorMsg("Telephone can't be blank", "#"+formId+"Telephone");
+      // } else if ($("#"+formId+"Address").val() == "") {
+      //   return errorMsg("Address can't be blank", "#"+formId+"Address");
+      // } else if ($("#"+formId+"Country").val() == "") {
+      //   return errorMsg("Country can't be blank", "#"+formId+"Country");
+      // } else if ($("#"+formId+"State").val() == "") {
+      //   return errorMsg("State can't be blank ( Select Country First)", "#"+formId+"State");
+      // } else if ($("#"+formId+"City").val() == "") {
+      //   return errorMsg("City can't be blank (Select State First)", "#"+formId+"City");
+      // } else if ($("#"+formId+"ZipCode").val() == "") {
+      //   return errorMsg("Zip code can't be blank", "#"+formId+"ZipCode");
+      // } else if ($("#"+formId+"Password").val() == "") {
+      //   return errorMsg("Password can't be blank", "#"+formId+"Password");
+      // } else if ($("#"+formId+"Conf-password").val() == "") {
+      //   return errorMsg("Confirm password can't be blank", "#"+formId+"Conf-password");
+      // }
      
-      if($("#"+formId+"Password").val() != $("#"+formId+"Conf-password").val())
-         return errorMsg("Password and Confirm password does not match", "#"+formId+"Conf-password");
+      // if($("#"+formId+"Password").val() != $("#"+formId+"Conf-password").val())
+      //    return errorMsg("Password and Confirm password does not match", "#"+formId+"Conf-password");
         
       var form_data = new FormData(this);
       form_data.append("shopName", Shopify.shop);
