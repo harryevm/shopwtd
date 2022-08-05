@@ -116,8 +116,7 @@
       };
     });
     
-    var base_url = Shopify.shop;
-    console.log(base_url);
+    var base_url = "https://top2bottom-wholesale.herokuapp.com/";
     $("#RegisterForm").removeAttr("action");
     $("#RegisterForm").attr("enctype", "multipart/form-data");
     
@@ -125,42 +124,42 @@
       event.preventDefault();
       
       $(".input-error-message").remove();
-      // if ($("#"+formId+"FirstName").val() == "") {
-      //   return errorMsg("First name can't be blank", "#"+formId+"FirstName");
-      // } else if ($("#"+formId+"LastName").val() == "") {
-      //   return errorMsg("Last name can't be blank", "#"+formId+"LastName");
-      // } else if ($("#"+formId+"email").val() == "") {
-      //   return errorMsg("email can't be blank", "#"+formId+"email");
-      // } else if ($("#"+formId+"TaxNumber").val() == "") {
-      //   return errorMsg("Tax number can't be blank", "#"+formId+"TaxNumber");
-      // } else if ($("#"+formId+"LicenseFile").val() == "") {
-      //   return errorMsg("Please upload a scanned copy of business license", "#"+formId+"LicenseFile");
-      // } else if ($("#"+formId+"Telephone").val() == "") {
-      //   return errorMsg("Telephone can't be blank", "#"+formId+"Telephone");
-      // } else if ($("#"+formId+"Address").val() == "") {
-      //   return errorMsg("Address can't be blank", "#"+formId+"Address");
-      // } else if ($("#"+formId+"Country").val() == "") {
-      //   return errorMsg("Country can't be blank", "#"+formId+"Country");
-      // } else if ($("#"+formId+"State").val() == "") {
-      //   return errorMsg("State can't be blank ( Select Country First)", "#"+formId+"State");
-      // } else if ($("#"+formId+"City").val() == "") {
-      //   return errorMsg("City can't be blank (Select State First)", "#"+formId+"City");
-      // } else if ($("#"+formId+"ZipCode").val() == "") {
-      //   return errorMsg("Zip code can't be blank", "#"+formId+"ZipCode");
-      // } else if ($("#"+formId+"Password").val() == "") {
-      //   return errorMsg("Password can't be blank", "#"+formId+"Password");
-      // } else if ($("#"+formId+"Conf-password").val() == "") {
-      //   return errorMsg("Confirm password can't be blank", "#"+formId+"Conf-password");
-      // }
+      if ($("#"+formId+"FirstName").val() == "") {
+        return errorMsg("First name can't be blank", "#"+formId+"FirstName");
+      } else if ($("#"+formId+"LastName").val() == "") {
+        return errorMsg("Last name can't be blank", "#"+formId+"LastName");
+      } else if ($("#"+formId+"email").val() == "") {
+        return errorMsg("email can't be blank", "#"+formId+"email");
+      } else if ($("#"+formId+"TaxNumber").val() == "") {
+        return errorMsg("Tax number can't be blank", "#"+formId+"TaxNumber");
+      } else if ($("#"+formId+"LicenseFile").val() == "") {
+        return errorMsg("Please upload a scanned copy of business license", "#"+formId+"LicenseFile");
+      } else if ($("#"+formId+"Telephone").val() == "") {
+        return errorMsg("Telephone can't be blank", "#"+formId+"Telephone");
+      } else if ($("#"+formId+"Address").val() == "") {
+        return errorMsg("Address can't be blank", "#"+formId+"Address");
+      } else if ($("#"+formId+"Country").val() == "") {
+        return errorMsg("Country can't be blank", "#"+formId+"Country");
+      } else if ($("#"+formId+"State").val() == "") {
+        return errorMsg("State can't be blank ( Select Country First)", "#"+formId+"State");
+      } else if ($("#"+formId+"City").val() == "") {
+        return errorMsg("City can't be blank (Select State First)", "#"+formId+"City");
+      } else if ($("#"+formId+"ZipCode").val() == "") {
+        return errorMsg("Zip code can't be blank", "#"+formId+"ZipCode");
+      } else if ($("#"+formId+"Password").val() == "") {
+        return errorMsg("Password can't be blank", "#"+formId+"Password");
+      } else if ($("#"+formId+"Conf-password").val() == "") {
+        return errorMsg("Confirm password can't be blank", "#"+formId+"Conf-password");
+      }
      
-      // if($("#"+formId+"Password").val() != $("#"+formId+"Conf-password").val())
-      //    return errorMsg("Password and Confirm password does not match", "#"+formId+"Conf-password");
+      if($("#"+formId+"Password").val() != $("#"+formId+"Conf-password").val())
+         return errorMsg("Password and Confirm password does not match", "#"+formId+"Conf-password");
         
       var form_data = new FormData(this);
       form_data.append("shopName", Shopify.shop);
       $(".create_user").attr("disabled", true);
       $.ajax({
-        url   : base_url+'/admin_common_con/evmCustomerRegister',
+        url   : base_url+'admin_common_con/evmCustomerRegister',
         type  : 'POST',
         data  : form_data,
         cache : false,
@@ -183,7 +182,7 @@
     /* get country state city  */
     /* get country onload */
     $.ajax({
-      url     : base_url+"/admin_common_con/getCountries",
+      url     : base_url+"admin_common_con/getCountries",
       type    : "POST",
       data    : { get_country: "country" },
       cache   : false,
@@ -195,7 +194,7 @@
     $('#RegisterForm-Country').on('change', function() {
       var country_id = $('option:selected', this).attr('data-country-id');
       $.ajax({
-        url     : base_url+"/admin_common_con/getStates",
+        url     : base_url+"admin_common_con/getStates",
         type    : "POST",
         data    : { country_id: country_id },
         cache   : false,
@@ -208,7 +207,7 @@
     $('#RegisterForm-State').on('change', function() {
       var state_id = $('option:selected', this).attr('data-state-id');
       $.ajax({
-        url     : base_url+"/admin_common_con/getCity",
+        url     : base_url+"admin_common_con/getCity",
         type    : "POST",
         data    : { state_id: state_id },
         cache   : false,
