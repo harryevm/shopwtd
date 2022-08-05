@@ -167,6 +167,7 @@
         contentType : false,
         success: function (res) {
           $(".create_user").attr("disabled", false);
+          console.log(res);
           var obj = JSON.parse(res);
           console.log(obj);
           // if (obj.success == "success" && obj.logged_in == true) {
