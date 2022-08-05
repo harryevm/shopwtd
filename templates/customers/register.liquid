@@ -169,6 +169,7 @@
           $(".create_user").attr("disabled", false);
           var obj = JSON.parse(res);
           if (obj.success == "success" && obj.logged_in == true) {
+            console.log(obj.msg);
           	alert(obj.msg);
             $('#RegisterForm')[0].reset();
           } else {
