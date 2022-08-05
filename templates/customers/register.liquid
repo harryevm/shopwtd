@@ -116,7 +116,7 @@
       };
     });
     
-    var base_url = "https://top2bottom-wholesale.herokuapp.com/";
+    var base_url = Shopify.shop;
     $("#RegisterForm").removeAttr("action");
     $("#RegisterForm").attr("enctype", "multipart/form-data");
     
@@ -159,7 +159,7 @@
       form_data.append("shopName", Shopify.shop);
       $(".create_user").attr("disabled", true);
       $.ajax({
-        url   : base_url+'admin_common_con/evmCustomerRegister',
+        url   : base_url+'/admin_common_con/evmCustomerRegister',
         type  : 'POST',
         data  : form_data,
         cache : false,
@@ -182,7 +182,7 @@
     /* get country state city  */
     /* get country onload */
     $.ajax({
-      url     : base_url+"admin_common_con/getCountries",
+      url     : base_url+"/admin_common_con/getCountries",
       type    : "POST",
       data    : { get_country: "country" },
       cache   : false,
@@ -194,7 +194,7 @@
     $('#RegisterForm-Country').on('change', function() {
       var country_id = $('option:selected', this).attr('data-country-id');
       $.ajax({
-        url     : base_url+"admin_common_con/getStates",
+        url     : base_url+"/admin_common_con/getStates",
         type    : "POST",
         data    : { country_id: country_id },
         cache   : false,
@@ -207,7 +207,7 @@
     $('#RegisterForm-State').on('change', function() {
       var state_id = $('option:selected', this).attr('data-state-id');
       $.ajax({
-        url     : base_url+"admin_common_con/getCity",
+        url     : base_url+"/admin_common_con/getCity",
         type    : "POST",
         data    : { state_id: state_id },
         cache   : false,
