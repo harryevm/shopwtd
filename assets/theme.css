@@ -7058,17 +7058,6 @@ body{ font-family: stevie-sans,sans-serif; font-weight: 400; font-style: normal;
 .mobile-nav-wrapper.js-menu--is-open { transform: translateY(103px) !important; }
 #shopify-section-announcement-slider { position: relative; z-index: 1;}
 
-
-
-
-
-
-
-
-
-
-
-
 /* slideshow */
 .slideshow__arrows, .slideshow__controls:hover .slideshow__arrows, .slideshow__controls:focus .slideshow__arrows, .slideshow__controls--hover .slideshow__arrows { background-color: transparent;}
 .slideshow__pause { display: none; }
