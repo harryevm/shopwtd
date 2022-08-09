@@ -7344,7 +7344,8 @@ span.spr-badge-caption {font-size: 11px;}
 .slick-slider .slick-icon-prev{top: -10px;}
 .slick-slider .slick-icon-next{bottom: -10px;}  
 .thumbnails-slider__btn {display: none;}
-.site-header { padding: 0;}  
+.site-header { padding: 0;} 
+.header-page-width .site-header-inner{ padding: 10px 15px; }  
 }  
 
 @media only screen and (max-width: 480px){
