@@ -7296,7 +7296,7 @@ h1, h2{ font-size: 28px;}
 .site-footer__linklist-item{ padding: 0; margin-bottom: 5px;}                              
 .site-footer h4, .site-footer .h4{ margin-bottom: 8px; }  
 .site-footer__item{ margin-bottom: 10px; }  
-.header-page-width { padding: 0 20px;}  
+.header-page-width { padding: 0 0px;}  
 .site-header__logo { padding-left: 0;}  
 .site-header__icons{ padding-right: 0 }
 .site-header__icon, .site-header__icon.site-header__cart{ margin-right: 12px; }  
