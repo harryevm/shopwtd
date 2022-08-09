@@ -7353,7 +7353,8 @@ span.spr-badge-caption {font-size: 11px;}
 .template-cart table{ table-layout: fixed;}
 .template-cart table .cart__row td{ width: 100%; display: block; }  
 .template-cart table .cart__image-wrapper { flex: 10rem 0 0;}
-.template-cart table .cart__image { max-height: 100%;}  
+.template-cart table .cart__image { max-height: 100%;} 
+.template-cart table .cart__row td.cart__price { font-size: 16px; text-align: center !important; padding: 15px 0;} 
 }  
 
 @media only screen and (max-width: 480px){
