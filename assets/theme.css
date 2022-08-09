@@ -7173,7 +7173,7 @@ span.spr-badge-caption {font-family: stevie-sans,sans-serif; font-weight: 300; f
 .pro-varaint-color { display: inline-block; width: 2rem; height: 2rem; margin-left: 5px; }
 .pro-varaint-color p {  border-radius: 50%; width: 100%; height: 100%; box-shadow: 2px 0px 10px #00000036;}
 .social-sharing{ margin-top: 25px; }
-
+.product-table-block { overflow-x: auto; display: block; width: 100%;}
 /* breadcrumbs */
 .breadcrumb{ font-weight: 300; font-size: 16px; line-height: 40px; }
 
