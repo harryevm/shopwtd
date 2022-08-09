@@ -7189,7 +7189,7 @@ span.spr-badge-caption {font-family: stevie-sans,sans-serif; font-weight: 300; f
 /* cart page */
 .template-cart .cart__row.cart__row--heading{ display: none; }
 .template-cart table{ table-layout: fixed;}
-
+.template-cart table .cart__row td{ width: 100%; display: block; }
 
 
 
