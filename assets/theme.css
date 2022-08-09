@@ -7352,6 +7352,8 @@ span.spr-badge-caption {font-size: 11px;}
 .template-cart .cart__row.cart__row--heading{ display: none; }
 .template-cart table{ table-layout: fixed;}
 .template-cart table .cart__row td{ width: 100%; display: block; }  
+.template-cart table .cart__image-wrapper { flex: 10rem 0 0;}
+.template-cart table .cart__image { max-height: 100%;}  
 }  
 
 @media only screen and (max-width: 480px){
