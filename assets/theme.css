@@ -7336,7 +7336,7 @@ h1, h2{ font-size: 28px;}
 span.spr-badge-caption {font-size: 11px;}
 .product-page-width { padding: 0 25px; }  
 .product-img,.product-description { width: 100%;}  
-.product-single__media-wrapper { width: 65%;}  
+.product-single__media-wrapper { width: 100%; float: left; }   
 .thumbnails-wrapper { width: 30%;} 
 .slick-slide img {max-width: 75px; margin: 0;}  
 .slider-active .product-single__thumbnails{ max-width: 100%; }  
